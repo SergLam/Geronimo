@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78C5E5118880B8E7C8793164 /* Pods_Geronimo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AB05600F692B130E40375A /* Pods_Geronimo.framework */; };
 		7C302BA420610AAC00B60560 /* ActiveTimersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C302BA220610AAC00B60560 /* ActiveTimersVC.swift */; };
 		7C302BA520610AAC00B60560 /* ActiveTimersVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C302BA320610AAC00B60560 /* ActiveTimersVC.xib */; };
 		7C302BA920611AA700B60560 /* EndedTimersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C302BA720611AA700B60560 /* EndedTimersVC.swift */; };
@@ -15,6 +16,12 @@
 		7C302BAF20611AE100B60560 /* EndedTimerTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C302BAD20611AE100B60560 /* EndedTimerTableCell.xib */; };
 		7C48B8DB20600CF4001605A6 /* ActiveTimerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48B8D920600CF4001605A6 /* ActiveTimerTableCell.swift */; };
 		7C48B8DC20600CF4001605A6 /* ActiveTimerTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C48B8DA20600CF4001605A6 /* ActiveTimerTableCell.xib */; };
+		7CCFB5BC20624E7000D25EDB /* TableViewRowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5BB20624E7000D25EDB /* TableViewRowAction.swift */; };
+		7CCFB5C0206260BF00D25EDB /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5BE206260BF00D25EDB /* SettingsVC.swift */; };
+		7CCFB5C1206260BF00D25EDB /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCFB5BF206260BF00D25EDB /* SettingsVC.xib */; };
+		7CCFB5C42062624000D25EDB /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5C22062624000D25EDB /* SettingsTableCell.swift */; };
+		7CCFB5C52062624000D25EDB /* SettingsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCFB5C32062624000D25EDB /* SettingsTableCell.xib */; };
+		7CCFB5C7206279F500D25EDB /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5C6206279F500D25EDB /* StatusBar.swift */; };
 		7CFD3989205FFDBA00A3B800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFD3988205FFDBA00A3B800 /* AppDelegate.swift */; };
 		7CFD3993205FFDBA00A3B800 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CFD3992205FFDBA00A3B800 /* Assets.xcassets */; };
 		7CFD3996205FFDBA00A3B800 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CFD3994205FFDBA00A3B800 /* LaunchScreen.storyboard */; };
@@ -23,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		280F448869ADB64AF5014B1E /* Pods-Geronimo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Geronimo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Geronimo/Pods-Geronimo.debug.xcconfig"; sourceTree = "<group>"; };
+		64AB05600F692B130E40375A /* Pods_Geronimo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Geronimo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C302BA220610AAC00B60560 /* ActiveTimersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTimersVC.swift; sourceTree = "<group>"; };
 		7C302BA320610AAC00B60560 /* ActiveTimersVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActiveTimersVC.xib; sourceTree = "<group>"; };
 		7C302BA720611AA700B60560 /* EndedTimersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndedTimersVC.swift; sourceTree = "<group>"; };
@@ -31,6 +40,12 @@
 		7C302BAD20611AE100B60560 /* EndedTimerTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndedTimerTableCell.xib; sourceTree = "<group>"; };
 		7C48B8D920600CF4001605A6 /* ActiveTimerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTimerTableCell.swift; sourceTree = "<group>"; };
 		7C48B8DA20600CF4001605A6 /* ActiveTimerTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActiveTimerTableCell.xib; sourceTree = "<group>"; };
+		7CCFB5BB20624E7000D25EDB /* TableViewRowAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewRowAction.swift; sourceTree = "<group>"; };
+		7CCFB5BE206260BF00D25EDB /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		7CCFB5BF206260BF00D25EDB /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
+		7CCFB5C22062624000D25EDB /* SettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableCell.swift; sourceTree = "<group>"; };
+		7CCFB5C32062624000D25EDB /* SettingsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableCell.xib; sourceTree = "<group>"; };
+		7CCFB5C6206279F500D25EDB /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
 		7CFD3985205FFDBA00A3B800 /* Geronimo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geronimo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CFD3988205FFDBA00A3B800 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CFD3992205FFDBA00A3B800 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +53,7 @@
 		7CFD3997205FFDBA00A3B800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CFD399E205FFF9E00A3B800 /* TimersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersVC.swift; sourceTree = "<group>"; };
 		7CFD399F205FFF9E00A3B800 /* TimersVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimersVC.xib; sourceTree = "<group>"; };
+		BC0403E73D543530D53B6E6E /* Pods-Geronimo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Geronimo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Geronimo/Pods-Geronimo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,12 +61,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78C5E5118880B8E7C8793164 /* Pods_Geronimo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F1517EA91BE303CA8C63200 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				64AB05600F692B130E40375A /* Pods_Geronimo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		58773E0A319BC83206392805 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				280F448869ADB64AF5014B1E /* Pods-Geronimo.debug.xcconfig */,
+				BC0403E73D543530D53B6E6E /* Pods-Geronimo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7C302BA02061093B00B60560 /* Timers */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,11 +123,33 @@
 			path = data_models;
 			sourceTree = "<group>";
 		};
+		7CCFB5BA20624E4C00D25EDB /* Tolls&Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7CCFB5BB20624E7000D25EDB /* TableViewRowAction.swift */,
+				7CCFB5C6206279F500D25EDB /* StatusBar.swift */,
+			);
+			path = "Tolls&Extensions";
+			sourceTree = "<group>";
+		};
+		7CCFB5BD2062608D00D25EDB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7CCFB5BE206260BF00D25EDB /* SettingsVC.swift */,
+				7CCFB5BF206260BF00D25EDB /* SettingsVC.xib */,
+				7CCFB5C22062624000D25EDB /* SettingsTableCell.swift */,
+				7CCFB5C32062624000D25EDB /* SettingsTableCell.xib */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		7CFD397C205FFDBA00A3B800 = {
 			isa = PBXGroup;
 			children = (
 				7CFD3987205FFDBA00A3B800 /* Geronimo */,
 				7CFD3986205FFDBA00A3B800 /* Products */,
+				58773E0A319BC83206392805 /* Pods */,
+				0F1517EA91BE303CA8C63200 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +164,7 @@
 		7CFD3987205FFDBA00A3B800 /* Geronimo */ = {
 			isa = PBXGroup;
 			children = (
+				7CCFB5BA20624E4C00D25EDB /* Tolls&Extensions */,
 				7C48B8DD20600EBE001605A6 /* data_models */,
 				7CFD399D205FFF7D00A3B800 /* Screens */,
 				7CFD3988205FFDBA00A3B800 /* AppDelegate.swift */,
@@ -121,6 +178,7 @@
 		7CFD399D205FFF7D00A3B800 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				7CCFB5BD2062608D00D25EDB /* Settings */,
 				7C302BA02061093B00B60560 /* Timers */,
 				7CFD399E205FFF9E00A3B800 /* TimersVC.swift */,
 				7CFD399F205FFF9E00A3B800 /* TimersVC.xib */,
@@ -135,9 +193,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CFD399A205FFDBA00A3B800 /* Build configuration list for PBXNativeTarget "Geronimo" */;
 			buildPhases = (
+				68B7077C73C05B17E4D4E9E2 /* [CP] Check Pods Manifest.lock */,
 				7CFD3981205FFDBA00A3B800 /* Sources */,
 				7CFD3982205FFDBA00A3B800 /* Frameworks */,
 				7CFD3983205FFDBA00A3B800 /* Resources */,
+				6674C34B68ACE1013663A91F /* [CP] Embed Pods Frameworks */,
+				1850157922C786B741AC877A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -188,8 +249,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C302BAF20611AE100B60560 /* EndedTimerTableCell.xib in Resources */,
+				7CCFB5C1206260BF00D25EDB /* SettingsVC.xib in Resources */,
 				7C48B8DC20600CF4001605A6 /* ActiveTimerTableCell.xib in Resources */,
 				7CFD39A1205FFF9E00A3B800 /* TimersVC.xib in Resources */,
+				7CCFB5C52062624000D25EDB /* SettingsTableCell.xib in Resources */,
 				7CFD3996205FFDBA00A3B800 /* LaunchScreen.storyboard in Resources */,
 				7C302BAA20611AA700B60560 /* EndedTimersVC.xib in Resources */,
 				7CFD3993205FFDBA00A3B800 /* Assets.xcassets in Resources */,
@@ -199,6 +262,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1850157922C786B741AC877A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Geronimo/Pods-Geronimo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6674C34B68ACE1013663A91F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Geronimo/Pods-Geronimo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BGTableViewRowActionWithImage/BGTableViewRowActionWithImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BGTableViewRowActionWithImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Geronimo/Pods-Geronimo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68B7077C73C05B17E4D4E9E2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Geronimo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7CFD3981205FFDBA00A3B800 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -207,7 +324,11 @@
 				7C302BA420610AAC00B60560 /* ActiveTimersVC.swift in Sources */,
 				7C302BAE20611AE100B60560 /* EndedTimerTableCell.swift in Sources */,
 				7C302BA920611AA700B60560 /* EndedTimersVC.swift in Sources */,
+				7CCFB5C42062624000D25EDB /* SettingsTableCell.swift in Sources */,
+				7CCFB5BC20624E7000D25EDB /* TableViewRowAction.swift in Sources */,
+				7CCFB5C7206279F500D25EDB /* StatusBar.swift in Sources */,
 				7C48B8DB20600CF4001605A6 /* ActiveTimerTableCell.swift in Sources */,
+				7CCFB5C0206260BF00D25EDB /* SettingsVC.swift in Sources */,
 				7CFD3989205FFDBA00A3B800 /* AppDelegate.swift in Sources */,
 				7CFD39A0205FFF9E00A3B800 /* TimersVC.swift in Sources */,
 			);
@@ -336,6 +457,7 @@
 		};
 		7CFD399B205FFDBA00A3B800 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 280F448869ADB64AF5014B1E /* Pods-Geronimo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -351,6 +473,7 @@
 		};
 		7CFD399C205FFDBA00A3B800 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC0403E73D543530D53B6E6E /* Pods-Geronimo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

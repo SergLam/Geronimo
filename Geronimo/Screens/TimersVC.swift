@@ -30,6 +30,7 @@ class TimersVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.switchViewController(tabSwitch)
+        UIApplication.statusBarBackgroundColor = .blue
     }
 
     @IBAction func switchViewController(_ sender: UISegmentedControl) {
@@ -64,6 +65,15 @@ class TimersVC: UIViewController {
         vc.didMove(toParentViewController: self)
         vc.view.frame = self.contentView.bounds
         self.contentView.addSubview(vc.view)
+    }
+    
+    @IBAction func openSettingVC(_ sender: UIBarButtonItem) {
+        self.present(SettingsVC(), animated: true, completion: nil)
+    }
+    
+    func configureSegmentedControl(){
+        tabSwitch.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: UIControlState.selected)
+        tabSwitch.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: UIControlState.normal)
     }
     
 }

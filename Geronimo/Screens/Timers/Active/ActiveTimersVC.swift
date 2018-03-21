@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BGTableViewRowActionWithImage
 
 class ActiveTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -37,17 +38,19 @@ class ActiveTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    // MARK: Add actions to table
     func tableView(_ tableView: UITableView,
                    editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?{
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexpath) in
+        let deleteAction = BGTableViewRowActionWithImage.rowAction(with: .destructive, title: "    ", backgroundColor: UIColor.red, image: UIImage(named: "trash_can"), forCellHeight: 100, handler: { (action, indexpath) in
             print("Delete Action Tapped")
-        }
-        deleteAction.backgroundColor = UIColor.red
-        let statsAction = UITableViewRowAction(style: .destructive, title: "Stats") { (action, indexpath) in
-            print("Stats Action Tapped")
-        }
-        deleteAction.backgroundColor = UIColor.green
-        return [deleteAction, statsAction]
+        })
+        
+        let statsAction = BGTableViewRowActionWithImage.rowAction(with: .normal, title: "    ", backgroundColor: UIColor.green, image: UIImage(named: "diagram"), forCellHeight: 100, handler: { (action, indexpath) in
+            print("Delete Action Tapped")
+        })
+       
+        
+        return [deleteAction!, statsAction!]
     }
 
 }
