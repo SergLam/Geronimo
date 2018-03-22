@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TimerStatisticVC" customModule="Geronimo" customModuleProvider="target">
+            <connections>
+                <outlet property="failedLabel" destination="hj8-gX-CAD" id="jh7-iw-Z8d"/>
+                <outlet property="succesLabel" destination="isv-6X-FFQ" id="TfM-Vc-GtW"/>
+                <outlet property="timerDescription" destination="BmT-sa-pv7" id="X6r-Ac-Aa2"/>
+                <outlet property="timerTitle" destination="QWd-Qb-tFt" id="94J-cw-CZy"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dA1-uj-qs5">
+                    <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                    <color key="barTintColor" red="0.063543941559999997" green="0.82064432119999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="Statistics" id="MgP-Ic-jHf">
+                            <barButtonItem key="leftBarButtonItem" systemItem="stop" id="I9S-Es-XcI">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="closeStatistic:" destination="-1" id="iuE-EO-1Me"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWd-Qb-tFt">
+                    <rect key="frame" x="143" y="88" width="34" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BmT-sa-pv7">
+                    <rect key="frame" x="121" y="117" width="78.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isv-6X-FFQ">
+                    <rect key="frame" x="129" y="420" width="62" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Failed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hj8-gX-CAD">
+                    <rect key="frame" x="138" y="446" width="44.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="QWd-Qb-tFt" firstAttribute="top" secondItem="dA1-uj-qs5" secondAttribute="bottom" constant="24" id="2gx-q5-uzj"/>
+                <constraint firstItem="dA1-uj-qs5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6gc-Ic-ti6"/>
+                <constraint firstItem="hj8-gX-CAD" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Gq6-Lh-lkk"/>
+                <constraint firstItem="QWd-Qb-tFt" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="I9h-Gu-dMA"/>
+                <constraint firstItem="dA1-uj-qs5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Y6j-dQ-lGt"/>
+                <constraint firstItem="BmT-sa-pv7" firstAttribute="top" secondItem="QWd-Qb-tFt" secondAttribute="bottom" constant="8" id="YXA-S4-bbN"/>
+                <constraint firstItem="BmT-sa-pv7" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="cbr-We-sfF"/>
+                <constraint firstItem="dA1-uj-qs5" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="m4D-DK-fpm"/>
+                <constraint firstItem="isv-6X-FFQ" firstAttribute="top" secondItem="BmT-sa-pv7" secondAttribute="bottom" constant="285" id="ntq-1v-FWh"/>
+                <constraint firstItem="hj8-gX-CAD" firstAttribute="top" secondItem="isv-6X-FFQ" secondAttribute="bottom" constant="8" id="oc5-UX-1XG"/>
+                <constraint firstItem="isv-6X-FFQ" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="uam-da-wJV"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>

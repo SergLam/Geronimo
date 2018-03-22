@@ -46,7 +46,7 @@ class ActiveTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         })
         
         let statsAction = BGTableViewRowActionWithImage.rowAction(with: .normal, title: "    ", backgroundColor: UIColor.green, image: UIImage(named: "diagram"), forCellHeight: 100, handler: { (action, indexpath) in
-            print("Delete Action Tapped")
+            self.present(TimerStatisticVC(), animated: true, completion: nil)
         })
        
         

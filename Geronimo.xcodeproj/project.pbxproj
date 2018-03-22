@@ -22,6 +22,8 @@
 		7CA0A4482063C4CC000B10C6 /* AboutVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA0A4462063C4CC000B10C6 /* AboutVC.xib */; };
 		7CA0A44D2063D9C0000B10C6 /* SendFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA0A44B2063D9C0000B10C6 /* SendFormVC.swift */; };
 		7CA0A44E2063D9C0000B10C6 /* SendFormVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA0A44C2063D9C0000B10C6 /* SendFormVC.xib */; };
+		7CA0A4522063E8BA000B10C6 /* TimerStatisticVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA0A4502063E8BA000B10C6 /* TimerStatisticVC.swift */; };
+		7CA0A4532063E8BA000B10C6 /* TimerStatisticVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA0A4512063E8BA000B10C6 /* TimerStatisticVC.xib */; };
 		7CCFB5BC20624E7000D25EDB /* TableViewRowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5BB20624E7000D25EDB /* TableViewRowAction.swift */; };
 		7CCFB5C0206260BF00D25EDB /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5BE206260BF00D25EDB /* SettingsVC.swift */; };
 		7CCFB5C1206260BF00D25EDB /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCFB5BF206260BF00D25EDB /* SettingsVC.xib */; };
@@ -52,6 +54,8 @@
 		7CA0A4462063C4CC000B10C6 /* AboutVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutVC.xib; sourceTree = "<group>"; };
 		7CA0A44B2063D9C0000B10C6 /* SendFormVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFormVC.swift; sourceTree = "<group>"; };
 		7CA0A44C2063D9C0000B10C6 /* SendFormVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendFormVC.xib; sourceTree = "<group>"; };
+		7CA0A4502063E8BA000B10C6 /* TimerStatisticVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStatisticVC.swift; sourceTree = "<group>"; };
+		7CA0A4512063E8BA000B10C6 /* TimerStatisticVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerStatisticVC.xib; sourceTree = "<group>"; };
 		7CCFB5BB20624E7000D25EDB /* TableViewRowAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewRowAction.swift; sourceTree = "<group>"; };
 		7CCFB5BE206260BF00D25EDB /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		7CCFB5BF206260BF00D25EDB /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 		7C302BA12061094700B60560 /* Active */ = {
 			isa = PBXGroup;
 			children = (
+				7CA0A44F2063E890000B10C6 /* Statistic */,
 				7C48B8D920600CF4001605A6 /* ActiveTimerTableCell.swift */,
 				7C48B8DA20600CF4001605A6 /* ActiveTimerTableCell.xib */,
 				7C302BA220610AAC00B60560 /* ActiveTimersVC.swift */,
@@ -161,6 +166,15 @@
 				7CA0A44C2063D9C0000B10C6 /* SendFormVC.xib */,
 			);
 			path = SendForm;
+			sourceTree = "<group>";
+		};
+		7CA0A44F2063E890000B10C6 /* Statistic */ = {
+			isa = PBXGroup;
+			children = (
+				7CA0A4502063E8BA000B10C6 /* TimerStatisticVC.swift */,
+				7CA0A4512063E8BA000B10C6 /* TimerStatisticVC.xib */,
+			);
+			path = Statistic;
 			sourceTree = "<group>";
 		};
 		7CCFB5BA20624E4C00D25EDB /* Tolls&Extensions */ = {
@@ -292,6 +306,7 @@
 			files = (
 				7C43B7BF2062960300D57614 /* EditTimerVC.xib in Resources */,
 				7C302BAF20611AE100B60560 /* EndedTimerTableCell.xib in Resources */,
+				7CA0A4532063E8BA000B10C6 /* TimerStatisticVC.xib in Resources */,
 				7CCFB5C1206260BF00D25EDB /* SettingsVC.xib in Resources */,
 				7C48B8DC20600CF4001605A6 /* ActiveTimerTableCell.xib in Resources */,
 				7CFD39A1205FFF9E00A3B800 /* TimersVC.xib in Resources */,
@@ -331,10 +346,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Geronimo/Pods-Geronimo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BGTableViewRowActionWithImage/BGTableViewRowActionWithImage.framework",
+				"${BUILT_PRODUCTS_DIR}/RKPieChart/RKPieChart.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BGTableViewRowActionWithImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RKPieChart.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -379,6 +398,7 @@
 				7CFD3989205FFDBA00A3B800 /* AppDelegate.swift in Sources */,
 				7C43B7BE2062960300D57614 /* EditTimerVC.swift in Sources */,
 				7CFD39A0205FFF9E00A3B800 /* TimersVC.swift in Sources */,
+				7CA0A4522063E8BA000B10C6 /* TimerStatisticVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
