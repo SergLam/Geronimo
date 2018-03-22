@@ -67,7 +67,7 @@
                     <constraint firstItem="Dyp-wR-s65" firstAttribute="leading" secondItem="F2P-xw-4hG" secondAttribute="trailing" constant="16" id="TAi-Qx-w3E"/>
                     <constraint firstItem="Dyp-wR-s65" firstAttribute="top" secondItem="UWd-wC-dEJ" secondAttribute="bottom" constant="8" id="kTh-Bu-POz"/>
                     <constraint firstItem="F2P-xw-4hG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lds-26-1ON"/>
-                    <constraint firstItem="yZ9-wh-eIP" firstAttribute="leading" secondItem="UWd-wC-dEJ" secondAttribute="trailing" constant="10" id="q0N-Mx-XNz"/>
+                    <constraint firstAttribute="trailing" secondItem="yZ9-wh-eIP" secondAttribute="trailing" constant="29" id="xrf-XM-2R1"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

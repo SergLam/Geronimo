@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootVC = TimersVC()
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.isNavigationBarHidden = true
-        navVC.navigationBar.isTranslucent = false
+        navVC.navigationBar.isTranslucent = true
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = navVC
         self.window?.makeKeyAndVisible()

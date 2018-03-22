@@ -23,8 +23,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IaA-5x-JYj">
-                    <rect key="frame" x="0.0" y="100" width="375" height="317"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="350"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="350" identifier="tableHeight" id="oOs-WC-HWS"/>
+                    </constraints>
                 </tableView>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ziZ-gh-v3y">
                     <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -45,8 +48,7 @@
             <constraints>
                 <constraint firstItem="IaA-5x-JYj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="9Bh-55-jAB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IaA-5x-JYj" secondAttribute="trailing" id="FVh-Je-aUa"/>
-                <constraint firstItem="IaA-5x-JYj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="80" id="HC6-Su-2t5"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="IaA-5x-JYj" secondAttribute="bottom" constant="250" id="W7k-ta-gX5"/>
+                <constraint firstItem="IaA-5x-JYj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="44" id="HC6-Su-2t5"/>
                 <constraint firstItem="ziZ-gh-v3y" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="esW-6f-Ir4"/>
                 <constraint firstItem="ziZ-gh-v3y" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="i6u-6j-3rN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ziZ-gh-v3y" secondAttribute="trailing" id="lQL-Ib-Dec"/>

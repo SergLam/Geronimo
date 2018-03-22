@@ -16,17 +16,24 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let cellName = "SettingsTableCell"
     
+    let about = AboutVC()
+    
     let firstSection = ["New Feature Reuest", "Performance Feedback", "Report a Bug"]
     let secondSection = ["About Us"]
+    let sectionHeaderTitleArray = ["FEEDBACK","MORE"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSettingTable()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        UIApplication.shared.statusBarStyle = .lightContent
+    override func viewWillLayoutSubviews() {
+       super.viewWillLayoutSubviews()
+        for constraint in self.settingTable.constraints {
+            if constraint.identifier == "tableHeight" {
+                constraint.constant = self.settingTable.contentSize.height
+            }
+        }
     }
     
     // MARK: TableView methods
@@ -39,6 +46,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = settingTable.dequeueReusableCell(withIdentifier: cellName, for: indexPath) as! SettingsTableCell
+        cell.selectionStyle = .none
         switch indexPath.section {
         case 0:
             cell.updateCell(name: firstSection[indexPath.row])
@@ -50,18 +58,26 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    // MARK: Section handling
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "FEEDBACK"
-        case 1:
-            return "MORE"
-        default:
-            return ""
-        }
+    // MARK: Table Header
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let returnedView = UIView(frame: CGRect(x: 30, y: 0, width:
+            settingTable.bounds.size.width, height: 30))
+        
+        let label = UILabel(frame: CGRect.init(x: 20, y: 15, width: settingTable.bounds.size.width, height: 20))
+        label.text = self.sectionHeaderTitleArray[section]
+        label.textColor = UIColor.darkGray
+        label.font = label.font.withSize(12)
+        returnedView.addSubview(label)
+        returnedView.backgroundColor = UIColor.groupTableViewBackground
+        
+        return returnedView
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40.0
+    }
+    
+    // MARK: TableRows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var row_count = 0
         switch section {
@@ -77,6 +93,37 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
+    }
+    
+    // MARK: Cell clicked
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            let sendVC = SendFormVC()
+            switch indexPath.row {
+                
+            case 0:
+                sendVC.screenName = "New Feature"
+                self.present(sendVC, animated: true, completion: nil)
+            case 1:
+                sendVC.screenName = "Feedback"
+                self.present(sendVC, animated: true, completion: nil)
+            case 2:
+                sendVC.screenName = "Bug Report"
+                self.present(sendVC, animated: true, completion: nil)
+            default:
+                break
+            }
+        case 1:
+            switch indexPath.row {
+            case 0:
+                self.present(self.about, animated: true, completion: nil)
+            default:
+                break
+            }
+        default:
+            break
+        }
     }
     
     
