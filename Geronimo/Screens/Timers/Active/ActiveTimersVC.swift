@@ -13,6 +13,8 @@ class ActiveTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBOutlet weak var activeTimersTable: UITableView!
     
+    var activeTimers = [1,2,3,4,5,6,7,8,9,10]
+    
     let cellName = "ActiveTimerTableCell"
     
     override func viewDidLoad() {
@@ -29,7 +31,7 @@ class ActiveTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10;
+        return activeTimers.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -42,7 +44,8 @@ class ActiveTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView,
                    editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?{
         let deleteAction = BGTableViewRowActionWithImage.rowAction(with: .destructive, title: "    ", backgroundColor: UIColor.red, image: UIImage(named: "trash_can"), forCellHeight: 100, handler: { (action, indexpath) in
-            print("Delete Action Tapped")
+            self.activeTimers.remove(at: indexPath.row)
+            self.activeTimersTable.deleteRows(at: [indexPath], with: .automatic)
         })
         
         let statsAction = BGTableViewRowActionWithImage.rowAction(with: .normal, title: "    ", backgroundColor: UIColor.green, image: UIImage(named: "diagram"), forCellHeight: 100, handler: { (action, indexpath) in

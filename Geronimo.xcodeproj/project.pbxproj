@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		78C5E5118880B8E7C8793164 /* Pods_Geronimo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AB05600F692B130E40375A /* Pods_Geronimo.framework */; };
+		7C2AF274206447860028B2C4 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2AF273206447860028B2C4 /* Timer.swift */; };
+		7C2AF276206454950028B2C4 /* TimerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2AF275206454950028B2C4 /* TimerData.swift */; };
 		7C302BA420610AAC00B60560 /* ActiveTimersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C302BA220610AAC00B60560 /* ActiveTimersVC.swift */; };
 		7C302BA520610AAC00B60560 /* ActiveTimersVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C302BA320610AAC00B60560 /* ActiveTimersVC.xib */; };
 		7C302BA920611AA700B60560 /* EndedTimersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C302BA720611AA700B60560 /* EndedTimersVC.swift */; };
@@ -24,6 +26,13 @@
 		7CA0A44E2063D9C0000B10C6 /* SendFormVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA0A44C2063D9C0000B10C6 /* SendFormVC.xib */; };
 		7CA0A4522063E8BA000B10C6 /* TimerStatisticVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA0A4502063E8BA000B10C6 /* TimerStatisticVC.swift */; };
 		7CA0A4532063E8BA000B10C6 /* TimerStatisticVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA0A4512063E8BA000B10C6 /* TimerStatisticVC.xib */; };
+		7CA4C11820650A1200E7E905 /* LabelArrowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4C11620650A1200E7E905 /* LabelArrowCell.swift */; };
+		7CA4C11920650A1200E7E905 /* LabelArrowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA4C11720650A1200E7E905 /* LabelArrowCell.xib */; };
+		7CA4C11C20650CCF00E7E905 /* LabelSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4C11A20650CCF00E7E905 /* LabelSwitchCell.swift */; };
+		7CA4C11D20650CCF00E7E905 /* LabelSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA4C11B20650CCF00E7E905 /* LabelSwitchCell.xib */; };
+		7CA4C12020650DDF00E7E905 /* LabelLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4C11E20650DDF00E7E905 /* LabelLabelCell.swift */; };
+		7CA4C12120650DDF00E7E905 /* LabelLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA4C11F20650DDF00E7E905 /* LabelLabelCell.xib */; };
+		7CA4C123206527C800E7E905 /* TimerSettingsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4C122206527C800E7E905 /* TimerSettingsTable.swift */; };
 		7CCFB5BC20624E7000D25EDB /* TableViewRowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5BB20624E7000D25EDB /* TableViewRowAction.swift */; };
 		7CCFB5C0206260BF00D25EDB /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5BE206260BF00D25EDB /* SettingsVC.swift */; };
 		7CCFB5C1206260BF00D25EDB /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCFB5BF206260BF00D25EDB /* SettingsVC.xib */; };
@@ -40,6 +49,8 @@
 /* Begin PBXFileReference section */
 		280F448869ADB64AF5014B1E /* Pods-Geronimo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Geronimo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Geronimo/Pods-Geronimo.debug.xcconfig"; sourceTree = "<group>"; };
 		64AB05600F692B130E40375A /* Pods_Geronimo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Geronimo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C2AF273206447860028B2C4 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		7C2AF275206454950028B2C4 /* TimerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerData.swift; sourceTree = "<group>"; };
 		7C302BA220610AAC00B60560 /* ActiveTimersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTimersVC.swift; sourceTree = "<group>"; };
 		7C302BA320610AAC00B60560 /* ActiveTimersVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActiveTimersVC.xib; sourceTree = "<group>"; };
 		7C302BA720611AA700B60560 /* EndedTimersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndedTimersVC.swift; sourceTree = "<group>"; };
@@ -56,6 +67,13 @@
 		7CA0A44C2063D9C0000B10C6 /* SendFormVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendFormVC.xib; sourceTree = "<group>"; };
 		7CA0A4502063E8BA000B10C6 /* TimerStatisticVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStatisticVC.swift; sourceTree = "<group>"; };
 		7CA0A4512063E8BA000B10C6 /* TimerStatisticVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerStatisticVC.xib; sourceTree = "<group>"; };
+		7CA4C11620650A1200E7E905 /* LabelArrowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelArrowCell.swift; sourceTree = "<group>"; };
+		7CA4C11720650A1200E7E905 /* LabelArrowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelArrowCell.xib; sourceTree = "<group>"; };
+		7CA4C11A20650CCF00E7E905 /* LabelSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSwitchCell.swift; sourceTree = "<group>"; };
+		7CA4C11B20650CCF00E7E905 /* LabelSwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelSwitchCell.xib; sourceTree = "<group>"; };
+		7CA4C11E20650DDF00E7E905 /* LabelLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelLabelCell.swift; sourceTree = "<group>"; };
+		7CA4C11F20650DDF00E7E905 /* LabelLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelLabelCell.xib; sourceTree = "<group>"; };
+		7CA4C122206527C800E7E905 /* TimerSettingsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettingsTable.swift; sourceTree = "<group>"; };
 		7CCFB5BB20624E7000D25EDB /* TableViewRowAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewRowAction.swift; sourceTree = "<group>"; };
 		7CCFB5BE206260BF00D25EDB /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		7CCFB5BF206260BF00D25EDB /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
@@ -104,7 +122,6 @@
 		7C302BA02061093B00B60560 /* Timers */ = {
 			isa = PBXGroup;
 			children = (
-				7C43B7BB2062955B00D57614 /* Add_Edit */,
 				7C302BA620610E6B00B60560 /* Ended */,
 				7C302BA12061094700B60560 /* Active */,
 			);
@@ -114,6 +131,7 @@
 		7C302BA12061094700B60560 /* Active */ = {
 			isa = PBXGroup;
 			children = (
+				7C43B7BB2062955B00D57614 /* Add_Edit */,
 				7CA0A44F2063E890000B10C6 /* Statistic */,
 				7C48B8D920600CF4001605A6 /* ActiveTimerTableCell.swift */,
 				7C48B8DA20600CF4001605A6 /* ActiveTimerTableCell.xib */,
@@ -137,6 +155,7 @@
 		7C43B7BB2062955B00D57614 /* Add_Edit */ = {
 			isa = PBXGroup;
 			children = (
+				7CA4C1152065092800E7E905 /* TableCells */,
 				7C43B7BC2062960300D57614 /* EditTimerVC.swift */,
 				7C43B7BD2062960300D57614 /* EditTimerVC.xib */,
 			);
@@ -146,6 +165,8 @@
 		7C48B8DD20600EBE001605A6 /* data_models */ = {
 			isa = PBXGroup;
 			children = (
+				7C2AF273206447860028B2C4 /* Timer.swift */,
+				7C2AF275206454950028B2C4 /* TimerData.swift */,
 			);
 			path = data_models;
 			sourceTree = "<group>";
@@ -177,11 +198,25 @@
 			path = Statistic;
 			sourceTree = "<group>";
 		};
+		7CA4C1152065092800E7E905 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				7CA4C11620650A1200E7E905 /* LabelArrowCell.swift */,
+				7CA4C11720650A1200E7E905 /* LabelArrowCell.xib */,
+				7CA4C11A20650CCF00E7E905 /* LabelSwitchCell.swift */,
+				7CA4C11B20650CCF00E7E905 /* LabelSwitchCell.xib */,
+				7CA4C11E20650DDF00E7E905 /* LabelLabelCell.swift */,
+				7CA4C11F20650DDF00E7E905 /* LabelLabelCell.xib */,
+			);
+			path = TableCells;
+			sourceTree = "<group>";
+		};
 		7CCFB5BA20624E4C00D25EDB /* Tolls&Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				7CCFB5BB20624E7000D25EDB /* TableViewRowAction.swift */,
 				7CCFB5C6206279F500D25EDB /* StatusBar.swift */,
+				7CA4C122206527C800E7E905 /* TimerSettingsTable.swift */,
 			);
 			path = "Tolls&Extensions";
 			sourceTree = "<group>";
@@ -304,8 +339,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA4C11920650A1200E7E905 /* LabelArrowCell.xib in Resources */,
 				7C43B7BF2062960300D57614 /* EditTimerVC.xib in Resources */,
 				7C302BAF20611AE100B60560 /* EndedTimerTableCell.xib in Resources */,
+				7CA4C12120650DDF00E7E905 /* LabelLabelCell.xib in Resources */,
+				7CA4C11D20650CCF00E7E905 /* LabelSwitchCell.xib in Resources */,
 				7CA0A4532063E8BA000B10C6 /* TimerStatisticVC.xib in Resources */,
 				7CCFB5C1206260BF00D25EDB /* SettingsVC.xib in Resources */,
 				7C48B8DC20600CF4001605A6 /* ActiveTimerTableCell.xib in Resources */,
@@ -388,11 +426,17 @@
 				7CA0A44D2063D9C0000B10C6 /* SendFormVC.swift in Sources */,
 				7C302BA420610AAC00B60560 /* ActiveTimersVC.swift in Sources */,
 				7C302BAE20611AE100B60560 /* EndedTimerTableCell.swift in Sources */,
+				7C2AF274206447860028B2C4 /* Timer.swift in Sources */,
+				7CA4C123206527C800E7E905 /* TimerSettingsTable.swift in Sources */,
 				7C302BA920611AA700B60560 /* EndedTimersVC.swift in Sources */,
+				7C2AF276206454950028B2C4 /* TimerData.swift in Sources */,
 				7CCFB5C42062624000D25EDB /* SettingsTableCell.swift in Sources */,
+				7CA4C11820650A1200E7E905 /* LabelArrowCell.swift in Sources */,
 				7CCFB5BC20624E7000D25EDB /* TableViewRowAction.swift in Sources */,
 				7CCFB5C7206279F500D25EDB /* StatusBar.swift in Sources */,
+				7CA4C11C20650CCF00E7E905 /* LabelSwitchCell.swift in Sources */,
 				7C48B8DB20600CF4001605A6 /* ActiveTimerTableCell.swift in Sources */,
+				7CA4C12020650DDF00E7E905 /* LabelLabelCell.swift in Sources */,
 				7CCFB5C0206260BF00D25EDB /* SettingsVC.swift in Sources */,
 				7CA0A4472063C4CC000B10C6 /* AboutVC.swift in Sources */,
 				7CFD3989205FFDBA00A3B800 /* AppDelegate.swift in Sources */,
@@ -529,7 +573,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MDWBDEPC5G;
+				DEVELOPMENT_TEAM = 7MSPFU2KV4;
 				INFOPLIST_FILE = Geronimo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samurai.Geronimo;
@@ -545,7 +589,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MDWBDEPC5G;
+				DEVELOPMENT_TEAM = 7MSPFU2KV4;
 				INFOPLIST_FILE = Geronimo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samurai.Geronimo;
