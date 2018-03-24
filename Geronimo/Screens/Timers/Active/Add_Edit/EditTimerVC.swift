@@ -11,6 +11,8 @@ import SnapKit
 
 class EditTimerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var contentView: UIView!
+    
     @IBOutlet weak var timerTitle: UITextField!
     
     @IBOutlet weak var timerNotes: UITextField!
@@ -56,13 +58,13 @@ class EditTimerVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         }
         let cellValues = [ [timer.isInfinetily, timer.repeats], [timer.isNow, timer.beginDate, timer.beginTime], [timer.isNever, timer.endDate, timer.endTime], [timer.isOnlyWorked, timer.beginWorkTime, timer.endWorkTime] ]
         settingsTable!.setData(cellTitles: cellTitles, cellValues: cellValues, sectionHeaders: sectionHeaders, timer: timer)
-        self.view.addSubview(settingsTable!)
+        self.contentView.addSubview(settingsTable!)
         settingsTable!.reloadData()
         settingsTable!.snp_makeConstraints{(make) -> Void in
             make.right.equalTo(self.view).offset(0)
             make.left.equalTo(self.view).offset(0)
             make.top.equalTo(timerSettings).offset(timerSettings.frame.height)
-            make.height.equalTo(settingsTable!.contentSize.height)
+            make.height.equalTo(settingsTable!.contentSize.height+100)
         }
     }
         
@@ -90,6 +92,14 @@ class EditTimerVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = timerSettings.dequeueReusableCell(withIdentifier: cellName, for: indexPath) as! LabelArrowCell
+        switch indexPath.row {
+        case 0:
+            cell.updateCell(title: "Type", description: self.timer!.type)
+        case 1:
+            cell.updateCell(title: "Period", description: self.formatDate(date: self.timer!.period))
+        default:
+            break
+        }
         return cell
     }
 }

@@ -16,6 +16,8 @@
 		7C302BAA20611AA700B60560 /* EndedTimersVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C302BA820611AA700B60560 /* EndedTimersVC.xib */; };
 		7C302BAE20611AE100B60560 /* EndedTimerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C302BAC20611AE100B60560 /* EndedTimerTableCell.swift */; };
 		7C302BAF20611AE100B60560 /* EndedTimerTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C302BAD20611AE100B60560 /* EndedTimerTableCell.xib */; };
+		7C3C06F02066653700E777D3 /* DateComponentsFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3C06EF2066653700E777D3 /* DateComponentsFormatter.swift */; };
+		7C3C06F220669B9100E777D3 /* Date&TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3C06F120669B9100E777D3 /* Date&TimePicker.swift */; };
 		7C43B7BE2062960300D57614 /* EditTimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43B7BC2062960300D57614 /* EditTimerVC.swift */; };
 		7C43B7BF2062960300D57614 /* EditTimerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C43B7BD2062960300D57614 /* EditTimerVC.xib */; };
 		7C48B8DB20600CF4001605A6 /* ActiveTimerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48B8D920600CF4001605A6 /* ActiveTimerTableCell.swift */; };
@@ -57,6 +59,8 @@
 		7C302BA820611AA700B60560 /* EndedTimersVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndedTimersVC.xib; sourceTree = "<group>"; };
 		7C302BAC20611AE100B60560 /* EndedTimerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndedTimerTableCell.swift; sourceTree = "<group>"; };
 		7C302BAD20611AE100B60560 /* EndedTimerTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndedTimerTableCell.xib; sourceTree = "<group>"; };
+		7C3C06EF2066653700E777D3 /* DateComponentsFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateComponentsFormatter.swift; sourceTree = "<group>"; };
+		7C3C06F120669B9100E777D3 /* Date&TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date&TimePicker.swift"; sourceTree = "<group>"; };
 		7C43B7BC2062960300D57614 /* EditTimerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTimerVC.swift; sourceTree = "<group>"; };
 		7C43B7BD2062960300D57614 /* EditTimerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTimerVC.xib; sourceTree = "<group>"; };
 		7C48B8D920600CF4001605A6 /* ActiveTimerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTimerTableCell.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 		7C43B7BB2062955B00D57614 /* Add_Edit */ = {
 			isa = PBXGroup;
 			children = (
+				7CA4C122206527C800E7E905 /* TimerSettingsTable.swift */,
 				7CA4C1152065092800E7E905 /* TableCells */,
 				7C43B7BC2062960300D57614 /* EditTimerVC.swift */,
 				7C43B7BD2062960300D57614 /* EditTimerVC.xib */,
@@ -216,7 +221,8 @@
 			children = (
 				7CCFB5BB20624E7000D25EDB /* TableViewRowAction.swift */,
 				7CCFB5C6206279F500D25EDB /* StatusBar.swift */,
-				7CA4C122206527C800E7E905 /* TimerSettingsTable.swift */,
+				7C3C06EF2066653700E777D3 /* DateComponentsFormatter.swift */,
+				7C3C06F120669B9100E777D3 /* Date&TimePicker.swift */,
 			);
 			path = "Tolls&Extensions";
 			sourceTree = "<group>";
@@ -384,12 +390,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Geronimo/Pods-Geronimo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BGTableViewRowActionWithImage/BGTableViewRowActionWithImage.framework",
+				"${BUILT_PRODUCTS_DIR}/DatePickerDialog/DatePickerDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/RKPieChart/RKPieChart.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BGTableViewRowActionWithImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DatePickerDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RKPieChart.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
@@ -426,9 +434,11 @@
 				7CA0A44D2063D9C0000B10C6 /* SendFormVC.swift in Sources */,
 				7C302BA420610AAC00B60560 /* ActiveTimersVC.swift in Sources */,
 				7C302BAE20611AE100B60560 /* EndedTimerTableCell.swift in Sources */,
+				7C3C06F220669B9100E777D3 /* Date&TimePicker.swift in Sources */,
 				7C2AF274206447860028B2C4 /* Timer.swift in Sources */,
 				7CA4C123206527C800E7E905 /* TimerSettingsTable.swift in Sources */,
 				7C302BA920611AA700B60560 /* EndedTimersVC.swift in Sources */,
+				7C3C06F02066653700E777D3 /* DateComponentsFormatter.swift in Sources */,
 				7C2AF276206454950028B2C4 /* TimerData.swift in Sources */,
 				7CCFB5C42062624000D25EDB /* SettingsTableCell.swift in Sources */,
 				7CA4C11820650A1200E7E905 /* LabelArrowCell.swift in Sources */,

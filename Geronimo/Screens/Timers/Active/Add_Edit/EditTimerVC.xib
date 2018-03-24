@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditTimerVC" customModule="Geronimo" customModuleProvider="target">
             <connections>
+                <outlet property="contentView" destination="iA3-Ze-lzY" id="av2-D7-WSM"/>
                 <outlet property="timerNotes" destination="wwW-IS-pOf" id="Pgq-EW-5bS"/>
                 <outlet property="timerSettings" destination="ZI7-Ht-6I6" id="0mk-UZ-03V"/>
                 <outlet property="timerTitle" destination="Xr5-if-Gxn" id="5oo-9Z-PsK"/>
@@ -43,11 +44,11 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MdB-Jt-sAk">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="MdB-Jt-sAk">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iA3-Ze-lzY">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="920"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Xr5-if-Gxn">
                                     <rect key="frame" x="0.0" y="20" width="375" height="30"/>
@@ -62,45 +63,46 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZI7-Ht-6I6">
-                                    <rect key="frame" x="0.0" y="101" width="375" height="88"/>
+                                    <rect key="frame" x="0.0" y="111" width="375" height="88"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="88" id="MMy-M0-lO6"/>
+                                        <constraint firstAttribute="height" constant="88" id="BGP-UC-fAY"/>
                                     </constraints>
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="wwW-IS-pOf" secondAttribute="trailing" id="GYB-CL-paf"/>
-                                <constraint firstItem="Xr5-if-Gxn" firstAttribute="top" secondItem="iA3-Ze-lzY" secondAttribute="top" constant="20" id="Wex-HX-WTd"/>
-                                <constraint firstItem="wwW-IS-pOf" firstAttribute="leading" secondItem="iA3-Ze-lzY" secondAttribute="leading" id="cxk-cs-ggv"/>
-                                <constraint firstItem="wwW-IS-pOf" firstAttribute="top" secondItem="Xr5-if-Gxn" secondAttribute="bottom" constant="1" id="ibL-PE-JGY"/>
-                                <constraint firstItem="Xr5-if-Gxn" firstAttribute="leading" secondItem="iA3-Ze-lzY" secondAttribute="leading" id="kpd-CZ-iyU"/>
-                                <constraint firstItem="ZI7-Ht-6I6" firstAttribute="top" secondItem="wwW-IS-pOf" secondAttribute="bottom" constant="20" id="laU-H0-1kW"/>
-                                <constraint firstAttribute="trailing" secondItem="ZI7-Ht-6I6" secondAttribute="trailing" id="no7-qG-mWd"/>
-                                <constraint firstAttribute="trailing" secondItem="Xr5-if-Gxn" secondAttribute="trailing" id="tI7-EQ-5Bt"/>
-                                <constraint firstItem="ZI7-Ht-6I6" firstAttribute="leading" secondItem="iA3-Ze-lzY" secondAttribute="leading" id="vlc-lf-4WH"/>
+                                <constraint firstItem="ZI7-Ht-6I6" firstAttribute="leading" secondItem="iA3-Ze-lzY" secondAttribute="leading" id="5HA-3t-Tfa"/>
+                                <constraint firstItem="Xr5-if-Gxn" firstAttribute="leading" secondItem="wwW-IS-pOf" secondAttribute="leading" id="7IX-yw-y9t"/>
+                                <constraint firstItem="wwW-IS-pOf" firstAttribute="top" secondItem="Xr5-if-Gxn" secondAttribute="bottom" constant="1" id="7VY-Wl-dqJ"/>
+                                <constraint firstItem="Xr5-if-Gxn" firstAttribute="trailing" secondItem="wwW-IS-pOf" secondAttribute="trailing" id="FBe-pe-abV"/>
+                                <constraint firstItem="Xr5-if-Gxn" firstAttribute="top" secondItem="iA3-Ze-lzY" secondAttribute="top" constant="20" id="K6v-zG-H7j"/>
+                                <constraint firstItem="ZI7-Ht-6I6" firstAttribute="top" secondItem="wwW-IS-pOf" secondAttribute="bottom" constant="30" id="fBS-sp-ddQ"/>
+                                <constraint firstAttribute="trailing" secondItem="ZI7-Ht-6I6" secondAttribute="trailing" id="h3D-Nr-Hzq"/>
+                                <constraint firstAttribute="height" constant="920" id="o5Y-6I-T5d"/>
+                                <constraint firstAttribute="trailing" secondItem="wwW-IS-pOf" secondAttribute="trailing" id="p6A-uy-NFm"/>
+                                <constraint firstItem="wwW-IS-pOf" firstAttribute="leading" secondItem="iA3-Ze-lzY" secondAttribute="leading" id="rpb-Gh-Vfj"/>
                             </constraints>
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="iA3-Ze-lzY" firstAttribute="leading" secondItem="MdB-Jt-sAk" secondAttribute="leading" id="9Pm-nK-hcg"/>
-                        <constraint firstItem="iA3-Ze-lzY" firstAttribute="top" secondItem="MdB-Jt-sAk" secondAttribute="top" id="I90-UO-utS"/>
-                        <constraint firstAttribute="trailing" secondItem="iA3-Ze-lzY" secondAttribute="trailing" id="KqJ-C4-Feg"/>
-                        <constraint firstItem="iA3-Ze-lzY" firstAttribute="centerY" secondItem="MdB-Jt-sAk" secondAttribute="centerY" id="aTm-tZ-9St"/>
+                        <constraint firstAttribute="bottom" secondItem="iA3-Ze-lzY" secondAttribute="bottom" id="3Ul-C3-JOw"/>
+                        <constraint firstAttribute="trailing" secondItem="iA3-Ze-lzY" secondAttribute="trailing" id="7Ki-n8-7Uy"/>
+                        <constraint firstItem="iA3-Ze-lzY" firstAttribute="top" secondItem="MdB-Jt-sAk" secondAttribute="top" id="WVM-Xa-EnS"/>
+                        <constraint firstItem="iA3-Ze-lzY" firstAttribute="leading" secondItem="MdB-Jt-sAk" secondAttribute="leading" id="veK-Tb-PBX"/>
                     </constraints>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
-                <constraint firstItem="MdB-Jt-sAk" firstAttribute="leading" secondItem="Web-uv-pd8" secondAttribute="leading" id="5mm-DF-lcP"/>
-                <constraint firstItem="MdB-Jt-sAk" firstAttribute="top" secondItem="Web-uv-pd8" secondAttribute="bottom" id="F4r-pm-XaP"/>
-                <constraint firstItem="Web-uv-pd8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="PkD-3m-a4b"/>
-                <constraint firstItem="MdB-Jt-sAk" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="f0l-L3-G6l"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Web-uv-pd8" secondAttribute="trailing" id="fjz-ax-XRg"/>
-                <constraint firstItem="Web-uv-pd8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="mkl-4p-2dg"/>
-                <constraint firstItem="iA3-Ze-lzY" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="sgc-5k-tL8"/>
-                <constraint firstItem="MdB-Jt-sAk" firstAttribute="trailing" secondItem="Web-uv-pd8" secondAttribute="trailing" id="zBj-z1-3oW"/>
+                <constraint firstItem="Web-uv-pd8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="19v-Di-Tq7"/>
+                <constraint firstItem="MdB-Jt-sAk" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="44" id="B6b-0b-g2x"/>
+                <constraint firstItem="iA3-Ze-lzY" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="H7Z-M6-HZp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="MdB-Jt-sAk" secondAttribute="bottom" id="XQ5-Qx-b4l"/>
+                <constraint firstItem="Web-uv-pd8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="afh-8D-vKm"/>
+                <constraint firstItem="MdB-Jt-sAk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jad-5L-3SB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MdB-Jt-sAk" secondAttribute="trailing" id="qiW-Qi-l8K"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Web-uv-pd8" secondAttribute="trailing" id="vcj-IX-wMe"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="54.5"/>

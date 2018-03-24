@@ -20,18 +20,18 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="am2-FT-rxw">
-                        <rect key="frame" x="16" y="11" width="200" height="21"/>
+                        <rect key="frame" x="16" y="11" width="150" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="200" id="Bbf-nB-lrW"/>
+                            <constraint firstAttribute="width" constant="150" id="Bbf-nB-lrW"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwv-PT-BHU">
-                        <rect key="frame" x="224" y="11" width="80" height="21"/>
+                        <rect key="frame" x="184" y="11" width="120" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="80" id="pLN-wj-y1r"/>
+                            <constraint firstAttribute="width" constant="120" id="pLN-wj-y1r"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

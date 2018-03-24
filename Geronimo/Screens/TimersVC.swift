@@ -75,6 +75,8 @@ class TimersVC: UIViewController {
         let editVC = EditTimerVC()
         editVC.setTimer(timer: Timer())
         self.present(editVC, animated: true, completion: nil)
+
+        
     }
     
     func configureSegmentedControl(){
