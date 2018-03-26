@@ -36,6 +36,8 @@ class LabelSwitchCell: UITableViewCell {
                 let table = superView as! TimerSettingsTable
                 // Get cell index
                 if let index = table.indexPath(for: self){
+                    // IMPORTANT: Update Timer entity
+                    table.cellValues![index.section][index.row] = isSwitch
                     // Build section cell indexes
                     let secondCellIndex = IndexPath(row: index.row+1, section: index.section)
                     let thirdCellIndex = IndexPath(row: index.row+2, section: index.section)
