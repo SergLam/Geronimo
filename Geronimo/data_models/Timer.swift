@@ -10,6 +10,8 @@ import UIKit
 
 class Timer {
     
+    var isNew: Bool = true
+    
     var name: String = ""
     var description: String = ""
     var type: String = TimerData.TimerType.down.rawValue

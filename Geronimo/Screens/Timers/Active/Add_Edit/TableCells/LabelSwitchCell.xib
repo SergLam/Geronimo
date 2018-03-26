@@ -30,6 +30,9 @@
                     </label>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPE-La-NQT">
                         <rect key="frame" x="255" y="6" width="49" height="31"/>
+                        <connections>
+                            <action selector="onSwitchClick:" destination="KGk-i7-Jjw" eventType="valueChanged" id="wsL-gT-GVV"/>
+                        </connections>
                     </switch>
                 </subviews>
                 <constraints>

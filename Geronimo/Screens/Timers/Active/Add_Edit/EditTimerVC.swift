@@ -13,6 +13,8 @@ class EditTimerVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
 
     @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet weak var navBarTitle: UINavigationItem!
+    
     @IBOutlet weak var timerTitle: UITextField!
     
     @IBOutlet weak var timerNotes: UITextField!
@@ -28,12 +30,24 @@ class EditTimerVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationBar()
         configureTable()
         initSettingsTables()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    func configureNavigationBar(){
+        guard let timer = self.timer else {
+            return
+        }
+        if (timer.isNew) {
+           self.navBarTitle.title = "Add timer"
+        } else {
+           self.navBarTitle.title = "Edit timer"
+        }
     }
     
     func configureTable(){
@@ -57,7 +71,7 @@ class EditTimerVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             return
         }
         let cellValues = [ [timer.isInfinetily, timer.repeats], [timer.isNow, timer.beginDate, timer.beginTime], [timer.isNever, timer.endDate, timer.endTime], [timer.isOnlyWorked, timer.beginWorkTime, timer.endWorkTime] ]
-        settingsTable!.setData(cellTitles: cellTitles, cellValues: cellValues, sectionHeaders: sectionHeaders, timer: timer)
+        settingsTable!.setData(cellTitles: cellTitles, cellValues: cellValues, sectionHeaders: sectionHeaders, timer: timer, vc: self)
         self.contentView.addSubview(settingsTable!)
         settingsTable!.reloadData()
         settingsTable!.snp_makeConstraints{(make) -> Void in

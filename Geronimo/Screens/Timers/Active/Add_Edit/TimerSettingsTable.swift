@@ -11,6 +11,7 @@ import UIKit
 class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     var timer: Timer?
+    var vc: UIViewController?
     var picker: DateTimePicker = DateTimePicker()
     
     var tableSectionHeaders: [String]?
@@ -34,12 +35,13 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func setData(cellTitles: [[String]], cellValues: [[Any]], sectionHeaders: [String], timer: Timer){
+    public func setData(cellTitles: [[String]], cellValues: [[Any]], sectionHeaders: [String], timer: Timer, vc: UIViewController){
         self.cellTitles = cellTitles
         self.cellValues = cellValues
         self.tableSectionHeaders = sectionHeaders
         self.rowHeight = self.cellHeight
         self.timer = timer
+        self.vc = vc
     }
     
     // MARK: Table View sections
@@ -77,6 +79,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
+            changeCellState(cell: cell, isEnabled: values[row-1] as! Bool)
             if let date = values[row] as? DateComponents{
                 cell.updateCell(name: titles[row], info: self.formatDate(date: date ))
             } else {
@@ -85,6 +88,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
+            changeCellState(cell: cell, isEnabled: values[row-2] as! Bool)
             if let date = values[row] as? DateComponents{
                 cell.updateCell(name: titles[row], info: self.formatDate(date: date ))
             } else {
@@ -100,27 +104,45 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
     // MARK: Cell Selection
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
-        switch indexPath.section {
+        let section = indexPath.section
+        
+        switch section {
         case 0:
             switch row{
             case 1:
-                picker.showCountPicker(fromController: UIApplication.shared.keyWindow!.rootViewController!.presentedViewController!)
+                picker.showCountPicker(fromController: self.vc!) { completion in
+                    if (completion) {
+                        if let count = self.picker.count {
+                            self.cellValues![section][row] = count
+                            self.timer?.repeats = count
+                            self.reloadRows(at: [indexPath], with: .automatic)
+                        }
+                    }
+                }
             default:
                 break
             }
         case 1:
             switch row{
             case 1:
-                picker.showDatePicker()
-                if let date = picker.date{
-                    self.timer?.beginDate = Calendar.current.dateComponents([ .day, .month, .year], from: date)
-                    print(self.formatDate(date: self.timer!.beginDate))
+                picker.showDatePicker(fromController: self.vc!) { completion in
+                    if(completion){
+                        if let date = self.picker.date{
+                            self.cellValues![section][row] = Calendar.current.dateComponents([ .day, .month, .year], from: date)
+                            self.timer?.beginDate = Calendar.current.dateComponents([ .day, .month, .year], from: date)
+                            self.reloadRows(at: [indexPath], with: .automatic)
+                        }
+                    }
                 }
             case 2:
-                picker.showTimePicker()
-                if let time = picker.time{
-                    self.timer?.beginTime = Calendar.current.dateComponents([ .hour, .minute], from: time)
-                    print(self.formatDate(date: self.timer!.beginTime))
+                picker.showTimePicker(fromController: self.vc!) { completion in
+                    if(completion){
+                        if let time = self.picker.time{
+                            self.timer?.beginTime = Calendar.current.dateComponents([ .hour, .minute], from: time)
+                            self.cellValues![section][row] = self.timer!.beginTime
+                            self.reloadRows(at: [indexPath], with: .automatic)
+                        }
+                    }
                 }
             default:
                 break
@@ -128,16 +150,24 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         case 2:
             switch row{
             case 1:
-                picker.showDatePicker()
-                if let date = picker.date{
-                    self.timer?.endDate = Calendar.current.dateComponents([ .day, .month, .year], from: date)
-                    print(self.formatDate(date: self.timer!.endDate))
+                picker.showDatePicker(fromController: self.vc!) { completion in
+                    if(completion){
+                        if let date = self.picker.date{
+                            self.cellValues![section][row] = Calendar.current.dateComponents([ .day, .month, .year], from: date)
+                            self.timer?.endDate = Calendar.current.dateComponents([ .day, .month, .year], from: date)
+                            self.reloadRows(at: [indexPath], with: .automatic)
+                        }
+                    }
                 }
             case 2:
-                picker.showTimePicker()
-                if let time = picker.time{
-                    self.timer?.endTime = Calendar.current.dateComponents([ .hour, .minute], from: time)
-                    print(self.formatDate(date: self.timer!.endTime))
+                picker.showTimePicker(fromController: self.vc!){ completion in
+                    if(completion){
+                        if let time = self.picker.time{
+                            self.timer?.endTime = Calendar.current.dateComponents([ .hour, .minute], from: time)
+                            self.cellValues![section][row] = self.timer!.endTime
+                            self.reloadRows(at: [indexPath], with: .automatic)
+                        }
+                    }
                 }
             default:
                 break
@@ -145,16 +175,20 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         case 3:
             switch row{
             case 1:
-                picker.showTimePicker()
-                if let time = picker.time{
+                picker.showTimePicker(fromController: self.vc!){ completion in
+                }
+                if let time = self.picker.time {
                     self.timer?.beginWorkTime = Calendar.current.dateComponents([ .hour, .minute], from: time)
-                    print(self.formatDate(date: self.timer!.beginWorkTime))
+                    self.cellValues![section][row] = self.timer!.beginWorkTime
+                    self.reloadRows(at: [indexPath], with: .automatic)
                 }
             case 2:
-                picker.showTimePicker()
-                if let time = picker.time{
+                picker.showTimePicker(fromController: self.vc!){ completion in
+                }
+                if let time = self.picker.time {
                     self.timer?.endWorkTime = Calendar.current.dateComponents([ .hour, .minute], from: time)
-                    print(self.formatDate(date: self.timer!.endWorkTime))
+                    self.cellValues![section][row] = self.timer!.endWorkTime
+                    self.reloadRows(at: [indexPath], with: .automatic)
                 }
                 break
             default:
@@ -163,6 +197,18 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         default:
             break
         }
+    }
+    
+    // MARK: Cell State
+    func changeCellState(cell: UITableViewCell, isEnabled: Bool){
+        if(isEnabled){
+            cell.isUserInteractionEnabled = true
+            cell.backgroundColor = .green
+        } else {
+            cell.isUserInteractionEnabled = false
+            cell.backgroundColor = .red
+        }
+        
     }
     
 }

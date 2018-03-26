@@ -7,61 +7,101 @@
 //
 
 import UIKit
-import DatePickerDialog
 
 class DateTimePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var date: Date?
     var time: Date?
+    var count: Int?
     
-    let countArr = [1...100]
+    var choices: [Int] = Array(0...100)
     
-    func showDatePicker() {
+    func showDatePicker(fromController controller: UIViewController, completion: @escaping (Bool)->Void){
         self.date = nil
-        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
-            (date) -> Void in
-            if let dt = date {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "dd:MM:yyyy"
-                print(formatter.string(from: dt))
-                self.date = date
+        let alert = UIAlertController(title: "Select date", message: "\n\n\n\n\n\n", preferredStyle: .alert)
+        alert.isModalInPopover = true
+        
+        let datePicker = UIDatePicker(frame: CGRect(x: 10, y: 30, width: 250, height: 140))
+        datePicker.datePickerMode = .date
+        datePicker.minimumDate = Date()
+        
+        alert.view.addSubview(datePicker)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in
+            completion(false)
+        }))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+            let date = datePicker.date
+            self.date = date
+            if self.date != nil {
+                completion(true)
             }
-        }
+        }))
+        controller.present(alert,animated: true, completion: nil )
     }
     
-    func showTimePicker(){
+    func showTimePicker(fromController controller: UIViewController, completion: @escaping (Bool)->Void){
         self.time = nil
-        DatePickerDialog().show("TimePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .time) {
-            (date) -> Void in
-            if let dt = date {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "HH:mm"
-                print(formatter.string(from: dt))
-                self.time = date
+        let alert = UIAlertController(title: "Select time", message: "\n\n\n\n\n\n", preferredStyle: .alert)
+        alert.isModalInPopover = true
+        
+        let timePicker = UIDatePicker(frame: CGRect(x: 40, y: 30, width: 200, height: 140))
+        timePicker.datePickerMode = .time
+       
+        alert.view.addSubview(timePicker)
+       
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in
+            completion(false)
+        }))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+            let time = timePicker.date
+            self.time = time
+            if self.time != nil {
+                completion(true)
             }
-        }
+        }))
+        controller.present(alert,animated: true, completion: nil )
     }
     
-    func showCountPicker(fromController controller: UIViewController){
-        let vc = UIViewController()
-        vc.preferredContentSize = CGSize(width: 250,height: 300)
-        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 300))
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        vc.view.addSubview(pickerView)
-        let editRadiusAlert = UIAlertController(title: "Choose distance", message: "", preferredStyle: UIAlertControllerStyle.alert)
-        editRadiusAlert.setValue(vc, forKey: "contentViewController")
-        editRadiusAlert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
-        editRadiusAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        controller.present(editRadiusAlert, animated: true)
+    func showCountPicker(fromController controller: UIViewController, completion: @escaping (Bool)->Void ){
+        let alert = UIAlertController(title: "Repeat Times", message: "\n\n\n\n\n\n", preferredStyle: .alert)
+        alert.isModalInPopover = true
+        
+        let pickerFrame = UIPickerView(frame: CGRect(x: 80, y: 30, width: 100, height: 140))
+        
+        alert.view.addSubview(pickerFrame)
+        pickerFrame.dataSource = self
+        pickerFrame.delegate = self
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in
+            self.count = nil
+            completion(false)
+        }))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+            let row = pickerFrame.selectedRow(inComponent: 0)
+            self.count = self.choices[row]
+            if self.count != nil{
+                completion(true)
+            }
+        }))
+        controller.present(alert,animated: true, completion: nil )
     }
     
+    // MARK: Picker View methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return countArr.count
+        return choices.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(choices[row])
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.count = choices[row]
     }
     
 }

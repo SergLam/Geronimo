@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditTimerVC" customModule="Geronimo" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iA3-Ze-lzY" id="av2-D7-WSM"/>
+                <outlet property="navBarTitle" destination="gsf-O5-lFy" id="Nxi-3u-89e"/>
                 <outlet property="timerNotes" destination="wwW-IS-pOf" id="Pgq-EW-5bS"/>
                 <outlet property="timerSettings" destination="ZI7-Ht-6I6" id="0mk-UZ-03V"/>
                 <outlet property="timerTitle" destination="Xr5-if-Gxn" id="5oo-9Z-PsK"/>
