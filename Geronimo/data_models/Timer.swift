@@ -15,7 +15,7 @@ class Timer {
     var name: String = ""
     var description: String = ""
     var type: String = TimerData.TimerType.down.rawValue
-    var period: DateComponents = TimerData().currentTime
+    var period: TimeInterval = 3600 // 1 hour
     
     // Up Timer proporties (Down - Begin block)
     var isNow: Bool = false
