@@ -42,6 +42,7 @@
 		7CCFB5C42062624000D25EDB /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5C22062624000D25EDB /* SettingsTableCell.swift */; };
 		7CCFB5C52062624000D25EDB /* SettingsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCFB5C32062624000D25EDB /* SettingsTableCell.xib */; };
 		7CCFB5C7206279F500D25EDB /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5C6206279F500D25EDB /* StatusBar.swift */; };
+		7CD31C40207363A600D73545 /* HideKeyboardOnTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */; };
 		7CF48D95206A7E0000E09A02 /* UpTimerDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF48D94206A7E0000E09A02 /* UpTimerDelegateDataSource.swift */; };
 		7CFD3989205FFDBA00A3B800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFD3988205FFDBA00A3B800 /* AppDelegate.swift */; };
 		7CFD3993205FFDBA00A3B800 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CFD3992205FFDBA00A3B800 /* Assets.xcassets */; };
@@ -87,6 +88,7 @@
 		7CCFB5C22062624000D25EDB /* SettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableCell.swift; sourceTree = "<group>"; };
 		7CCFB5C32062624000D25EDB /* SettingsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableCell.xib; sourceTree = "<group>"; };
 		7CCFB5C6206279F500D25EDB /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
+		7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardOnTouch.swift; sourceTree = "<group>"; };
 		7CF48D94206A7E0000E09A02 /* UpTimerDelegateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpTimerDelegateDataSource.swift; sourceTree = "<group>"; };
 		7CFD3985205FFDBA00A3B800 /* Geronimo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geronimo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CFD3988205FFDBA00A3B800 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				7C3C06EF2066653700E777D3 /* DateComponentsFormatter.swift */,
 				7C3C06F120669B9100E777D3 /* Date&TimePicker.swift */,
 				7C97254720691F43008B7757 /* Type&PeriodPicker.swift */,
+				7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */,
 			);
 			path = "Tolls&Extensions";
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				7CA4C123206527C800E7E905 /* TimerSettingsTable.swift in Sources */,
 				7C302BA920611AA700B60560 /* EndedTimersVC.swift in Sources */,
 				7C3C06F02066653700E777D3 /* DateComponentsFormatter.swift in Sources */,
+				7CD31C40207363A600D73545 /* HideKeyboardOnTouch.swift in Sources */,
 				7C2AF276206454950028B2C4 /* TimerData.swift in Sources */,
 				7CCFB5C42062624000D25EDB /* SettingsTableCell.swift in Sources */,
 				7CA4C11820650A1200E7E905 /* LabelArrowCell.swift in Sources */,

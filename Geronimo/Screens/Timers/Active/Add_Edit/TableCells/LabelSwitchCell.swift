@@ -14,6 +14,8 @@ class LabelSwitchCell: UITableViewCell {
     
     @IBOutlet weak var cellSwitch: UISwitch!
     
+    var isSwitchEnabled: ((_ isSelected: Bool) -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -21,11 +23,11 @@ class LabelSwitchCell: UITableViewCell {
     func updateCell(name: String, isEnabled: Bool){
         cellName.text = name
         cellSwitch.isOn = isEnabled
-        changeSectionCellsState(isSwitch: cellSwitch.isOn)
     }
     
     @IBAction func onSwitchClick(_ sender: UISwitch) {
         let isSwitch = sender.isOn
+        isSwitchEnabled?(sender.isOn)
         changeSectionCellsState(isSwitch: isSwitch)
     }
     
@@ -38,6 +40,7 @@ class LabelSwitchCell: UITableViewCell {
                 if let index = table.indexPath(for: self){
                     // IMPORTANT: Update Timer entity
                     table.cellValues![index.section][index.row] = isSwitch
+                    table.upTimerDataSource.cellValues?[index.section][index.row] = isSwitch
                     // Build section cell indexes
                     let secondCellIndex = IndexPath(row: index.row+1, section: index.section)
                     let thirdCellIndex = IndexPath(row: index.row+2, section: index.section)
@@ -45,22 +48,22 @@ class LabelSwitchCell: UITableViewCell {
                     if let second_cell = table.cellForRow(at: secondCellIndex){
                         if(isSwitch){
                             second_cell.isUserInteractionEnabled = isSwitch
-                            second_cell.backgroundColor = .green
+                            second_cell.isHidden = false
                         } else {
                             second_cell.isUserInteractionEnabled = isSwitch
-                            second_cell.backgroundColor = .red
+                            second_cell.isHidden = true
                         }
                     }
                     if let third_cell = table.cellForRow(at: thirdCellIndex){
                         if(isSwitch){
                             third_cell.isUserInteractionEnabled = isSwitch
-                            third_cell.backgroundColor = .green
+                            third_cell.isHidden = false
                         } else {
                             third_cell.isUserInteractionEnabled = isSwitch
-                            third_cell.backgroundColor = .red
+                            third_cell.isHidden = true
                         }
                     }
-                    
+                    table.reloadData()
                 }
             }
         }

@@ -15,6 +15,8 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var navBarTitle: UINavigationItem!
     
+    @IBOutlet weak var saveBarButton: UIBarButtonItem!
+    
     @IBOutlet weak var timerTitle: UITextField!
     
     @IBOutlet weak var timerNotes: UITextField!
@@ -26,6 +28,7 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardOnTap()
         configureNavigationBar()
         configureTextFields()
         initSettingsTables()
@@ -41,6 +44,7 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
         }
         if (timer.isNew) {
             self.navBarTitle.title = "Add timer"
+            self.saveBarButton.isEnabled = false
         } else {
             self.navBarTitle.title = "Edit timer"
         }
@@ -78,21 +82,13 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func cancelBarButton(_ sender: UIBarButtonItem) {
-        hideKeyboard()
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveBarButton(_ sender: UIBarButtonItem) {
         // TODO: function to save changes
-        hideKeyboard()
         self.dismiss(animated: true, completion: nil)
     }
-    
-
-    
-
-    
-
     
     // MARK: Text Field delegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -114,16 +110,5 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
-    func hideKeyboard(){
-        if(timerTitle.isFirstResponder){
-            timerTitle.resignFirstResponder()
-        }
-        if(timerNotes.isFirstResponder){
-            timerNotes.resignFirstResponder()
-        }
-    }
-    
-
     
 }
