@@ -43,6 +43,7 @@
 		7CCFB5C52062624000D25EDB /* SettingsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCFB5C32062624000D25EDB /* SettingsTableCell.xib */; };
 		7CCFB5C7206279F500D25EDB /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5C6206279F500D25EDB /* StatusBar.swift */; };
 		7CD31C40207363A600D73545 /* HideKeyboardOnTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */; };
+		7CE9A93D20823F4B004C0C72 /* TextFieldError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE9A93C20823F4B004C0C72 /* TextFieldError.swift */; };
 		7CF48D95206A7E0000E09A02 /* UpTimerDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF48D94206A7E0000E09A02 /* UpTimerDelegateDataSource.swift */; };
 		7CFD3989205FFDBA00A3B800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFD3988205FFDBA00A3B800 /* AppDelegate.swift */; };
 		7CFD3993205FFDBA00A3B800 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CFD3992205FFDBA00A3B800 /* Assets.xcassets */; };
@@ -89,6 +90,7 @@
 		7CCFB5C32062624000D25EDB /* SettingsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableCell.xib; sourceTree = "<group>"; };
 		7CCFB5C6206279F500D25EDB /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
 		7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardOnTouch.swift; sourceTree = "<group>"; };
+		7CE9A93C20823F4B004C0C72 /* TextFieldError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldError.swift; sourceTree = "<group>"; };
 		7CF48D94206A7E0000E09A02 /* UpTimerDelegateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpTimerDelegateDataSource.swift; sourceTree = "<group>"; };
 		7CFD3985205FFDBA00A3B800 /* Geronimo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geronimo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CFD3988205FFDBA00A3B800 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				7C3C06F120669B9100E777D3 /* Date&TimePicker.swift */,
 				7C97254720691F43008B7757 /* Type&PeriodPicker.swift */,
 				7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */,
+				7CE9A93C20823F4B004C0C72 /* TextFieldError.swift */,
 			);
 			path = "Tolls&Extensions";
 			sourceTree = "<group>";
@@ -304,7 +307,6 @@
 				7CFD3982205FFDBA00A3B800 /* Frameworks */,
 				7CFD3983205FFDBA00A3B800 /* Resources */,
 				6674C34B68ACE1013663A91F /* [CP] Embed Pods Frameworks */,
-				1850157922C786B741AC877A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -376,21 +378,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1850157922C786B741AC877A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Geronimo/Pods-Geronimo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6674C34B68ACE1013663A91F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -401,12 +388,14 @@
 				"${BUILT_PRODUCTS_DIR}/BGTableViewRowActionWithImage/BGTableViewRowActionWithImage.framework",
 				"${BUILT_PRODUCTS_DIR}/RKPieChart/RKPieChart.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftValidator/SwiftValidator.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BGTableViewRowActionWithImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RKPieChart.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftValidator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -456,6 +445,7 @@
 				7CF48D95206A7E0000E09A02 /* UpTimerDelegateDataSource.swift in Sources */,
 				7CA4C11C20650CCF00E7E905 /* LabelSwitchCell.swift in Sources */,
 				7C48B8DB20600CF4001605A6 /* ActiveTimerTableCell.swift in Sources */,
+				7CE9A93D20823F4B004C0C72 /* TextFieldError.swift in Sources */,
 				7CA4C12020650DDF00E7E905 /* LabelLabelCell.swift in Sources */,
 				7CCFB5C0206260BF00D25EDB /* SettingsVC.swift in Sources */,
 				7CA0A4472063C4CC000B10C6 /* AboutVC.swift in Sources */,

@@ -64,13 +64,7 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
     func initSettingsTables(){
         // Get Timer type
         self.settingsTable = TimerSettingsTable.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: TimerSettingsTable().cellHeight * 3), style: UITableViewStyle.grouped)
-        let sectionHeaders = ["", "Repeats","Begin","End","Worked Time"]
-        let cellTitles = [["Type", "Period"], ["Infinetily", "Repeats"], ["Now", "Date", "Time"], ["Never", "Date", "Time"], ["Only worked time", "Begin", "End"] ]
-        guard let timer = self.timer else {
-            return
-        }
-        let cellValues = [ [timer.type, timer.period], [timer.isInfinetily, timer.repeats], [timer.isNow, timer.beginDate, timer.beginTime], [timer.isNever, timer.endDate, timer.endTime], [timer.isOnlyWorked, timer.beginWorkTime, timer.endWorkTime] ]
-        settingsTable!.setData(cellTitles: cellTitles, cellValues: cellValues, sectionHeaders: sectionHeaders, timer: timer, vc: self)
+        setTimerSettingsTableDataSource()
         self.contentView.addSubview(settingsTable!)
         settingsTable!.reloadData()
         settingsTable!.snp_makeConstraints{(make) -> Void in
@@ -79,6 +73,16 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
             make.top.equalTo(timerNotes).offset(timerNotes.frame.height)
             make.height.equalTo(settingsTable!.contentSize.height+100)
         }
+    }
+    
+    func setTimerSettingsTableDataSource(){
+        let sectionHeaders = ["", "Repeats","Begin","End","Worked Time"]
+        let cellTitles = [["Type", "Period"], ["Infinetily", "Repeats"], ["Now", "Date", "Time"], ["Never", "Date", "Time"], ["Only worked time", "Begin", "End"] ]
+        guard let timer = self.timer else {
+            return
+        }
+        let cellValues = [ [timer.type, timer.period], [timer.isInfinetily, timer.repeats], [timer.isNow, timer.beginDate, timer.beginTime], [timer.isNever, timer.endDate, timer.endTime], [timer.isOnlyWorked, timer.beginWorkTime, timer.endWorkTime] ]
+        settingsTable!.setData(cellTitles: cellTitles, cellValues: cellValues, sectionHeaders: sectionHeaders, timer: timer, vc: self)
     }
     
     @IBAction func cancelBarButton(_ sender: UIBarButtonItem) {
@@ -107,6 +111,11 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let text = textField.text {
+            if(text.isEmpty){
+                textField.isError(baseColor: UIColor.gray.cgColor, numberOfShakes: 5, revert: true)
+            }
+        }
         textField.resignFirstResponder()
         return true
     }

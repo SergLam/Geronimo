@@ -51,6 +51,13 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         self.vc = vc
     }
     
+    func updateTableCellValues(){
+        guard let timer = self.timer else {
+            return
+        }
+        self.cellValues = [ [timer.type, timer.period], [timer.isInfinetily, timer.repeats], [timer.isNow, timer.beginDate, timer.beginTime], [timer.isNever, timer.endDate, timer.endTime], [timer.isOnlyWorked, timer.beginWorkTime, timer.endWorkTime] ]
+    }
+    
     func updateDataSource(){
         guard let timer = self.timer else {
             return
@@ -104,6 +111,36 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
             }
             cell.updateCell(title: titles[row], description: String(describing: values[row]))
             return cell
+        case 4:
+            switch row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellSwitchName, for: indexPath) as! LabelSwitchCell
+                cell.updateCell(name: titles[row], isEnabled: values[row] as! Bool)
+                cell.isSwitchEnabled = { [unowned self] isSelected in
+                    self.cellValues?[section][row] = isSelected
+                }
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
+                changeCellState(cell: cell, isEnabled: !(values[row-1] as! Bool) )
+                if let date = values[row] as? DateComponents{
+                    cell.updateCell(name: titles[row], info: self.formatDate(date: date ))
+                } else {
+                    cell.updateCell(name: titles[row], info: String(describing: values[row]))
+                }
+                return cell
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
+                changeCellState(cell: cell, isEnabled: !(values[row-2] as! Bool) )
+                if let date = values[row] as? DateComponents{
+                    cell.updateCell(name: titles[row], info: self.formatDate(date: date ))
+                } else {
+                    cell.updateCell(name: titles[row], info: String(describing: values[row]))
+                }
+                return cell
+            default:
+                break
+            }
         default:
             switch row {
             case 0:
@@ -237,21 +274,20 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
             switch row{
             case 1:
                 picker.showTimePicker(fromController: self.vc!){ completion in
-                }
                 if let time = self.picker.time {
                     self.timer?.beginWorkTime = Calendar.current.dateComponents([ .hour, .minute], from: time)
                     self.cellValues![section][row] = self.timer!.beginWorkTime
                     self.reloadRows(at: [indexPath], with: .automatic)
                 }
+                }
             case 2:
                 picker.showTimePicker(fromController: self.vc!){ completion in
-                }
                 if let time = self.picker.time {
                     self.timer?.endWorkTime = Calendar.current.dateComponents([ .hour, .minute], from: time)
                     self.cellValues![section][row] = self.timer!.endWorkTime
                     self.reloadRows(at: [indexPath], with: .automatic)
                 }
-                break
+                }
             default:
                 break
             }
@@ -264,12 +300,38 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         let section = indexPath.section
         let row = indexPath.row
         
-        let titles = cellTitles![section]
         let values = cellValues![section]
         
         switch section {
         case 0:
            return UITableViewAutomaticDimension
+        case 4:
+            switch row {
+            case 0:
+                return UITableViewAutomaticDimension
+            case 1:
+                if let isVisible = values[row-1] as? Bool{
+                    if(!isVisible){
+                        return 0.0
+                    } else {
+                        return UITableViewAutomaticDimension
+                    }
+                } else {
+                    return UITableViewAutomaticDimension
+                }
+            case 2:
+                if let isVisible = values[row-2] as? Bool{
+                    if(!isVisible){
+                        return 0.0
+                    } else {
+                        return UITableViewAutomaticDimension
+                    }
+                } else {
+                    return UITableViewAutomaticDimension
+                }
+            default:
+                return UITableViewAutomaticDimension
+            }
         default:
             switch row {
             case 0:
@@ -277,9 +339,9 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
             case 1:
                 if let isVisible = values[row-1] as? Bool{
                     if(isVisible){
-                        return UITableViewAutomaticDimension
-                    } else {
                         return 0.0
+                    } else {
+                        return UITableViewAutomaticDimension
                     }
                 } else {
                     return UITableViewAutomaticDimension
@@ -287,9 +349,9 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
             case 2:
                 if let isVisible = values[row-2] as? Bool{
                     if(isVisible){
-                        return UITableViewAutomaticDimension
-                    } else {
                         return 0.0
+                    } else {
+                        return UITableViewAutomaticDimension
                     }
                 } else {
                     return UITableViewAutomaticDimension
@@ -303,11 +365,11 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
     // MARK: Cell State
     func changeCellState(cell: UITableViewCell, isEnabled: Bool){
         if(isEnabled){
-            cell.isUserInteractionEnabled = true
-            cell.isHidden = false
-        } else {
             cell.isUserInteractionEnabled = false
             cell.isHidden = true
+        } else {
+            cell.isUserInteractionEnabled = true
+            cell.isHidden = false
         }
     }
     

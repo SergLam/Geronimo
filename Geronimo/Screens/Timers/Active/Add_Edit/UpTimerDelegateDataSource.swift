@@ -14,7 +14,6 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
     var cellTitles: [[String]]?
     var cellValues: [[Any]]?
     
-    var timer: Timer?
     var table: TimerSettingsTable?
     var vc: UIViewController?
     
@@ -28,7 +27,6 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
         self.cellValues = [ [timer.type], [timer.isNow, timer.beginDate, timer.beginTime] ]
         self.table = table
         self.vc = vc
-        self.timer = timer
     }
     
     // MARK: Table View sections
@@ -75,7 +73,6 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
-                changeCellState(cell: cell, isEnabled: values[row-1] as! Bool)
                 if let date = values[row] as? DateComponents{
                     cell.updateCell(name: titles[row], info: self.formatDate(date: date ))
                 } else {
@@ -84,7 +81,6 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
-                changeCellState(cell: cell, isEnabled: values[row-2] as! Bool)
                 if let date = values[row] as? DateComponents{
                     cell.updateCell(name: titles[row], info: self.formatDate(date: date ))
                 } else {
@@ -109,19 +105,12 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                 table?.typePicker.showTypePicker(fromController: self.vc!){ completion in
                     if(completion){
                         if let type = self.table!.typePicker.timer?.type {
+                            self.table?.timer?.type = type
                             self.cellValues![section][row] = type
-                            self.timer?.type = type
+                            self.table?.updateTableCellValues()
                             self.table?.updateDataSource()
                             self.table?.reloadData()
                         }
-                    }
-                }
-            case 1:
-                table?.typePicker.showPeriodPicker(fromController: self.vc!){ completion in
-                    if(completion){
-                        self.cellValues![section][row] = self.table!.typePicker.period!
-                        self.timer?.period = self.table!.typePicker.period!
-                        self.table?.reloadRows(at: [indexPath], with: .automatic)
                     }
                 }
             default:
@@ -133,8 +122,10 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                 table?.picker.showDatePicker(fromController: self.vc!) { completion in
                     if(completion){
                         if let date = self.table!.picker.date{
-                            self.cellValues![section][row] = Calendar.current.dateComponents([ .day, .month, .year], from: date)
-                            self.timer?.beginDate = Calendar.current.dateComponents([ .day, .month, .year], from: date)
+                            let pickedDate = Calendar.current.dateComponents([ .day, .month, .year], from: date)
+                            self.table?.timer?.beginDate = pickedDate
+                            self.cellValues![section][row] = pickedDate
+                            self.table?.updateTableCellValues()
                             self.table?.reloadRows(at: [indexPath], with: .automatic)
                         }
                     }
@@ -143,8 +134,10 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                     table?.picker.showTimePicker(fromController: self.vc!) { completion in
                         if(completion){
                             if let time = self.table!.picker.time{
-                                self.timer?.beginTime = Calendar.current.dateComponents([ .hour, .minute], from: time)
-                                self.cellValues![section][row] = self.timer!.beginTime
+                                let pickedTime = Calendar.current.dateComponents([ .hour, .minute], from: time)
+                                self.table?.timer?.beginTime = pickedTime
+                                self.table?.updateTableCellValues()
+                                self.cellValues![section][row] = pickedTime
                                 self.table?.reloadRows(at: [indexPath], with: .automatic)
                             }
                         }
@@ -152,22 +145,10 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
             default:
                 break
             }
-    
         default:
             break
         }
     }
-    
-    // MARK: Cell State
-    func changeCellState(cell: UITableViewCell, isEnabled: Bool){
-        if(isEnabled){
-            cell.isUserInteractionEnabled = true
-            cell.backgroundColor = .green
-        } else {
-            cell.isUserInteractionEnabled = false
-            cell.backgroundColor = .red
-        }
-    }
-    
+        
     
 }

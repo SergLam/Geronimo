@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Timer {
+struct Timer {
     
     var isNew: Bool = true
     
@@ -18,14 +18,14 @@ class Timer {
     var period: TimeInterval = 3600 // 1 hour
     
     // Up Timer proporties (Down - Begin block)
-    var isNow: Bool = false
+    var isNow: Bool = true
     var beginDate: DateComponents = TimerData().currentDate
     var beginTime: DateComponents = TimerData().currentTime
     // Down Timer proporties
-    var isInfinetily: Bool = false
+    var isInfinetily: Bool = true
     var repeats: Int = 0
     // End block
-    var isNever: Bool = false
+    var isNever: Bool = true
     var endDate: DateComponents = TimerData().currentDate
     var endTime: DateComponents = TimerData().currentTime
     // Worked time
@@ -33,7 +33,4 @@ class Timer {
     var beginWorkTime: DateComponents = TimerData().currentTime
     var endWorkTime: DateComponents = Calendar.current.dateComponents([ .hour, .minute], from: Date().addingTimeInterval(5.0 * 60.0))
     
-    init(){
-      
-    }
 }
