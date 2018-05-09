@@ -104,12 +104,11 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         switch section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellArrowName, for: indexPath) as! LabelArrowCell
-            if let date = values[row] as? DateComponents{
-                cell.updateCell(title: titles[row], description: self.formatDate(date: date ))
+            if let date = values[row] as? Date{
+                cell.updateCell(title: titles[row], description: self.formatDate(date: date, type: dateType.date.rawValue ))
             } else {
                 cell.updateCell(title: titles[row], description: String(describing: values[row]))
             }
-            cell.updateCell(title: titles[row], description: String(describing: values[row]))
             return cell
         case 4:
             switch row {
@@ -123,8 +122,8 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
                 changeCellState(cell: cell, isEnabled: !(values[row-1] as! Bool) )
-                if let date = values[row] as? DateComponents{
-                    cell.updateCell(name: titles[row], info: self.formatDate(date: date ))
+                if let date = values[row] as? Date{
+                    cell.updateCell(name: titles[row], info: self.formatDate(date: date, type: dateType.date.rawValue ))
                 } else {
                     cell.updateCell(name: titles[row], info: String(describing: values[row]))
                 }
@@ -132,8 +131,8 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
                 changeCellState(cell: cell, isEnabled: !(values[row-2] as! Bool) )
-                if let date = values[row] as? DateComponents{
-                    cell.updateCell(name: titles[row], info: self.formatDate(date: date ))
+                if let date = values[row] as? Date{
+                    cell.updateCell(name: titles[row], info: self.formatDate(date: date, type: dateType.time.rawValue ))
                 } else {
                     cell.updateCell(name: titles[row], info: String(describing: values[row]))
                 }
@@ -153,8 +152,8 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
                 changeCellState(cell: cell, isEnabled: values[row-1] as! Bool)
-                if let date = values[row] as? DateComponents{
-                    cell.updateCell(name: titles[row], info: self.formatDate(date: date ))
+                if let date = values[row] as? Date{
+                    cell.updateCell(name: titles[row], info: self.formatDate(date: date, type: dateType.date.rawValue ))
                 } else {
                     cell.updateCell(name: titles[row], info: String(describing: values[row]))
                 }
@@ -162,8 +161,8 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
                 changeCellState(cell: cell, isEnabled: values[row-2] as! Bool)
-                if let date = values[row] as? DateComponents{
-                    cell.updateCell(name: titles[row], info: self.formatDate(date: date ))
+                if let date = values[row] as? Date{
+                    cell.updateCell(name: titles[row], info: self.formatDate(date: date, type: dateType.time.rawValue ))
                 } else {
                     cell.updateCell(name: titles[row], info: String(describing: values[row]))
                 }
@@ -227,7 +226,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                     if(completion){
                         if let date = self.picker.date{
                             self.cellValues![section][row] = Calendar.current.dateComponents([ .day, .month, .year], from: date)
-                            self.timer?.beginDate = Calendar.current.dateComponents([ .day, .month, .year], from: date)
+                            self.timer?.beginDate = date
                             self.reloadRows(at: [indexPath], with: .automatic)
                         }
                     }
@@ -236,7 +235,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                 picker.showTimePicker(fromController: self.vc!) { completion in
                     if(completion){
                         if let time = self.picker.time{
-                            self.timer?.beginTime = Calendar.current.dateComponents([ .hour, .minute], from: time)
+                            self.timer?.beginTime = time
                             self.cellValues![section][row] = self.timer!.beginTime
                             self.reloadRows(at: [indexPath], with: .automatic)
                         }
@@ -252,7 +251,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                     if(completion){
                         if let date = self.picker.date{
                             self.cellValues![section][row] = Calendar.current.dateComponents([ .day, .month, .year], from: date)
-                            self.timer?.endDate = Calendar.current.dateComponents([ .day, .month, .year], from: date)
+                            self.timer?.endDate = date
                             self.reloadRows(at: [indexPath], with: .automatic)
                         }
                     }
@@ -261,7 +260,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                 picker.showTimePicker(fromController: self.vc!){ completion in
                     if(completion){
                         if let time = self.picker.time{
-                            self.timer?.endTime = Calendar.current.dateComponents([ .hour, .minute], from: time)
+                            self.timer?.endTime = time
                             self.cellValues![section][row] = self.timer!.endTime
                             self.reloadRows(at: [indexPath], with: .automatic)
                         }
@@ -275,7 +274,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
             case 1:
                 picker.showTimePicker(fromController: self.vc!){ completion in
                 if let time = self.picker.time {
-                    self.timer?.beginWorkTime = Calendar.current.dateComponents([ .hour, .minute], from: time)
+                    self.timer?.beginWorkTime = time
                     self.cellValues![section][row] = self.timer!.beginWorkTime
                     self.reloadRows(at: [indexPath], with: .automatic)
                 }
@@ -283,7 +282,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
             case 2:
                 picker.showTimePicker(fromController: self.vc!){ completion in
                 if let time = self.picker.time {
-                    self.timer?.endWorkTime = Calendar.current.dateComponents([ .hour, .minute], from: time)
+                    self.timer?.endWorkTime = time
                     self.cellValues![section][row] = self.timer!.endWorkTime
                     self.reloadRows(at: [indexPath], with: .automatic)
                 }

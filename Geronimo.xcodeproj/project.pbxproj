@@ -16,7 +16,7 @@
 		7C302BAA20611AA700B60560 /* EndedTimersVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C302BA820611AA700B60560 /* EndedTimersVC.xib */; };
 		7C302BAE20611AE100B60560 /* EndedTimerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C302BAC20611AE100B60560 /* EndedTimerTableCell.swift */; };
 		7C302BAF20611AE100B60560 /* EndedTimerTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C302BAD20611AE100B60560 /* EndedTimerTableCell.xib */; };
-		7C3C06F02066653700E777D3 /* DateComponentsFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3C06EF2066653700E777D3 /* DateComponentsFormatter.swift */; };
+		7C3C06F02066653700E777D3 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3C06EF2066653700E777D3 /* DateFormatter.swift */; };
 		7C3C06F220669B9100E777D3 /* Date&TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3C06F120669B9100E777D3 /* Date&TimePicker.swift */; };
 		7C43B7BE2062960300D57614 /* EditTimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43B7BC2062960300D57614 /* EditTimerVC.swift */; };
 		7C43B7BF2062960300D57614 /* EditTimerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C43B7BD2062960300D57614 /* EditTimerVC.xib */; };
@@ -36,6 +36,8 @@
 		7CA4C12020650DDF00E7E905 /* LabelLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4C11E20650DDF00E7E905 /* LabelLabelCell.swift */; };
 		7CA4C12120650DDF00E7E905 /* LabelLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA4C11F20650DDF00E7E905 /* LabelLabelCell.xib */; };
 		7CA4C123206527C800E7E905 /* TimerSettingsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4C122206527C800E7E905 /* TimerSettingsTable.swift */; };
+		7CAEB68C20891C270021A36A /* EndedTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAEB68B20891C270021A36A /* EndedTimer.swift */; };
+		7CAEB68F20891E9D0021A36A /* TimerRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAEB68E20891E9D0021A36A /* TimerRealm.swift */; };
 		7CCFB5BC20624E7000D25EDB /* TableViewRowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5BB20624E7000D25EDB /* TableViewRowAction.swift */; };
 		7CCFB5C0206260BF00D25EDB /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5BE206260BF00D25EDB /* SettingsVC.swift */; };
 		7CCFB5C1206260BF00D25EDB /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCFB5BF206260BF00D25EDB /* SettingsVC.xib */; };
@@ -43,7 +45,8 @@
 		7CCFB5C52062624000D25EDB /* SettingsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCFB5C32062624000D25EDB /* SettingsTableCell.xib */; };
 		7CCFB5C7206279F500D25EDB /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5C6206279F500D25EDB /* StatusBar.swift */; };
 		7CD31C40207363A600D73545 /* HideKeyboardOnTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */; };
-		7CE9A93D20823F4B004C0C72 /* TextFieldError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE9A93C20823F4B004C0C72 /* TextFieldError.swift */; };
+		7CE9A93F2082B226004C0C72 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE9A93E2082B226004C0C72 /* SCLAlertView.swift */; };
+		7CE9A94220835010004C0C72 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE9A94120835010004C0C72 /* DBManager.swift */; };
 		7CF48D95206A7E0000E09A02 /* UpTimerDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF48D94206A7E0000E09A02 /* UpTimerDelegateDataSource.swift */; };
 		7CFD3989205FFDBA00A3B800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFD3988205FFDBA00A3B800 /* AppDelegate.swift */; };
 		7CFD3993205FFDBA00A3B800 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CFD3992205FFDBA00A3B800 /* Assets.xcassets */; };
@@ -63,7 +66,7 @@
 		7C302BA820611AA700B60560 /* EndedTimersVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndedTimersVC.xib; sourceTree = "<group>"; };
 		7C302BAC20611AE100B60560 /* EndedTimerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndedTimerTableCell.swift; sourceTree = "<group>"; };
 		7C302BAD20611AE100B60560 /* EndedTimerTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndedTimerTableCell.xib; sourceTree = "<group>"; };
-		7C3C06EF2066653700E777D3 /* DateComponentsFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateComponentsFormatter.swift; sourceTree = "<group>"; };
+		7C3C06EF2066653700E777D3 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		7C3C06F120669B9100E777D3 /* Date&TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date&TimePicker.swift"; sourceTree = "<group>"; };
 		7C43B7BC2062960300D57614 /* EditTimerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTimerVC.swift; sourceTree = "<group>"; };
 		7C43B7BD2062960300D57614 /* EditTimerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTimerVC.xib; sourceTree = "<group>"; };
@@ -83,6 +86,8 @@
 		7CA4C11E20650DDF00E7E905 /* LabelLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelLabelCell.swift; sourceTree = "<group>"; };
 		7CA4C11F20650DDF00E7E905 /* LabelLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelLabelCell.xib; sourceTree = "<group>"; };
 		7CA4C122206527C800E7E905 /* TimerSettingsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettingsTable.swift; sourceTree = "<group>"; };
+		7CAEB68B20891C270021A36A /* EndedTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndedTimer.swift; sourceTree = "<group>"; };
+		7CAEB68E20891E9D0021A36A /* TimerRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRealm.swift; sourceTree = "<group>"; };
 		7CCFB5BB20624E7000D25EDB /* TableViewRowAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewRowAction.swift; sourceTree = "<group>"; };
 		7CCFB5BE206260BF00D25EDB /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		7CCFB5BF206260BF00D25EDB /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
@@ -90,7 +95,8 @@
 		7CCFB5C32062624000D25EDB /* SettingsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableCell.xib; sourceTree = "<group>"; };
 		7CCFB5C6206279F500D25EDB /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
 		7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardOnTouch.swift; sourceTree = "<group>"; };
-		7CE9A93C20823F4B004C0C72 /* TextFieldError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldError.swift; sourceTree = "<group>"; };
+		7CE9A93E2082B226004C0C72 /* SCLAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
+		7CE9A94120835010004C0C72 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		7CF48D94206A7E0000E09A02 /* UpTimerDelegateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpTimerDelegateDataSource.swift; sourceTree = "<group>"; };
 		7CFD3985205FFDBA00A3B800 /* Geronimo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geronimo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CFD3988205FFDBA00A3B800 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -181,6 +187,7 @@
 			children = (
 				7C2AF273206447860028B2C4 /* Timer.swift */,
 				7C2AF275206454950028B2C4 /* TimerData.swift */,
+				7CAEB68B20891C270021A36A /* EndedTimer.swift */,
 			);
 			path = data_models;
 			sourceTree = "<group>";
@@ -230,11 +237,11 @@
 			children = (
 				7CCFB5BB20624E7000D25EDB /* TableViewRowAction.swift */,
 				7CCFB5C6206279F500D25EDB /* StatusBar.swift */,
-				7C3C06EF2066653700E777D3 /* DateComponentsFormatter.swift */,
+				7C3C06EF2066653700E777D3 /* DateFormatter.swift */,
 				7C3C06F120669B9100E777D3 /* Date&TimePicker.swift */,
 				7C97254720691F43008B7757 /* Type&PeriodPicker.swift */,
 				7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */,
-				7CE9A93C20823F4B004C0C72 /* TextFieldError.swift */,
+				7CE9A93E2082B226004C0C72 /* SCLAlertView.swift */,
 			);
 			path = "Tolls&Extensions";
 			sourceTree = "<group>";
@@ -250,6 +257,15 @@
 				7CCFB5C32062624000D25EDB /* SettingsTableCell.xib */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		7CE9A94020834FF4004C0C72 /* local_db */ = {
+			isa = PBXGroup;
+			children = (
+				7CE9A94120835010004C0C72 /* DBManager.swift */,
+				7CAEB68E20891E9D0021A36A /* TimerRealm.swift */,
+			);
+			path = local_db;
 			sourceTree = "<group>";
 		};
 		7CFD397C205FFDBA00A3B800 = {
@@ -273,6 +289,7 @@
 		7CFD3987205FFDBA00A3B800 /* Geronimo */ = {
 			isa = PBXGroup;
 			children = (
+				7CE9A94020834FF4004C0C72 /* local_db */,
 				7CCFB5BA20624E4C00D25EDB /* Tolls&Extensions */,
 				7C48B8DD20600EBE001605A6 /* data_models */,
 				7CFD399D205FFF7D00A3B800 /* Screens */,
@@ -387,15 +404,19 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Geronimo/Pods-Geronimo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BGTableViewRowActionWithImage/BGTableViewRowActionWithImage.framework",
 				"${BUILT_PRODUCTS_DIR}/RKPieChart/RKPieChart.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftValidator/SwiftValidator.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BGTableViewRowActionWithImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RKPieChart.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftValidator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -429,26 +450,29 @@
 			files = (
 				7CA0A44D2063D9C0000B10C6 /* SendFormVC.swift in Sources */,
 				7C302BA420610AAC00B60560 /* ActiveTimersVC.swift in Sources */,
+				7CAEB68F20891E9D0021A36A /* TimerRealm.swift in Sources */,
 				7C302BAE20611AE100B60560 /* EndedTimerTableCell.swift in Sources */,
 				7C3C06F220669B9100E777D3 /* Date&TimePicker.swift in Sources */,
 				7C2AF274206447860028B2C4 /* Timer.swift in Sources */,
 				7CA4C123206527C800E7E905 /* TimerSettingsTable.swift in Sources */,
 				7C302BA920611AA700B60560 /* EndedTimersVC.swift in Sources */,
-				7C3C06F02066653700E777D3 /* DateComponentsFormatter.swift in Sources */,
+				7C3C06F02066653700E777D3 /* DateFormatter.swift in Sources */,
+				7CAEB68C20891C270021A36A /* EndedTimer.swift in Sources */,
 				7CD31C40207363A600D73545 /* HideKeyboardOnTouch.swift in Sources */,
 				7C2AF276206454950028B2C4 /* TimerData.swift in Sources */,
 				7CCFB5C42062624000D25EDB /* SettingsTableCell.swift in Sources */,
 				7CA4C11820650A1200E7E905 /* LabelArrowCell.swift in Sources */,
+				7CE9A93F2082B226004C0C72 /* SCLAlertView.swift in Sources */,
 				7C97254820691F43008B7757 /* Type&PeriodPicker.swift in Sources */,
 				7CCFB5BC20624E7000D25EDB /* TableViewRowAction.swift in Sources */,
 				7CCFB5C7206279F500D25EDB /* StatusBar.swift in Sources */,
 				7CF48D95206A7E0000E09A02 /* UpTimerDelegateDataSource.swift in Sources */,
 				7CA4C11C20650CCF00E7E905 /* LabelSwitchCell.swift in Sources */,
 				7C48B8DB20600CF4001605A6 /* ActiveTimerTableCell.swift in Sources */,
-				7CE9A93D20823F4B004C0C72 /* TextFieldError.swift in Sources */,
 				7CA4C12020650DDF00E7E905 /* LabelLabelCell.swift in Sources */,
 				7CCFB5C0206260BF00D25EDB /* SettingsVC.swift in Sources */,
 				7CA0A4472063C4CC000B10C6 /* AboutVC.swift in Sources */,
+				7CE9A94220835010004C0C72 /* DBManager.swift in Sources */,
 				7CFD3989205FFDBA00A3B800 /* AppDelegate.swift in Sources */,
 				7C43B7BE2062960300D57614 /* EditTimerVC.swift in Sources */,
 				7CFD39A0205FFF9E00A3B800 /* TimersVC.swift in Sources */,
@@ -524,6 +548,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -573,6 +598,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

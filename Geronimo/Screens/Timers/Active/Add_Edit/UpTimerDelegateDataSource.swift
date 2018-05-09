@@ -58,31 +58,35 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
         switch section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellArrowName, for: indexPath) as! LabelArrowCell
-            if let date = values[row] as? DateComponents{
-                cell.updateCell(title: titles[row], description: self.formatDate(date: date ))
+            if let date = values[row] as? Date{
+                cell.updateCell(title: titles[row], description: self.formatDate(date: date, type: dateType.date.rawValue ))
             } else {
                 cell.updateCell(title: titles[row], description: String(describing: values[row]))
             }
-            cell.updateCell(title: titles[row], description: String(describing: values[row]))
             return cell
         default:
             switch row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellSwitchName, for: indexPath) as! LabelSwitchCell
                 cell.updateCell(name: titles[row], isEnabled: values[row] as! Bool)
+                cell.isSwitchEnabled = { [unowned self] isSelected in
+                    self.cellValues?[section][row] = isSelected
+                }
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
-                if let date = values[row] as? DateComponents{
-                    cell.updateCell(name: titles[row], info: self.formatDate(date: date ))
+                changeCellState(cell: cell, isEnabled: values[row-1] as! Bool)
+                if let date = values[row] as? Date{
+                    cell.updateCell(name: titles[row], info: self.formatDate(date: date, type: dateType.date.rawValue ))
                 } else {
                     cell.updateCell(name: titles[row], info: String(describing: values[row]))
                 }
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
-                if let date = values[row] as? DateComponents{
-                    cell.updateCell(name: titles[row], info: self.formatDate(date: date ))
+                changeCellState(cell: cell, isEnabled: values[row-2] as! Bool)
+                if let date = values[row] as? Date{
+                    cell.updateCell(name: titles[row], info: self.formatDate(date: date, type: dateType.time.rawValue ))
                 } else {
                     cell.updateCell(name: titles[row], info: String(describing: values[row]))
                 }
@@ -122,25 +126,23 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                 table?.picker.showDatePicker(fromController: self.vc!) { completion in
                     if(completion){
                         if let date = self.table!.picker.date{
-                            let pickedDate = Calendar.current.dateComponents([ .day, .month, .year], from: date)
-                            self.table?.timer?.beginDate = pickedDate
-                            self.cellValues![section][row] = pickedDate
+                            self.table?.timer?.beginDate = date
+                            self.cellValues![section][row] = date
                             self.table?.updateTableCellValues()
                             self.table?.reloadRows(at: [indexPath], with: .automatic)
                         }
                     }
                 }
-                case 2:
-                    table?.picker.showTimePicker(fromController: self.vc!) { completion in
-                        if(completion){
-                            if let time = self.table!.picker.time{
-                                let pickedTime = Calendar.current.dateComponents([ .hour, .minute], from: time)
-                                self.table?.timer?.beginTime = pickedTime
-                                self.table?.updateTableCellValues()
-                                self.cellValues![section][row] = pickedTime
-                                self.table?.reloadRows(at: [indexPath], with: .automatic)
-                            }
+            case 2:
+                table?.picker.showTimePicker(fromController: self.vc!) { completion in
+                    if(completion){
+                        if let time = self.table!.picker.time{
+                            self.table?.timer?.beginTime = time
+                            self.table?.updateTableCellValues()
+                            self.cellValues![section][row] = time
+                            self.table?.reloadRows(at: [indexPath], with: .automatic)
                         }
+                    }
                 }
             default:
                 break
@@ -149,6 +151,55 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
             break
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = indexPath.section
+        let row = indexPath.row
         
+        let values = cellValues![section]
+        switch section {
+        case 0:
+            return UITableViewAutomaticDimension
+        default:
+            switch row {
+            case 0:
+                return UITableViewAutomaticDimension
+            case 1:
+                if let isVisible = values[row-1] as? Bool{
+                    if(isVisible){
+                        return 0.0
+                    } else {
+                        return UITableViewAutomaticDimension
+                    }
+                } else {
+                    return UITableViewAutomaticDimension
+                }
+            case 2:
+                if let isVisible = values[row-2] as? Bool{
+                    if(isVisible){
+                        return 0.0
+                    } else {
+                        return UITableViewAutomaticDimension
+                    }
+                } else {
+                    return UITableViewAutomaticDimension
+                }
+            default:
+                return UITableViewAutomaticDimension
+            }
+        }
+    }
+    
+    // MARK: Cell State
+    func changeCellState(cell: UITableViewCell, isEnabled: Bool){
+        if(isEnabled){
+            cell.isUserInteractionEnabled = false
+            cell.isHidden = true
+        } else {
+            cell.isUserInteractionEnabled = true
+            cell.isHidden = false
+        }
+    }
+    
     
 }

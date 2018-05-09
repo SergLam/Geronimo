@@ -7,30 +7,34 @@
 //
 
 import UIKit
+import RealmSwift
 
-struct Timer {
-    
+class Timer: NSObject {
+    var ID = 0
     var isNew: Bool = true
-    
+
     var name: String = ""
-    var description: String = ""
+    var timerDescription: String = ""
     var type: String = TimerData.TimerType.down.rawValue
     var period: TimeInterval = 3600 // 1 hour
     
     // Up Timer proporties (Down - Begin block)
     var isNow: Bool = true
-    var beginDate: DateComponents = TimerData().currentDate
-    var beginTime: DateComponents = TimerData().currentTime
+    var beginDate: Date = TimerData().currentDate
+    var beginTime: Date = TimerData().currentDate
     // Down Timer proporties
     var isInfinetily: Bool = true
-    var repeats: Int = 0
+    var repeats: Int = 1
     // End block
     var isNever: Bool = true
-    var endDate: DateComponents = TimerData().currentDate
-    var endTime: DateComponents = TimerData().currentTime
+    var endDate: Date = TimerData().currentDate
+    var endTime: Date = Calendar.current.date(byAdding: .hour, value: 1, to: TimerData().currentDate)!
     // Worked time
     var isOnlyWorked = true
-    var beginWorkTime: DateComponents = TimerData().currentTime
-    var endWorkTime: DateComponents = Calendar.current.dateComponents([ .hour, .minute], from: Date().addingTimeInterval(5.0 * 60.0))
+    var beginWorkTime: Date = TimerData().currentDate
+    var endWorkTime: Date = Calendar.current.date(byAdding: .hour, value: 1, to: TimerData().currentDate)!
+    // Statistic data
+    var succesCount = 0
+    var failCount = 0
     
 }
