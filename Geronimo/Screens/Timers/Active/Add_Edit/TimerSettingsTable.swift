@@ -103,13 +103,20 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         
         switch section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellArrowName, for: indexPath) as! LabelArrowCell
-            if let date = values[row] as? Date{
-                cell.updateCell(title: titles[row], description: self.formatDate(date: date, type: dateType.date.rawValue ))
-            } else {
+            switch row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellArrowName, for: indexPath) as! LabelArrowCell
                 cell.updateCell(title: titles[row], description: String(describing: values[row]))
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellArrowName, for: indexPath) as! LabelArrowCell
+                if let interval = values[row] as? TimeInterval{
+                    cell.updateCell(title: titles[row], description: self.formatInterval(duration: interval))
+                    return cell
+                }
+            default:
+                break
             }
-            return cell
         case 4:
             switch row {
             case 0:

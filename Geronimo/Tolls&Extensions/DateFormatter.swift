@@ -29,6 +29,14 @@ extension UIViewController{
         }
         return ""
     }
+    
+    func formatInterval(duration: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.day, .hour, .minute, .second]
+        formatter.unitsStyle = .abbreviated
+        formatter.maximumUnitCount = 1
+        return formatter.string(from: duration)!
+    }
 }
 
 extension TimerSettingsTable{
@@ -52,6 +60,14 @@ extension TimerSettingsTable{
         }
         return ""
     }
+    
+    func formatInterval(duration: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.day, .hour, .minute, .second]
+        formatter.unitsStyle = .abbreviated
+        formatter.maximumUnitCount = 1
+        return formatter.string(from: duration)!
+    }
 }
 
 extension UpTimerDelegateDataSource{
@@ -74,5 +90,14 @@ extension UpTimerDelegateDataSource{
             return formatter.string(from: date)
         }
         return ""
+    }
+    
+    func formatInterval(duration: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.day, .hour, .minute, .second]
+        formatter.unitsStyle = .abbreviated
+        formatter.maximumUnitCount = 1
+        let result = formatter.string(from: duration)!
+        return result
     }
 }

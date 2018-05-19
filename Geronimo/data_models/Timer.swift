@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 class Timer: NSObject {
-    var ID = 0
+    var id: Int = 0
     var isNew: Bool = true
 
     var name: String = ""

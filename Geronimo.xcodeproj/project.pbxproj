@@ -22,6 +22,7 @@
 		7C43B7BF2062960300D57614 /* EditTimerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C43B7BD2062960300D57614 /* EditTimerVC.xib */; };
 		7C48B8DB20600CF4001605A6 /* ActiveTimerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48B8D920600CF4001605A6 /* ActiveTimerTableCell.swift */; };
 		7C48B8DC20600CF4001605A6 /* ActiveTimerTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C48B8DA20600CF4001605A6 /* ActiveTimerTableCell.xib */; };
+		7C804EDF20B03AE4009E2183 /* EndedTimerRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C804EDE20B03AE4009E2183 /* EndedTimerRealm.swift */; };
 		7C97254820691F43008B7757 /* Type&PeriodPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C97254720691F43008B7757 /* Type&PeriodPicker.swift */; };
 		7CA0A4472063C4CC000B10C6 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA0A4452063C4CC000B10C6 /* AboutVC.swift */; };
 		7CA0A4482063C4CC000B10C6 /* AboutVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA0A4462063C4CC000B10C6 /* AboutVC.xib */; };
@@ -72,6 +73,7 @@
 		7C43B7BD2062960300D57614 /* EditTimerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTimerVC.xib; sourceTree = "<group>"; };
 		7C48B8D920600CF4001605A6 /* ActiveTimerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTimerTableCell.swift; sourceTree = "<group>"; };
 		7C48B8DA20600CF4001605A6 /* ActiveTimerTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActiveTimerTableCell.xib; sourceTree = "<group>"; };
+		7C804EDE20B03AE4009E2183 /* EndedTimerRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndedTimerRealm.swift; sourceTree = "<group>"; };
 		7C97254720691F43008B7757 /* Type&PeriodPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Type&PeriodPicker.swift"; sourceTree = "<group>"; };
 		7CA0A4452063C4CC000B10C6 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		7CA0A4462063C4CC000B10C6 /* AboutVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutVC.xib; sourceTree = "<group>"; };
@@ -192,6 +194,15 @@
 			path = data_models;
 			sourceTree = "<group>";
 		};
+		7C804EDD20B033AD009E2183 /* data_models */ = {
+			isa = PBXGroup;
+			children = (
+				7CAEB68E20891E9D0021A36A /* TimerRealm.swift */,
+				7C804EDE20B03AE4009E2183 /* EndedTimerRealm.swift */,
+			);
+			path = data_models;
+			sourceTree = "<group>";
+		};
 		7CA0A4492063C4D1000B10C6 /* About */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,8 +273,8 @@
 		7CE9A94020834FF4004C0C72 /* local_db */ = {
 			isa = PBXGroup;
 			children = (
+				7C804EDD20B033AD009E2183 /* data_models */,
 				7CE9A94120835010004C0C72 /* DBManager.swift */,
-				7CAEB68E20891E9D0021A36A /* TimerRealm.swift */,
 			);
 			path = local_db;
 			sourceTree = "<group>";
@@ -474,6 +485,7 @@
 				7CA0A4472063C4CC000B10C6 /* AboutVC.swift in Sources */,
 				7CE9A94220835010004C0C72 /* DBManager.swift in Sources */,
 				7CFD3989205FFDBA00A3B800 /* AppDelegate.swift in Sources */,
+				7C804EDF20B03AE4009E2183 /* EndedTimerRealm.swift in Sources */,
 				7C43B7BE2062960300D57614 /* EditTimerVC.swift in Sources */,
 				7CFD39A0205FFF9E00A3B800 /* TimersVC.swift in Sources */,
 				7CA0A4522063E8BA000B10C6 /* TimerStatisticVC.swift in Sources */,

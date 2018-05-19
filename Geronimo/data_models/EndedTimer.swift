@@ -10,11 +10,6 @@ import UIKit
 import RealmSwift
 
 class EndedTimer: Object {
-    @objc dynamic var ID = 0
-    @objc dynamic var title: String = ""
-    @objc dynamic var date_time: Date = TimerData().currentDate
-    
-    override static func primaryKey() -> String? {
-        return "ID"
-    }
+    var title: String = ""
+    var date_time: Date = TimerData().currentDate
 }
