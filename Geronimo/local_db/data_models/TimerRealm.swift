@@ -10,13 +10,14 @@ import UIKit
 import RealmSwift
 
 class TimerRealm: Object {
-    @objc dynamic var id: Int = Date().hashValue + Int(arc4random_uniform(1000))
+    @objc dynamic var id: Int = 0
     
     @objc dynamic var isNew: Bool = true
     @objc dynamic var name: String = ""
     @objc dynamic var timerDescription: String = ""
     @objc dynamic var type: String = TimerData.TimerType.down.rawValue
     @objc dynamic var period: TimeInterval = 3600 // 1 hour
+    @objc dynamic var timeToNextAlarm: TimeInterval = 3600
     
     // Up Timer proporties (Down - Begin block)
     @objc dynamic var isNow: Bool = true
@@ -43,11 +44,17 @@ class TimerRealm: Object {
     }
     
     func updateTimer(timer: Timer){
+        if(timer.isNew){
+            self.id = incrementID()
+        } else {
+           self.id = timer.id
+        }
         self.isNew = timer.isNew
         self.name = timer.name
         self.timerDescription = timer.timerDescription
         self.type = timer.type
         self.period = timer.period
+        self.timeToNextAlarm = timer.timeToNextAlarm
         self.isNow = timer.isNow
         self.beginDate = timer.beginDate
         self.beginTime = timer.beginTime
@@ -65,5 +72,15 @@ class TimerRealm: Object {
     
     override static func primaryKey() -> String? {
         return "id"
+    }
+    
+    func incrementID() -> Int {
+        let timers = Array(DBManager.sharedInstance.getTimers())
+        if timers.count > 0{
+            let max_id = timers.map{$0.id}.max()!
+            return max_id + 1
+        } else {
+           return 0
+        }
     }
 }

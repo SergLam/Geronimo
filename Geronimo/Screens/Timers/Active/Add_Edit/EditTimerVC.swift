@@ -22,7 +22,6 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var timerNotes: UITextField!
     
-    
     var timer: Timer?
     
     // Settings Tables
@@ -55,7 +54,9 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
     
     func configureTextFields(){
         timerTitle.delegate = self
+        timerTitle.text = timer?.name
         timerNotes.delegate = self
+        timerNotes.text = timer?.timerDescription
         timerTitle.tag = 1
         timerNotes.tag = 2
     }
@@ -97,8 +98,17 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
         if (validateTextFields()){
             let validation_result = validateTimer()
             if(validation_result.0){
-                self.dismiss(animated: true, completion: nil)
                 // TODO: Save timer to Realm
+                guard let timer = settingsTable?.timer! else {
+                    return
+                }
+                // Timer succesfully created - not new
+                timer.isNew = false
+                timer.name = self.timerTitle.text!
+                timer.timerDescription = self.timerNotes.text!
+                let timer_realm = TimerRealm.init(timer: timer)
+                DBManager.sharedInstance.addTimer(object: timer_realm)
+                self.dismiss(animated: true, completion: nil)
                 return
             } else {
                 SCLAlertView().showErrorAlert(title: "Error", message: validation_result.1)
@@ -144,29 +154,16 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
     }
     
     func validateTimer() -> (Bool, String){
-        if let timer = self.settingsTable?.timer{
-            // Check if begin time less than end time
-            let userCalendar = Calendar.current // user calendar
-            if (timer.isNow == false && timer.isNever == false){
-                // Check if it same day
-                let day_begin = Calendar.current.component(.day, from: timer.beginDate)
-                let day_end = Calendar.current.component(.day, from: timer.endDate)
-                if (day_begin == day_end){
-                    let hour_begin = Calendar.current.component(.hour, from: timer.beginDate)
-                    let hour_end = Calendar.current.component(.hour, from: timer.endDate)
-                    let min_begin = Calendar.current.component(.minute, from: timer.beginDate)
-                    let min_end = Calendar.current.component(.minute, from: timer.endDate)
-                    // Check if begin time greater than end
-                    if (hour_begin < hour_end || min_begin < min_end){
-                        return (false, "Begin time should be greater than end time")
-                    }
-                    else {
-                        return (true, "All OK")
-                    }
-                }
-            }
-            // Check "only worked time" - begin time less than end time
-            if(timer.isOnlyWorked == true){
+        guard let timer = self.settingsTable?.timer else{
+            return (false, "Timer is nil")
+        }
+        // Check if begin time less than end time
+        let userCalendar = Calendar.current // user calendar
+        if (timer.isNow == false && timer.isNever == false){
+            // Check if it same day
+            let day_begin = Calendar.current.component(.day, from: timer.beginDate)
+            let day_end = Calendar.current.component(.day, from: timer.endDate)
+            if (day_begin == day_end){
                 let hour_begin = Calendar.current.component(.hour, from: timer.beginDate)
                 let hour_end = Calendar.current.component(.hour, from: timer.endDate)
                 let min_begin = Calendar.current.component(.minute, from: timer.beginDate)
@@ -178,6 +175,19 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
                 else {
                     return (true, "All OK")
                 }
+            }
+        }
+        // Check "only worked time" - begin time less than end time
+        if(timer.isOnlyWorked == true){
+            let hour_begin = Calendar.current.component(.hour, from: timer.beginDate)
+            let hour_end = Calendar.current.component(.hour, from: timer.endDate)
+            let min_begin = Calendar.current.component(.minute, from: timer.beginDate)
+            let min_end = Calendar.current.component(.minute, from: timer.endDate)
+            // Check if begin time greater than end
+            if (hour_begin < hour_end || min_begin < min_end){
+                return (false, "Begin time should be greater than end time")
+            }else {
+                return (true, "All OK")
             }
         }
         return (false, "Timer is nil")

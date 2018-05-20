@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -55,6 +55,9 @@
                     </label>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yZ9-wh-eIP">
                         <rect key="frame" x="242" y="34" width="51" height="31"/>
+                        <connections>
+                            <action selector="timerStateChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="eOO-EW-4r1"/>
+                        </connections>
                     </switch>
                 </subviews>
                 <constraints>
@@ -71,6 +74,13 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="isTimerEnabled" destination="yZ9-wh-eIP" id="R31-qw-Fge"/>
+                <outlet property="timerIcon" destination="F2P-xw-4hG" id="Rrm-OE-IWW"/>
+                <outlet property="timerNextAlarm" destination="VWZ-j5-xAH" id="nBh-wb-QJf"/>
+                <outlet property="timerStatus" destination="Dyp-wR-s65" id="FkG-KJ-Yrq"/>
+                <outlet property="timerTitle" destination="UWd-wC-dEJ" id="2cr-GC-dtW"/>
+            </connections>
             <point key="canvasLocation" x="34" y="82"/>
         </tableViewCell>
     </objects>

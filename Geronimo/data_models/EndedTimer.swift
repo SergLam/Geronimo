@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import RealmSwift
 
-class EndedTimer: Object {
+class EndedTimer: NSObject {
     var title: String = ""
     var date_time: Date = TimerData().currentDate
 }

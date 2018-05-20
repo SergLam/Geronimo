@@ -68,7 +68,7 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellArrowName, for: indexPath) as! LabelArrowCell
                 if let interval = values[row] as? TimeInterval{
-                   cell.updateCell(title: titles[row], description: self.formatInterval(duration: interval))
+                   cell.updateCell(title: titles[row], description: cell.formatInterval(duration: interval))
                     return cell
                 }
             default:
@@ -87,7 +87,7 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
                 changeCellState(cell: cell, isEnabled: values[row-1] as! Bool)
                 if let date = values[row] as? Date{
-                    cell.updateCell(name: titles[row], info: self.formatDate(date: date, type: dateType.date.rawValue ))
+                    cell.updateCell(name: titles[row], info: cell.formatDate(date: date, type: UITableViewCell.dateType.date.rawValue ))
                 } else {
                     cell.updateCell(name: titles[row], info: String(describing: values[row]))
                 }
@@ -96,7 +96,7 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
                 changeCellState(cell: cell, isEnabled: values[row-2] as! Bool)
                 if let date = values[row] as? Date{
-                    cell.updateCell(name: titles[row], info: self.formatDate(date: date, type: dateType.time.rawValue ))
+                    cell.updateCell(name: titles[row], info: cell.formatDate(date: date, type: UITableViewCell.dateType.time.rawValue ))
                 } else {
                     cell.updateCell(name: titles[row], info: String(describing: values[row]))
                 }

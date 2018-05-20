@@ -13,7 +13,7 @@ class ActiveTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBOutlet weak var activeTimersTable: UITableView!
     
-    var activeTimers = [1,2,3,4,5,6,7,8,9,10]
+    var activeTimers: [Timer] = []
     
     let cellName = "ActiveTimerTableCell"
     
@@ -21,6 +21,16 @@ class ActiveTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         self.configureTable()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        activeTimers.removeAll()
+        let db_result = DBManager.sharedInstance.getTimers()
+        for timer in db_result{
+            activeTimers.append(Timer.init(timer_realm: timer))
+        }
+        activeTimersTable.reloadData()
     }
     
     func configureTable(){
@@ -36,8 +46,15 @@ class ActiveTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = activeTimersTable.dequeueReusableCell(withIdentifier: cellName, for: indexPath) as! ActiveTimerTableCell
+        cell.updateCell(timer: activeTimers[indexPath.row])
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let editVC = EditTimerVC()
+        editVC.setTimer(timer: activeTimers[indexPath.row])
+        self.present(editVC, animated: true, completion: nil)
     }
     
     // MARK: Add actions to table
