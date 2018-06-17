@@ -30,18 +30,18 @@ class EndedTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     // MARK: Add action to cell
-    // MARK: Add actions to table
-    func tableView(_ tableView: UITableView,
-                   editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?{
-        let completeAction = BGTableViewRowActionWithImage.rowAction(with: .destructive, title: "    ", backgroundColor: UIColor.green, image: UIImage(named: "check_mark"), forCellHeight: 100, handler: { (action, indexpath) in
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    
+        let removeAction = UIContextualAction(style: .normal, title:  "", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            // Call action
             self.endedTimers.remove(at: indexPath.row)
-            self.tableEndedTimers.deleteRows(at: [indexPath], with: .automatic)
+            self.tableEndedTimers.deleteRows(at: [indexPath], with: .fade)
+            // Reset state
+            success(true)
         })
-        
-        
-        
-        
-        return [completeAction!]
+        removeAction.image = UIImage(named: "check_mark")
+        removeAction.backgroundColor = .green
+        return UISwipeActionsConfiguration(actions: [removeAction])
     }
     
     // MARK: Table View Data Source

@@ -61,10 +61,21 @@ extension UITableViewCell {
     }
     
     func formatInterval(duration: TimeInterval) -> String {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.day, .hour, .minute, .second]
-        formatter.unitsStyle = .abbreviated
-        return formatter.string(from: duration)!
+        let components_formatter = DateComponentsFormatter()
+        components_formatter.allowedUnits = [.day, .hour, .minute]
+        components_formatter.unitsStyle = .abbreviated
+        components_formatter.zeroFormattingBehavior = .dropLeading
+        let resultDays = components_formatter.string(from: duration)!
+        return "\(resultDays)"
+    }
+    
+    func formatIntervalWithSeconds(duration: TimeInterval) -> String {
+        let components_formatter = DateComponentsFormatter()
+        components_formatter.allowedUnits = [.day, .hour, .minute, .second]
+        components_formatter.unitsStyle = .abbreviated
+        components_formatter.zeroFormattingBehavior = .dropLeading
+        let resultDays = components_formatter.string(from: duration)!
+        return "\(resultDays)"
     }
 }
 

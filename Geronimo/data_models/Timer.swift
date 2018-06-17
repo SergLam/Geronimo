@@ -11,7 +11,7 @@ import UIKit
 class Timer: NSObject {
     var id: Int = 0
     var isNew: Bool = true
-
+    
     var name: String = ""
     var timerDescription: String = ""
     var type: String = TimerData.TimerType.down.rawValue
@@ -30,7 +30,7 @@ class Timer: NSObject {
     var endDate: Date = TimerData().currentDate
     var endTime: Date = Calendar.current.date(byAdding: .hour, value: 1, to: TimerData().currentDate)!
     // Worked time
-    var isOnlyWorked = true
+    var isOnlyWorked = false
     var beginWorkTime: Date = TimerData().currentDate
     var endWorkTime: Date = Calendar.current.date(byAdding: .hour, value: 1, to: TimerData().currentDate)!
     // Statistic data
@@ -45,7 +45,7 @@ class Timer: NSObject {
         self.timerDescription = timer_realm.timerDescription
         self.type = timer_realm.type
         self.period = timer_realm.period
-        self.timeToNextAlarm = timer_realm.timeToNextAlarm
+        self.timeToNextAlarm = calculate_timeToNextAlarmFromDB(timer: timer_realm)
         self.isNow = timer_realm.isNow
         self.beginDate = timer_realm.beginDate
         self.beginTime = timer_realm.beginTime
@@ -61,11 +61,23 @@ class Timer: NSObject {
         self.failCount = timer_realm.failCount
     }
     
-    func calculate_timeToNextAlarm(timer_realm: TimerRealm){
-        if(timer_realm.isNew){
-            
-        } else{
-            
+    func calculate_timeToNextAlarmFromDB(timer: TimerRealm) -> TimeInterval{
+        let current_date = Date()
+        let isStarted = (timer.beginDate < current_date) && (timer.timeToNextAlarm < timer.period)
+        if(isStarted){
+            return timer.timeToNextAlarm
+        } else {
+            return timer.period
+        }
+    }
+    
+    func calculate_timeToNextAlarm(timer: Timer) -> TimeInterval{
+        let current_date = Date()
+        let isStarted = (timer.beginDate < current_date) && (timer.timeToNextAlarm < timer.period)
+        if(isStarted){
+            return timer.timeToNextAlarm
+        } else {
+            return timer.period
         }
     }
     

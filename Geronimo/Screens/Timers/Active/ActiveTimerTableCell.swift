@@ -20,6 +20,12 @@ class ActiveTimerTableCell: UITableViewCell {
     
     @IBOutlet weak var isTimerEnabled: UISwitch!
     
+    var isSwitchEnabled: ((_ isSelected: Bool) -> Void)?
+    
+    var didChangeTimer: ((Timer?) -> Void)?
+    
+    var timer: Timer?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,8 +33,9 @@ class ActiveTimerTableCell: UITableViewCell {
     
     func updateCell(timer: Timer){
         // TODO: update timer icon depending on it status
+        self.timer = timer
         self.backgroundColor = updateBackground(isEnabled: isTimerActive(timer: timer))
-        timerNextAlarm.text = self.formatInterval(duration: timer.timeToNextAlarm)
+        timerNextAlarm.text = self.formatIntervalWithSeconds(duration: timer.timeToNextAlarm)
         timerTitle.text = timer.name
         timerStatus.text = timer.timerDescription
         isTimerEnabled.isOn = isTimerActive(timer: timer)
@@ -36,6 +43,9 @@ class ActiveTimerTableCell: UITableViewCell {
     
     @IBAction func timerStateChanged(_ sender: UISwitch) {
         self.backgroundColor = updateBackground(isEnabled: sender.isOn)
+        isSwitchEnabled?(sender.isOn)
+        self.timer?.isNow = sender.isOn
+        didChangeTimer?(self.timer)
     }
     
     func updateBackground(isEnabled: Bool) -> UIColor{
@@ -43,6 +53,36 @@ class ActiveTimerTableCell: UITableViewCell {
             return UIColor.white
         } else {
             return UIColor.groupTableViewBackground
+        }
+    }
+    
+    func updateTimerImage(){
+        if let timer = self.timer{
+            switch(timer.type){
+            case TimerData.TimerType.down.rawValue:
+                switch (timer.isNow){
+                case true:
+                    if(timer.beginDate < Date()){
+                        timerIcon.image = UIImage(named: "timer_active")
+                    }else{
+                        timerIcon.image = UIImage(named: "timer_not_started")
+                    }
+                case false:
+                    if(timer.beginDate < Date()){
+                        timerIcon.image = UIImage(named: "timer_paused")
+                    }else{
+                        timerIcon.image = UIImage(named: "timer_not_started")
+                    }
+                }
+            case TimerData.TimerType.up.rawValue:
+                if(timer.isNow){
+                    timerIcon.image = UIImage(named: "timer_up_active")
+                } else{
+                    timerIcon.image = UIImage(named: "timer_up_not_active")
+                }
+            default:
+                timerIcon.image = UIImage(named: "placeholder")
+            }
         }
     }
     

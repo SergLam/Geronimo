@@ -117,6 +117,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
             default:
                 break
             }
+            // ONLY WORKED TIME
         case 4:
             switch row {
             case 0:
@@ -130,7 +131,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
                 changeCellState(cell: cell, isEnabled: !(values[row-1] as! Bool) )
                 if let date = values[row] as? Date{
-                    cell.updateCell(name: titles[row], info: cell.formatDate(date: date, type: UITableViewCell.dateType.date.rawValue ))
+                    cell.updateCell(name: titles[row], info: cell.formatDate(date: date, type: UITableViewCell.dateType.time.rawValue ))
                 } else {
                     cell.updateCell(name: titles[row], info: String(describing: values[row]))
                 }
@@ -232,7 +233,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                 picker.showDatePicker(fromController: self.vc!) { completion in
                     if(completion){
                         if let date = self.picker.date{
-                            self.cellValues![section][row] = Calendar.current.dateComponents([ .day, .month, .year], from: date)
+                            self.cellValues![section][row] = date
                             self.timer?.beginDate = date
                             self.reloadRows(at: [indexPath], with: .automatic)
                         }
@@ -257,7 +258,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                 picker.showDatePicker(fromController: self.vc!) { completion in
                     if(completion){
                         if let date = self.picker.date{
-                            self.cellValues![section][row] = Calendar.current.dateComponents([ .day, .month, .year], from: date)
+                            self.cellValues![section][row] = date
                             self.timer?.endDate = date
                             self.reloadRows(at: [indexPath], with: .automatic)
                         }

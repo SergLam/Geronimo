@@ -71,7 +71,7 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
         setTimerSettingsTableDataSource()
         self.contentView.addSubview(settingsTable!)
         settingsTable!.reloadData()
-        settingsTable!.snp_makeConstraints{(make) -> Void in
+        settingsTable!.snp.makeConstraints{(make) -> Void in
             make.right.equalTo(self.view).offset(0)
             make.left.equalTo(self.view).offset(0)
             make.top.equalTo(timerNotes).offset(timerNotes.frame.height)
@@ -106,6 +106,7 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
                 timer.isNew = false
                 timer.name = self.timerTitle.text!
                 timer.timerDescription = self.timerNotes.text!
+                timer.timeToNextAlarm = timer.calculate_timeToNextAlarm(timer: timer)
                 let timer_realm = TimerRealm.init(timer: timer)
                 DBManager.sharedInstance.addTimer(object: timer_realm)
                 self.dismiss(animated: true, completion: nil)
@@ -158,7 +159,6 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
             return (false, "Timer is nil")
         }
         // Check if begin time less than end time
-        let userCalendar = Calendar.current // user calendar
         if (timer.isNow == false && timer.isNever == false){
             // Check if it same day
             let day_begin = Calendar.current.component(.day, from: timer.beginDate)
@@ -189,8 +189,9 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
             }else {
                 return (true, "All OK")
             }
+        } else {
+            return (true, "All OK")
         }
-        return (false, "Timer is nil")
     }
     
 }

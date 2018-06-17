@@ -44,7 +44,7 @@ class TimerStatisticVC: UIViewController {
         chartView.isAnimationActivated = true
         self.view.addSubview(chartView)
         
-        chartView.snp_makeConstraints{(make) -> Void in
+        chartView.snp.makeConstraints{(make) -> Void in
             make.right.equalTo(self.view).offset(-20)
             make.left.equalTo(self.view).offset(20)
             make.top.equalTo(self.timerDescription.snp_bottom).offset(22)

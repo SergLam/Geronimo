@@ -11,8 +11,8 @@ import RealmSwift
 
 class TimerRealm: Object {
     @objc dynamic var id: Int = 0
-    
     @objc dynamic var isNew: Bool = true
+    
     @objc dynamic var name: String = ""
     @objc dynamic var timerDescription: String = ""
     @objc dynamic var type: String = TimerData.TimerType.down.rawValue
@@ -47,7 +47,7 @@ class TimerRealm: Object {
         if(timer.isNew){
             self.id = incrementID()
         } else {
-           self.id = timer.id
+            self.id = timer.id
         }
         self.isNew = timer.isNew
         self.name = timer.name
