@@ -46,6 +46,8 @@
 		7CCFB5C52062624000D25EDB /* SettingsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCFB5C32062624000D25EDB /* SettingsTableCell.xib */; };
 		7CCFB5C7206279F500D25EDB /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5C6206279F500D25EDB /* StatusBar.swift */; };
 		7CD31C40207363A600D73545 /* HideKeyboardOnTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */; };
+		7CDED22020D6D68B00A13435 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDED21F20D6D68B00A13435 /* NotificationsManager.swift */; };
+		7CDED22220D6E0DD00A13435 /* NotificationsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDED22120D6E0DD00A13435 /* NotificationsConstants.swift */; };
 		7CE9A93F2082B226004C0C72 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE9A93E2082B226004C0C72 /* SCLAlertView.swift */; };
 		7CE9A94220835010004C0C72 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE9A94120835010004C0C72 /* DBManager.swift */; };
 		7CF48D95206A7E0000E09A02 /* UpTimerDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF48D94206A7E0000E09A02 /* UpTimerDelegateDataSource.swift */; };
@@ -97,6 +99,8 @@
 		7CCFB5C32062624000D25EDB /* SettingsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableCell.xib; sourceTree = "<group>"; };
 		7CCFB5C6206279F500D25EDB /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
 		7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardOnTouch.swift; sourceTree = "<group>"; };
+		7CDED21F20D6D68B00A13435 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
+		7CDED22120D6E0DD00A13435 /* NotificationsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsConstants.swift; sourceTree = "<group>"; };
 		7CE9A93E2082B226004C0C72 /* SCLAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		7CE9A94120835010004C0C72 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		7CF48D94206A7E0000E09A02 /* UpTimerDelegateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpTimerDelegateDataSource.swift; sourceTree = "<group>"; };
@@ -270,6 +274,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		7CDED21E20D6D67100A13435 /* local_notifications */ = {
+			isa = PBXGroup;
+			children = (
+				7CDED21F20D6D68B00A13435 /* NotificationsManager.swift */,
+				7CDED22120D6E0DD00A13435 /* NotificationsConstants.swift */,
+			);
+			path = local_notifications;
+			sourceTree = "<group>";
+		};
 		7CE9A94020834FF4004C0C72 /* local_db */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +313,7 @@
 		7CFD3987205FFDBA00A3B800 /* Geronimo */ = {
 			isa = PBXGroup;
 			children = (
+				7CDED21E20D6D67100A13435 /* local_notifications */,
 				7CE9A94020834FF4004C0C72 /* local_db */,
 				7CCFB5BA20624E4C00D25EDB /* Tolls&Extensions */,
 				7C48B8DD20600EBE001605A6 /* data_models */,
@@ -467,9 +481,11 @@
 				7C302BA920611AA700B60560 /* EndedTimersVC.swift in Sources */,
 				7C3C06F02066653700E777D3 /* DateFormatter.swift in Sources */,
 				7CAEB68C20891C270021A36A /* EndedTimer.swift in Sources */,
+				7CDED22020D6D68B00A13435 /* NotificationsManager.swift in Sources */,
 				7CD31C40207363A600D73545 /* HideKeyboardOnTouch.swift in Sources */,
 				7C2AF276206454950028B2C4 /* TimerData.swift in Sources */,
 				7CCFB5C42062624000D25EDB /* SettingsTableCell.swift in Sources */,
+				7CDED22220D6E0DD00A13435 /* NotificationsConstants.swift in Sources */,
 				7CA4C11820650A1200E7E905 /* LabelArrowCell.swift in Sources */,
 				7CE9A93F2082B226004C0C72 /* SCLAlertView.swift in Sources */,
 				7C97254820691F43008B7757 /* Type&PeriodPicker.swift in Sources */,

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import BGTableViewRowActionWithImage
 
 class EndedTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 

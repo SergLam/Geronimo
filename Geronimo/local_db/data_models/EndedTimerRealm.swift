@@ -12,13 +12,17 @@ import RealmSwift
 class EndedTimerRealm: Object {
     @objc dynamic var id: Int = 0
     @objc dynamic var title: String = ""
-    @objc dynamic var date_time: Date = TimerData().currentDate
+    @objc dynamic var last_alarm_time: Date = TimerData().currentDate
+    @objc dynamic var succesCount = 0
+    @objc dynamic var failCount = 0
     
     convenience init(ended: EndedTimer) {
         self.init()
         self.id = incrementID()
         self.title = ended.title
-        self.date_time = ended.date_time
+        self.last_alarm_time = ended.last_alarm_time
+        self.succesCount = ended.succesCount
+        self.failCount = ended.failCount
     }
     
     override static func primaryKey() -> String? {

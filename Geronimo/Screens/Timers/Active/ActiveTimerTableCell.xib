@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timer_active" translatesAutoresizingMaskIntoConstraints="NO" id="F2P-xw-4hG">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="F2P-xw-4hG">
                         <rect key="frame" x="16" y="24" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="du7-Si-g9C"/>
@@ -85,6 +85,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="timer_active" width="13" height="15"/>
+        <image name="placeholder" width="65" height="47"/>
     </resources>
 </document>

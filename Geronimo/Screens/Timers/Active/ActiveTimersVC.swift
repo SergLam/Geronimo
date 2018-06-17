@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import BGTableViewRowActionWithImage
 
 class ActiveTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -57,9 +56,20 @@ class ActiveTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     @objc func updateTimersNextAlarmTime(){
         for index in activeTimers.indices {
             if(activeTimers[index].isNow){
-                activeTimers[index].timeToNextAlarm = activeTimers[index].timeToNextAlarm - 1
-                let cell = activeTimersTable.cellForRow(at: IndexPath.init(row: index, section: 0)) as! ActiveTimerTableCell
-                cell.updateCell(timer: activeTimers[index])
+                if(activeTimers[index].timeToNextAlarm != 0){
+                    activeTimers[index].timeToNextAlarm = activeTimers[index].timeToNextAlarm - 1
+                    let cell = activeTimersTable.cellForRow(at: IndexPath.init(row: index, section: 0)) as! ActiveTimerTableCell
+                    cell.updateCell(timer: activeTimers[index])
+                } else {
+                    
+                    if(check_timer_end(timer: activeTimers[index])){
+                        // TODO: send push notification + delete cell form active timers table + add cell to ended timers table + update local DB values
+                        NotificationsManager.sharedInstance.sendNotification(timerTitle: activeTimers[index].name, timerDescription: activeTimers[index].description)
+                    } else{
+                        // TODO: send push notification + update timer time + add cell to ended timers table + update local DB values
+                        NotificationsManager.sharedInstance.sendNotification(timerTitle: activeTimers[index].name, timerDescription: activeTimers[index].description)
+                    }
+                }
             }
         }
     }
@@ -69,6 +79,24 @@ class ActiveTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             let realm_timer = TimerRealm.init(timer: timer)
             DBManager.sharedInstance.addTimer(object: realm_timer)
         }
+    }
+    
+    func check_timer_end(timer: Timer) -> Bool{
+        switch timer.type {
+        case TimerData.TimerType.down.rawValue:
+            if(timer.endDate > Date()){
+                return true
+            }
+            if(timer.repeats >= timer.succesCount + timer.failCount){
+                return true
+            }
+            return false
+        case TimerData.TimerType.up.rawValue:
+            return false
+        default:
+            return false
+        }
+ 
     }
     
     // MARK: Table View methods

@@ -10,5 +10,8 @@ import UIKit
 
 class EndedTimer: NSObject {
     var title: String = ""
-    var date_time: Date = TimerData().currentDate
+    var last_alarm_time: Date = TimerData().currentDate
+    // Statistic data
+    var succesCount = 0
+    var failCount = 0
 }
