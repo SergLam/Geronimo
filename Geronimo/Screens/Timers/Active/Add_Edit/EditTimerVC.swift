@@ -68,8 +68,8 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
     func initSettingsTables(){
         // Get Timer type
         self.settingsTable = TimerSettingsTable.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: TimerSettingsTable().cellHeight * 3), style: UITableViewStyle.grouped)
-        setTimerSettingsTableDataSource()
         self.contentView.addSubview(settingsTable!)
+        setTimerSettingsTableDataSource()
         settingsTable!.reloadData()
         settingsTable!.snp.makeConstraints{(make) -> Void in
             make.right.equalTo(self.view).offset(0)
@@ -102,8 +102,8 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
                 guard let timer = settingsTable?.timer! else {
                     return
                 }
-                // Timer succesfully created - not new
-                timer.isNew = false
+                // Timer succesfully created
+                timer.isNew = timer.name.isEmpty
                 timer.name = self.timerTitle.text!
                 timer.timerDescription = self.timerNotes.text!
                 timer.timeToNextAlarm = timer.calculate_timeToNextAlarm(timer: timer)

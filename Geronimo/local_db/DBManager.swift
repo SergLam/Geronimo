@@ -24,11 +24,16 @@ class DBManager {
         return results
     }
     
+    func getTimerByID(timerID: Int) -> TimerRealm? {
+        let timer: TimerRealm? = database.object(ofType: TimerRealm.self, forPrimaryKey: timerID)
+        return timer
+    }
+    
     func addTimer(object: TimerRealm)   {
-        try! database.write {
-            database.add(object, update: true)
-            print("Added new object")
-        }
+            try! self.database.write {
+                self.database.add(object, update: true)
+                print("Added new object")
+            }
     }
     
     func deleteTimer(object: TimerRealm)   {
@@ -44,10 +49,10 @@ class DBManager {
     }
     
     func addEndedTimer(object: EndedTimerRealm)   {
-        try! database.write {
-            database.add(object, update: true)
-            print("Added new object")
-        }
+            try! self.database.write {
+                self.database.add(object, update: true)
+                print("Added new object")
+            }
     }
     
     func deleteEndedTimer(object: EndedTimerRealm)   {

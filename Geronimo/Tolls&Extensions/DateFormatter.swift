@@ -13,21 +13,24 @@ extension UIViewController{
     enum dateType: String {
         case date = "date"
         case time = "time"
+        case date_and_time = "date&time"
     }
     
     func formatDate(date: Date, type: String) -> String{
         let formatter = DateFormatter()
-        
-        if(type == dateType.date.rawValue){
+        switch type {
+        case dateType.date.rawValue:
             formatter.dateFormat = "dd.MM.yyyy"
             return formatter.string(from: date)
-        }
-        
-        if(type == dateType.time.rawValue){
+        case dateType.time.rawValue:
             formatter.dateFormat = "HH:mm"
             return formatter.string(from: date)
+        case dateType.date_and_time.rawValue:
+            formatter.dateFormat = "dd.MM.yyyy HH:mm"
+            return formatter.string(from: date)
+        default:
+            return ""
         }
-        return ""
     }
     
     func formatInterval(duration: TimeInterval) -> String {
@@ -43,21 +46,24 @@ extension UITableViewCell {
     enum dateType: String {
         case date = "date"
         case time = "time"
+        case date_and_time = "date&time"
     }
     
     func formatDate(date: Date, type: String) -> String{
         let formatter = DateFormatter()
-        
-        if(type == dateType.date.rawValue){
+        switch type {
+        case dateType.date.rawValue:
             formatter.dateFormat = "dd.MM.yyyy"
             return formatter.string(from: date)
-        }
-        
-        if(type == dateType.time.rawValue){
+        case dateType.time.rawValue:
             formatter.dateFormat = "HH:mm"
             return formatter.string(from: date)
+        case dateType.date_and_time.rawValue:
+            formatter.dateFormat = "dd.MM.yyyy HH:mm"
+            return formatter.string(from: date)
+        default:
+            return ""
         }
-        return ""
     }
     
     func formatInterval(duration: TimeInterval) -> String {

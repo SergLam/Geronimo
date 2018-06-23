@@ -31,7 +31,7 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
     }
     
     func configureNotificationCenter(){
-         UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().delegate = self
         // Define Actions
         let actionLater = UNNotificationAction(identifier: NotificationActionsID.later.rawValue, title: NotificationActionsTitles.later.rawValue, options: [])
         let actionConfirm = UNNotificationAction(identifier: NotificationActionsID.confirm.rawValue, title: NotificationActionsTitles.confirm.rawValue, options: [.foreground])
@@ -41,7 +41,7 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
         UNUserNotificationCenter.current().setNotificationCategories([tutorialCategory])
     }
     
-    func sendNotification(timerTitle: String, timerDescription: String) {
+    func sendNotification(timerTitle: String, timerDescription: String, timerNotificationID: String) {
         if(permissionResult){
             //creating the notification content
             let content = UNMutableNotificationContent()
@@ -54,11 +54,11 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
             // Set Category Identifier
             content.categoryIdentifier = NotificationCategory.name.rawValue
             //getting the notification trigger
-            //it will be called after 5 seconds
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            //it will be called after 2 seconds
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
             
             //getting the notification request
-            let request = UNNotificationRequest(identifier: "SimplifiedIOSNotification", content: content, trigger: trigger)
+            let request = UNNotificationRequest(identifier: timerNotificationID, content: content, trigger: trigger)
             
             //adding the notification to notification center
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
@@ -67,11 +67,15 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
     
     // MARK: UNUserNotificationCenterDelegate methods
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
         switch response.actionIdentifier {
         case NotificationActionsID.later.rawValue:
-            print("Save Tutorial For Later")
+            print("Later button pressed")
         case NotificationActionsID.confirm.rawValue:
             print("Timer confirmed")
+            let notification_ID = response.notification.request.identifier // equal to timerID
+            // TODO: update active timer success count + delete ended timer
+            confirmTimer(timerID: notification_ID)
             UIApplication.shared.applicationIconBadgeNumber = 0
         default:
             print("Other Action")
@@ -80,7 +84,39 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .sound, .badge]) //required to show notification when in foreground
+        completionHandler([.alert, .sound, .badge])
+        //required to show notification when in foreground
+    }
+    
+    func removeNotification(timerLastNotificationID: String){
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
+            var identifiers: [String] = []
+            for notification:UNNotificationRequest in notificationRequests {
+                if notification.identifier == timerLastNotificationID {
+                    identifiers.append(notification.identifier)
+                }
+            }
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+        }
+    }
+    
+    // MARK: generate random string for usage like notification ID
+    func randomString(length: Int = 15) -> String{
+        let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        var randomString: String = ""
+        for _ in 0..<length {
+            let randomValue = arc4random_uniform(UInt32(base.count))
+            randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
+        }
+        return randomString
+    }
+    
+    func confirmTimer(timerID: String){
+        // TODO: write method for DB to get active timer by lastnotificationID field
+        
+//        if let active_timer = DBManager.sharedInstance.getTimerByID(timerID: timerID){
+//
+//        }
     }
     
 }

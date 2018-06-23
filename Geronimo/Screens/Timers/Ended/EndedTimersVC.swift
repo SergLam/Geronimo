@@ -14,11 +14,19 @@ class EndedTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     let cellName = "EndedTimerTableCell"
     
-    var endedTimers = [1,2,3,4,5,6]
+    var endedTimers: [EndedTimer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTable()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        endedTimers.removeAll()
+        let endedRealmTimers = DBManager.sharedInstance.getEndedTimers()
+        for timer in endedRealmTimers{
+            endedTimers.append(EndedTimer.init(ended_timer_realm: timer))
+        }
     }
     
     func configureTable(){
@@ -33,8 +41,16 @@ class EndedTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
         let removeAction = UIContextualAction(style: .normal, title:  "", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             // Call action
+            let endedTimer = self.endedTimers[indexPath.row]
+            if let active_timer = DBManager.sharedInstance.getTimerByID(timerID: endedTimer.id){
+                // TODO: update active timer - remove last notification time + ID + increment success count
+                active_timer.lastNotificationID = nil
+                active_timer.last_alarm_time = nil
+                active_timer.succesCount = active_timer.succesCount + 1
+            }
             self.endedTimers.remove(at: indexPath.row)
             self.tableEndedTimers.deleteRows(at: [indexPath], with: .fade)
+
             // Reset state
             success(true)
         })

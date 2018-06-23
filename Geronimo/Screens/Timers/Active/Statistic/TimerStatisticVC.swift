@@ -20,10 +20,14 @@ class TimerStatisticVC: UIViewController {
     
     @IBOutlet weak var failedLabel: UILabel!
     
-    var succesPercent: Int = 76
+    var activeTimer: Timer?
+    
+    var endedTimer: EndedTimer?
+    
+    var succesPercent: Double = 76
     var succesCount: Int = 10
     
-    var failPercent: Int = 24
+    var failPercent: Double = 24
     var failCount: Int = 10
     
     override func viewDidLoad() {
@@ -31,6 +35,22 @@ class TimerStatisticVC: UIViewController {
         addCircleView()
         updateTextLabels()
         // Do any additional setup after loading the view.
+    }
+    
+    func setActiveTimer(timer: Timer){
+        self.activeTimer = timer
+        self.succesCount = timer.succesCount
+        self.failCount = timer.failCount
+        self.succesPercent = Double(succesCount / (succesCount + failCount))
+        self.failPercent = Double(failCount / (succesCount + failCount))
+    }
+    
+    func setEndedTimer(timer: EndedTimer){
+        self.endedTimer = timer
+        self.succesCount = timer.succesCount
+        self.failCount = timer.failCount
+        self.succesPercent = Double(succesCount / (succesCount + failCount))
+        self.failPercent = Double(failCount / (succesCount + failCount))
     }
     
     func addCircleView() {

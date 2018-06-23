@@ -9,7 +9,7 @@
 import UIKit
 
 class Timer: NSObject {
-    var id: Int = 0
+    var id: Int = -1
     var isNew: Bool = true
     
     var name: String = ""
@@ -36,6 +36,9 @@ class Timer: NSObject {
     // Statistic data
     var succesCount = 0
     var failCount = 0
+    // Notification managing data
+    var last_alarm_time: Date?
+    var lastNotificationID: String?
     
     convenience init(timer_realm: TimerRealm) {
         self.init()

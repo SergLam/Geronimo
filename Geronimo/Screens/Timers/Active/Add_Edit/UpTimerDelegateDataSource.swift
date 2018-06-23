@@ -22,11 +22,9 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
     let cellArrowName = "LabelArrowCell"
     
     func setData(timer: Timer, table: TimerSettingsTable, vc: UIViewController){
-        self.sectionHeaders = ["", "Repeats", "Begin"]
-        self.cellTitles = [["Type", "Period"],
-                           ["Infinitely", "Repeats"], ["Now", "Date", "Time"]]
-        self.cellValues = [ [timer.type, timer.period],
-                            [timer.isInfinetily, timer.repeats],
+        self.sectionHeaders = ["", "Begin"]
+        self.cellTitles = [["Type"],["Now", "Date", "Time"]]
+        self.cellValues = [ [timer.type],
                             [timer.isNow, timer.beginDate, timer.beginTime] ]
         self.table = table
         self.vc = vc
@@ -65,16 +63,10 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellArrowName, for: indexPath) as! LabelArrowCell
                  cell.updateCell(title: titles[row], description: String(describing: values[row]))
                 return cell
-            case 1:
-                let cell = tableView.dequeueReusableCell(withIdentifier: cellArrowName, for: indexPath) as! LabelArrowCell
-                if let interval = values[row] as? TimeInterval{
-                   cell.updateCell(title: titles[row], description: cell.formatInterval(duration: interval))
-                    return cell
-                }
             default:
                 break
             }
-        default:
+        case 1:
             switch row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellSwitchName, for: indexPath) as! LabelSwitchCell
@@ -104,6 +96,8 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
             default:
                 break
             }
+        default:
+            break
         }
         return UITableViewCell()
     }
@@ -125,17 +119,6 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                             self.table?.updateTableCellValues()
                             self.table?.updateDataSource()
                             self.table?.reloadData()
-                        }
-                    }
-                }
-            case 1:
-                table?.typePicker.showPeriodPicker(fromController: self.vc!){ completion in
-                    if(completion){
-                        if let period = self.table!.typePicker.timer?.period {
-                            self.table?.timer?.period = period
-                            self.cellValues![section][row] = period
-                            self.table?.updateTableCellValues()
-                            self.table?.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                         }
                     }
                 }
@@ -182,7 +165,7 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
         switch section {
         case 0:
             return UITableViewAutomaticDimension
-        default:
+        case 1:
             switch row {
             case 0:
                 return UITableViewAutomaticDimension
@@ -209,6 +192,8 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
             default:
                 return UITableViewAutomaticDimension
             }
+        default:
+            return UITableViewAutomaticDimension
         }
     }
     

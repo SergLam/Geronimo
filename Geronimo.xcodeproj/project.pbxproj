@@ -16,6 +16,7 @@
 		7C302BAA20611AA700B60560 /* EndedTimersVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C302BA820611AA700B60560 /* EndedTimersVC.xib */; };
 		7C302BAE20611AE100B60560 /* EndedTimerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C302BAC20611AE100B60560 /* EndedTimerTableCell.swift */; };
 		7C302BAF20611AE100B60560 /* EndedTimerTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C302BAD20611AE100B60560 /* EndedTimerTableCell.xib */; };
+		7C38D41F20D916640037AC1E /* ActiveTimersTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C38D41E20D916640037AC1E /* ActiveTimersTable.swift */; };
 		7C3C06F02066653700E777D3 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3C06EF2066653700E777D3 /* DateFormatter.swift */; };
 		7C3C06F220669B9100E777D3 /* Date&TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3C06F120669B9100E777D3 /* Date&TimePicker.swift */; };
 		7C43B7BE2062960300D57614 /* EditTimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43B7BC2062960300D57614 /* EditTimerVC.swift */; };
@@ -69,6 +70,7 @@
 		7C302BA820611AA700B60560 /* EndedTimersVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndedTimersVC.xib; sourceTree = "<group>"; };
 		7C302BAC20611AE100B60560 /* EndedTimerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndedTimerTableCell.swift; sourceTree = "<group>"; };
 		7C302BAD20611AE100B60560 /* EndedTimerTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndedTimerTableCell.xib; sourceTree = "<group>"; };
+		7C38D41E20D916640037AC1E /* ActiveTimersTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTimersTable.swift; sourceTree = "<group>"; };
 		7C3C06EF2066653700E777D3 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		7C3C06F120669B9100E777D3 /* Date&TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date&TimePicker.swift"; sourceTree = "<group>"; };
 		7C43B7BC2062960300D57614 /* EditTimerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTimerVC.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				7C48B8DA20600CF4001605A6 /* ActiveTimerTableCell.xib */,
 				7C302BA220610AAC00B60560 /* ActiveTimersVC.swift */,
 				7C302BA320610AAC00B60560 /* ActiveTimersVC.xib */,
+				7C38D41E20D916640037AC1E /* ActiveTimersTable.swift */,
 			);
 			path = Active;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				7C97254820691F43008B7757 /* Type&PeriodPicker.swift in Sources */,
 				7CCFB5BC20624E7000D25EDB /* TableViewRowAction.swift in Sources */,
 				7CCFB5C7206279F500D25EDB /* StatusBar.swift in Sources */,
+				7C38D41F20D916640037AC1E /* ActiveTimersTable.swift in Sources */,
 				7CF48D95206A7E0000E09A02 /* UpTimerDelegateDataSource.swift in Sources */,
 				7CA4C11C20650CCF00E7E905 /* LabelSwitchCell.swift in Sources */,
 				7C48B8DB20600CF4001605A6 /* ActiveTimerTableCell.swift in Sources */,

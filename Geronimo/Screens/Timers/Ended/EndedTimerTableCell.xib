@@ -51,6 +51,10 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="timerLastAlarmTime" destination="zoc-FA-PfT" id="iTD-iC-wMv"/>
+                <outlet property="timerTitle" destination="xer-5H-KTh" id="iZL-Tn-ah7"/>
+            </connections>
             <point key="canvasLocation" x="34" y="26"/>
         </tableViewCell>
     </objects>

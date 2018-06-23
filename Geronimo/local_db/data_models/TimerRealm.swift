@@ -37,6 +37,9 @@ class TimerRealm: Object {
     // Statistic data
     @objc dynamic var succesCount = 0
     @objc dynamic var failCount = 0
+    // Notification managing data
+    @objc dynamic var last_alarm_time: Date?
+    @objc dynamic var lastNotificationID: String?
     
     convenience init(timer: Timer) {
         self.init()
@@ -44,7 +47,7 @@ class TimerRealm: Object {
     }
     
     func updateTimer(timer: Timer){
-        if(timer.isNew){
+        if(timer.id == -1){
             self.id = incrementID()
         } else {
             self.id = timer.id
@@ -68,6 +71,8 @@ class TimerRealm: Object {
         self.endWorkTime = timer.endWorkTime
         self.succesCount = timer.succesCount
         self.failCount = timer.failCount
+        self.last_alarm_time = timer.last_alarm_time
+        self.lastNotificationID = timer.lastNotificationID
     }
     
     override static func primaryKey() -> String? {
