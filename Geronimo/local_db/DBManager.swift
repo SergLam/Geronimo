@@ -29,6 +29,11 @@ class DBManager {
         return timer
     }
     
+    func getTimerByNotificationID(id: String) -> TimerRealm? {
+        let timers: Results<TimerRealm> = database.objects(TimerRealm.self).filter("lastNotificationID = "+id)
+        return timers.first
+    }
+    
     func addTimer(object: TimerRealm)   {
             try! self.database.write {
                 self.database.add(object, update: true)
@@ -46,6 +51,11 @@ class DBManager {
     func getEndedTimers() -> Results<EndedTimerRealm> {
         let results: Results<EndedTimerRealm> = database.objects(EndedTimerRealm.self)
         return results
+    }
+    
+    func getEndedTimerByID(timerID: Int) -> EndedTimerRealm? {
+        let timer: EndedTimerRealm? = database.object(ofType: EndedTimerRealm.self, forPrimaryKey: timerID)
+        return timer
     }
     
     func addEndedTimer(object: EndedTimerRealm)   {

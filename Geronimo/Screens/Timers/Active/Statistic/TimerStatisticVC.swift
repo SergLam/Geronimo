@@ -22,8 +22,6 @@ class TimerStatisticVC: UIViewController {
     
     var activeTimer: Timer?
     
-    var endedTimer: EndedTimer?
-    
     var succesPercent: Double = 76
     var succesCount: Int = 10
     
@@ -37,16 +35,9 @@ class TimerStatisticVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func setActiveTimer(timer: Timer){
+    convenience init(timer: Timer) {
+        self.init()
         self.activeTimer = timer
-        self.succesCount = timer.succesCount
-        self.failCount = timer.failCount
-        self.succesPercent = Double(succesCount / (succesCount + failCount))
-        self.failPercent = Double(failCount / (succesCount + failCount))
-    }
-    
-    func setEndedTimer(timer: EndedTimer){
-        self.endedTimer = timer
         self.succesCount = timer.succesCount
         self.failCount = timer.failCount
         self.succesPercent = Double(succesCount / (succesCount + failCount))
@@ -70,14 +61,12 @@ class TimerStatisticVC: UIViewController {
             make.top.equalTo(self.timerDescription.snp_bottom).offset(22)
             make.bottom.equalTo(self.succesLabel.snp_top).offset(-23)
             }
-        
     }
     
     func updateTextLabels(){
         self.succesLabel.text = "Success: \(succesCount) (\(succesPercent)%)"
         self.failedLabel.text = "Failed: \(failCount) (\(failPercent)%)"
     }
-    
     
     @IBAction func closeStatistic(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)

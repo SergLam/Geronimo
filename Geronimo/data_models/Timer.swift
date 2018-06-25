@@ -62,6 +62,8 @@ class Timer: NSObject {
         self.endWorkTime = timer_realm.endWorkTime
         self.succesCount = timer_realm.succesCount
         self.failCount = timer_realm.failCount
+        self.last_alarm_time = timer_realm.last_alarm_time
+        self.lastNotificationID = timer_realm.lastNotificationID
     }
     
     func calculate_timeToNextAlarmFromDB(timer: TimerRealm) -> TimeInterval{
@@ -81,6 +83,26 @@ class Timer: NSObject {
             return timer.timeToNextAlarm
         } else {
             return timer.period
+        }
+    }
+    
+    func calculateLastAlarmTime(timer: Timer) -> Date?{
+        var date: Date = Date()
+        switch timer.type {
+        case TimerData.TimerType.up.rawValue:
+            return nil
+        case TimerData.TimerType.down.rawValue:
+            switch timer.isNow{
+            case true:
+                date = date.addingTimeInterval(timer.timeToNextAlarm)
+                return date
+            case false:
+                var begin = timer.beginDate
+                begin = begin.addingTimeInterval(timer.timeToNextAlarm)
+                return begin
+            }
+        default:
+            return nil
         }
     }
     

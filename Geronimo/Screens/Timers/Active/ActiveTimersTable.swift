@@ -65,7 +65,7 @@ class ActiveTimersTable: UITableView, UITableViewDelegate, UITableViewDataSource
         deleteAction.backgroundColor = .red
         
         let statistisAction = UIContextualAction(style: .normal, title:  "", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            UIApplication.shared.keyWindow?.rootViewController?.present(TimerStatisticVC(), animated: true, completion: nil)
+            UIApplication.shared.keyWindow?.rootViewController?.present(TimerStatisticVC.init(timer: self.activeTimers[indexPath.row]), animated: true, completion: nil)
             success(true)
         })
         statistisAction.image = UIImage(named: "diagram")

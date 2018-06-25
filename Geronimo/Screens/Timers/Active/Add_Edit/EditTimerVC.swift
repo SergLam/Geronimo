@@ -107,6 +107,12 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
                 timer.name = self.timerTitle.text!
                 timer.timerDescription = self.timerNotes.text!
                 timer.timeToNextAlarm = timer.calculate_timeToNextAlarm(timer: timer)
+                // TODO: set last_alarm_time + lastNotificationID
+                
+                timer.last_alarm_time = timer.calculateLastAlarmTime(timer: timer)
+                
+                timer.lastNotificationID = NotificationsManager.sharedInstance.randomString()
+                
                 let timer_realm = TimerRealm.init(timer: timer)
                 DBManager.sharedInstance.addTimer(object: timer_realm)
                 self.dismiss(animated: true, completion: nil)

@@ -75,7 +75,7 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
             print("Timer confirmed")
             let notification_ID = response.notification.request.identifier // equal to timerID
             // TODO: update active timer success count + delete ended timer
-            confirmTimer(timerID: notification_ID)
+            confirmTimer(timerNotificationID: notification_ID)
             UIApplication.shared.applicationIconBadgeNumber = 0
         default:
             print("Other Action")
@@ -111,12 +111,15 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
         return randomString
     }
     
-    func confirmTimer(timerID: String){
+    func confirmTimer(timerNotificationID: String){
         // TODO: write method for DB to get active timer by lastnotificationID field
-        
-//        if let active_timer = DBManager.sharedInstance.getTimerByID(timerID: timerID){
-//
-//        }
+        if let active_timer = DBManager.sharedInstance.getTimerByNotificationID(id: timerNotificationID){
+           active_timer.succesCount = active_timer.succesCount + 1
+            DBManager.sharedInstance.addTimer(object: active_timer)
+            if let ended_timer = DBManager.sharedInstance.getEndedTimerByID(timerID: active_timer.id){
+                DBManager.sharedInstance.deleteEndedTimer(object: ended_timer)
+            }
+        }
     }
     
 }

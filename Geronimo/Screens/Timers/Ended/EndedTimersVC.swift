@@ -47,6 +47,7 @@ class EndedTimersVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 active_timer.lastNotificationID = nil
                 active_timer.last_alarm_time = nil
                 active_timer.succesCount = active_timer.succesCount + 1
+                DBManager.sharedInstance.addTimer(object: active_timer)
             }
             self.endedTimers.remove(at: indexPath.row)
             self.tableEndedTimers.deleteRows(at: [indexPath], with: .fade)

@@ -24,11 +24,11 @@ class ActiveTimersVC: UIViewController {
         let db_result = DBManager.sharedInstance.getTimers()
         setActiveTimers(db_result: db_result)
         self.activeTimersTable.activeTimers = self.activeTimers
+        setTableLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setTableLayout()
         
         let db_result = DBManager.sharedInstance.getTimers()
         if(activeTimers.count != db_result.count){
@@ -61,8 +61,12 @@ class ActiveTimersVC: UIViewController {
     }
     
     func setActiveTimers(db_result: Results<TimerRealm>){
-        for timer in db_result{
-            activeTimers.append(Timer.init(timer_realm: timer))
+        for timer_realm in db_result{
+            var timer = Timer.init(timer_realm: timer_realm)
+            if let _ = timer.lastNotificationID, let _ = timer.last_alarm_time{
+                timer.failCount = timer.failCount + 1
+            }
+            activeTimers.append(timer)
         }
     }
     
