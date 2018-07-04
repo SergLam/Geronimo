@@ -36,16 +36,18 @@ class ActiveTimersVC: UIViewController {
             setActiveTimers(db_result: db_result)
             self.activeTimersTable.activeTimers = self.activeTimers
             activeTimersTable.reloadData()
+        } else{
+            updateActiveTimers()
         }
         
         // Configure timer for table update
-        timerForUIUpdate = Foundation.Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.updateTimersNextAlarmTime)), userInfo: nil, repeats: true)
+        timerForUIUpdate = Foundation.Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.incrementTimersNextAlarmTime)), userInfo: nil, repeats: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         timerForUIUpdate.invalidate()
-        updateTimersNextAlarmTime()
+        updateActiveTimers()
         // Write active timers to Realm
         updateLocalDBTimers()
     }
@@ -60,6 +62,14 @@ class ActiveTimersVC: UIViewController {
         }
     }
     
+    func updateActiveTimers(){
+        for timer in activeTimers{
+            timer.timeToNextAlarm = timer.calculate_timeToNextAlarm(timer: timer)
+        }
+    }
+    
+    // MARK: methods for timers
+    
     func setActiveTimers(db_result: Results<TimerRealm>){
         for timer_realm in db_result{
             var timer = Timer.init(timer_realm: timer_realm)
@@ -70,7 +80,7 @@ class ActiveTimersVC: UIViewController {
         }
     }
     
-    @objc func updateTimersNextAlarmTime(){
+    @objc func incrementTimersNextAlarmTime(){
         for index in activeTimers.indices {
             if(activeTimers[index].isNow){
                 switch activeTimers[index].type{

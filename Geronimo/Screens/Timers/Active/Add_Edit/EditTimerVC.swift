@@ -94,7 +94,10 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveBarButton(_ sender: UIBarButtonItem) {
-        // TODO: function to save changes
+        
+        // TODO: logic for new and not new timers
+        // TODO: send notification from here (or cancel old notification and send new one)
+        
         if (validateTextFields()){
             let validation_result = validateTimer()
             if(validation_result.0){
@@ -103,7 +106,7 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
                     return
                 }
                 // Timer succesfully created
-                timer.isNew = timer.name.isEmpty
+                timer.isNew = false
                 timer.name = self.timerTitle.text!
                 timer.timerDescription = self.timerNotes.text!
                 timer.timeToNextAlarm = timer.calculate_timeToNextAlarm(timer: timer)

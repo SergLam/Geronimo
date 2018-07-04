@@ -22,11 +22,11 @@ class TimerStatisticVC: UIViewController {
     
     var activeTimer: Timer?
     
-    var succesPercent: Double = 76
-    var succesCount: Int = 10
+    var succesPercent: Double = 0.0
+    var succesCount: Int = 0
     
-    var failPercent: Double = 24
-    var failCount: Int = 10
+    var failPercent: Double = 0.0
+    var failCount: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +40,8 @@ class TimerStatisticVC: UIViewController {
         self.activeTimer = timer
         self.succesCount = timer.succesCount
         self.failCount = timer.failCount
-        self.succesPercent = Double(succesCount / (succesCount + failCount))
-        self.failPercent = Double(failCount / (succesCount + failCount))
+        self.succesPercent = Double(succesCount / (succesCount + failCount) * 100)
+        self.failPercent = Double(failCount / (succesCount + failCount) * 100)
     }
     
     func addCircleView() {
@@ -50,7 +50,12 @@ class TimerStatisticVC: UIViewController {
         let chartView = RKPieChartView(items: [succesItem, failItem], centerTitle: "")
         
         chartView.arcWidth = 120
-        chartView.circleColor = .green
+        // Bug: if one percent equal to 0 or 100 - displaying not correctly
+        if(succesPercent == 100){
+            chartView.circleColor = .green
+        } else if(failPercent == 100){
+            chartView.circleColor = .orange
+        }
         chartView.isTitleViewHidden = true
         chartView.isAnimationActivated = true
         self.view.addSubview(chartView)
@@ -58,12 +63,14 @@ class TimerStatisticVC: UIViewController {
         chartView.snp.makeConstraints{(make) -> Void in
             make.right.equalTo(self.view).offset(-20)
             make.left.equalTo(self.view).offset(20)
-            make.top.equalTo(self.timerDescription.snp_bottom).offset(22)
-            make.bottom.equalTo(self.succesLabel.snp_top).offset(-23)
+            make.top.equalTo(self.timerDescription.snp.bottom).offset(22)
+            make.bottom.equalTo(self.succesLabel.snp.top).offset(-23)
             }
     }
     
     func updateTextLabels(){
+        self.timerTitle.text = self.activeTimer?.name
+        self.timerDescription.text = self.activeTimer?.timerDescription
         self.succesLabel.text = "Success: \(succesCount) (\(succesPercent)%)"
         self.failedLabel.text = "Failed: \(failCount) (\(failPercent)%)"
     }

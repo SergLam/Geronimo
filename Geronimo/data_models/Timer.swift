@@ -68,22 +68,54 @@ class Timer: NSObject {
     
     func calculate_timeToNextAlarmFromDB(timer: TimerRealm) -> TimeInterval{
         let current_date = Date()
-        let isStarted = (timer.beginDate < current_date) && (timer.timeToNextAlarm < timer.period)
-        if(isStarted){
-            return timer.timeToNextAlarm
-        } else {
-            return timer.period
+        switch timer.type {
+        case TimerData.TimerType.down.rawValue:
+            let isStarted = (timer.beginDate > current_date && timer.endDate < current_date || timer.isNow) && (timer.timeToNextAlarm < timer.period )
+            if(isStarted){
+                // timeToNextAlarm = (Date() - beginDate) - period*(fail_count + success_count)
+                let difference = timer.beginDate.timeIntervalSince(current_date)
+                let alarms_time = timer.period * Double(timer.failCount + timer.succesCount)
+                return difference - alarms_time
+            } else {
+                return timer.period
+            }
+        case TimerData.TimerType.up.rawValue:
+            let isStarted = timer.isNow || current_date > timer.beginDate
+            if(isStarted){
+                return current_date.timeIntervalSince(timer.beginDate)
+            }else{
+                return 0
+            }
+        default:
+            break
         }
+        return 0
     }
     
     func calculate_timeToNextAlarm(timer: Timer) -> TimeInterval{
         let current_date = Date()
-        let isStarted = (timer.beginDate < current_date) && (timer.timeToNextAlarm < timer.period)
-        if(isStarted){
-            return timer.timeToNextAlarm
-        } else {
-            return timer.period
+        switch timer.type {
+        case TimerData.TimerType.down.rawValue:
+            let isStarted = (timer.beginDate > current_date && timer.endDate < current_date || timer.isNow) && (timer.timeToNextAlarm < timer.period )
+            if(isStarted){
+                // timeToNextAlarm = (Date() - beginDate) - period*(fail_count + success_count)
+                let difference = timer.beginDate.timeIntervalSince(current_date)
+                let alarms_time = timer.period * Double(timer.failCount + timer.succesCount)
+                return difference - alarms_time
+            } else {
+                return timer.period
+            }
+        case TimerData.TimerType.up.rawValue:
+            let isStarted = timer.isNow || current_date > timer.beginDate
+            if(isStarted){
+              return current_date.timeIntervalSince(timer.beginDate)
+            }else{
+              return 0
+            }
+        default:
+            break
         }
+        return 0
     }
     
     func calculateLastAlarmTime(timer: Timer) -> Date?{
