@@ -14,7 +14,11 @@ class ActiveTimersVC: UIViewController {
     
     var activeTimersTable = ActiveTimersTable()
     
-    var activeTimers: [Timer] = []
+    var activeTimers: [Timer] = []{
+        didSet{
+            activeTimersTable.activeTimers = activeTimers
+        }
+    }
     
     var timerForUIUpdate = Foundation.Timer()
     
@@ -23,7 +27,6 @@ class ActiveTimersVC: UIViewController {
         activeTimers.removeAll()
         let db_result = DBManager.sharedInstance.getTimers()
         setActiveTimers(db_result: db_result)
-        self.activeTimersTable.activeTimers = self.activeTimers
         setTableLayout()
     }
     
@@ -34,7 +37,6 @@ class ActiveTimersVC: UIViewController {
         if(activeTimers.count != db_result.count){
             activeTimers.removeAll()
             setActiveTimers(db_result: db_result)
-            self.activeTimersTable.activeTimers = self.activeTimers
             activeTimersTable.reloadData()
         } else{
             updateActiveTimers()
@@ -63,8 +65,12 @@ class ActiveTimersVC: UIViewController {
     }
     
     func updateActiveTimers(){
-        for timer in activeTimers{
-            timer.timeToNextAlarm = timer.calculate_timeToNextAlarm(timer: timer)
+        for (index, timer) in activeTimers.enumerated(){
+            if(!check_timer_end(timer: timer)){
+                timer.timeToNextAlarm = timer.calculate_timeToNextAlarm(timer: timer)
+            } else {
+                activeTimers.remove(at: index)
+            }
         }
     }
     
@@ -72,9 +78,13 @@ class ActiveTimersVC: UIViewController {
     
     func setActiveTimers(db_result: Results<TimerRealm>){
         for timer_realm in db_result{
-            var timer = Timer.init(timer_realm: timer_realm)
-            if let _ = timer.lastNotificationID, let _ = timer.last_alarm_time{
-                timer.failCount = timer.failCount + 1
+            let timer = Timer.init(timer_realm: timer_realm)
+            if let _ = timer.lastNotificationID, let time = timer.last_alarm_time{
+                if(time > Date()){
+                    timer.failCount = timer.failCount + 1
+                    timer.lastNotificationID = nil
+                    timer.last_alarm_time = nil
+                }
             }
             activeTimers.append(timer)
         }
@@ -139,8 +149,10 @@ class ActiveTimersVC: UIViewController {
     func check_timer_end(timer: Timer) -> Bool{
         switch timer.type {
         case TimerData.TimerType.down.rawValue:
-            let repeats: Bool = timer.repeats >= timer.succesCount + timer.failCount
-            if(timer.endDate > Date() && repeats){
+            if(timer.isNever){
+                return false
+            }
+            if(timer.endDate > Date()){
                 return true
             } else{
                 return false

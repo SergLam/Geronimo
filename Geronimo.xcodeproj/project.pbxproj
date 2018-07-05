@@ -23,6 +23,7 @@
 		7C43B7BF2062960300D57614 /* EditTimerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C43B7BD2062960300D57614 /* EditTimerVC.xib */; };
 		7C48B8DB20600CF4001605A6 /* ActiveTimerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48B8D920600CF4001605A6 /* ActiveTimerTableCell.swift */; };
 		7C48B8DC20600CF4001605A6 /* ActiveTimerTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C48B8DA20600CF4001605A6 /* ActiveTimerTableCell.xib */; };
+		7C7FBD6B20EE364B001455D6 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7FBD6A20EE364B001455D6 /* TopViewController.swift */; };
 		7C804EDF20B03AE4009E2183 /* EndedTimerRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C804EDE20B03AE4009E2183 /* EndedTimerRealm.swift */; };
 		7C97254820691F43008B7757 /* Type&PeriodPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C97254720691F43008B7757 /* Type&PeriodPicker.swift */; };
 		7CA0A4472063C4CC000B10C6 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA0A4452063C4CC000B10C6 /* AboutVC.swift */; };
@@ -77,6 +78,7 @@
 		7C43B7BD2062960300D57614 /* EditTimerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTimerVC.xib; sourceTree = "<group>"; };
 		7C48B8D920600CF4001605A6 /* ActiveTimerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTimerTableCell.swift; sourceTree = "<group>"; };
 		7C48B8DA20600CF4001605A6 /* ActiveTimerTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActiveTimerTableCell.xib; sourceTree = "<group>"; };
+		7C7FBD6A20EE364B001455D6 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		7C804EDE20B03AE4009E2183 /* EndedTimerRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndedTimerRealm.swift; sourceTree = "<group>"; };
 		7C97254720691F43008B7757 /* Type&PeriodPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Type&PeriodPicker.swift"; sourceTree = "<group>"; };
 		7CA0A4452063C4CC000B10C6 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				7C97254720691F43008B7757 /* Type&PeriodPicker.swift */,
 				7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */,
 				7CE9A93E2082B226004C0C72 /* SCLAlertView.swift */,
+				7C7FBD6A20EE364B001455D6 /* TopViewController.swift */,
 			);
 			path = "Tolls&Extensions";
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				7CD31C40207363A600D73545 /* HideKeyboardOnTouch.swift in Sources */,
 				7C2AF276206454950028B2C4 /* TimerData.swift in Sources */,
 				7CCFB5C42062624000D25EDB /* SettingsTableCell.swift in Sources */,
+				7C7FBD6B20EE364B001455D6 /* TopViewController.swift in Sources */,
 				7CDED22220D6E0DD00A13435 /* NotificationsConstants.swift in Sources */,
 				7CA4C11820650A1200E7E905 /* LabelArrowCell.swift in Sources */,
 				7CE9A93F2082B226004C0C72 /* SCLAlertView.swift in Sources */,
