@@ -28,11 +28,11 @@ class ActiveTimersVC: UIViewController {
         let db_result = DBManager.sharedInstance.getTimers()
         setActiveTimers(db_result: db_result)
         setTableLayout()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLocalDBTimers), name: NSNotification.Name(rawValue: NotificationsManager.sharedInstance.updateLocalDBNotificationID), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         let db_result = DBManager.sharedInstance.getTimers()
         if(activeTimers.count != db_result.count){
             activeTimers.removeAll()
@@ -41,7 +41,7 @@ class ActiveTimersVC: UIViewController {
         } else{
             updateActiveTimers()
         }
-        
+        timerForUIUpdate.invalidate()
         // Configure timer for table update
         timerForUIUpdate = Foundation.Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.incrementTimersNextAlarmTime)), userInfo: nil, repeats: true)
     }
@@ -69,6 +69,7 @@ class ActiveTimersVC: UIViewController {
             if(!check_timer_end(timer: timer)){
                 timer.timeToNextAlarm = timer.calculate_timeToNextAlarm(timer: timer)
             } else {
+                DBManager.sharedInstance.deleteTimer(object: TimerRealm.init(timer: timer))
                 activeTimers.remove(at: index)
             }
         }
@@ -139,7 +140,8 @@ class ActiveTimersVC: UIViewController {
         }
     }
     
-    func updateLocalDBTimers(){
+    @objc func updateLocalDBTimers(){
+        updateActiveTimers()
         for timer in activeTimers{
             let realm_timer = TimerRealm.init(timer: timer)
             DBManager.sharedInstance.addTimer(object: realm_timer)
@@ -152,7 +154,7 @@ class ActiveTimersVC: UIViewController {
             if(timer.isNever){
                 return false
             }
-            if(timer.endDate > Date()){
+            if(timer.endDate > Date() || timer.timeToNextAlarm <= 0){
                 return true
             } else{
                 return false

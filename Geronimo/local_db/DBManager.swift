@@ -37,13 +37,23 @@ class DBManager {
     func addTimer(object: TimerRealm)   {
             try! self.database.write {
                 self.database.add(object, update: true)
-                print("Added new object")
+                print("Add / update active timer")
             }
     }
     
     func deleteTimer(object: TimerRealm)   {
         try! database.write {
             database.delete(object)
+        }
+    }
+    
+    func deleteTimerById(timer: Timer){
+        let timer: TimerRealm? = database.object(ofType: TimerRealm.self, forPrimaryKey: timer.id)
+        if let object = timer{
+            try! database.write {
+                database.delete(object)
+                print("Delete timer by ID")
+            }
         }
     }
     
@@ -61,7 +71,7 @@ class DBManager {
     func addEndedTimer(object: EndedTimerRealm)   {
             try! self.database.write {
                 self.database.add(object, update: true)
-                print("Added new object")
+                print("Add / update ended timer")
             }
     }
     

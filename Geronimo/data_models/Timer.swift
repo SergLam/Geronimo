@@ -99,7 +99,7 @@ class Timer: NSObject {
             let isStarted = (timer.beginDate > current_date && timer.endDate < current_date || timer.isNow) && (timer.timeToNextAlarm < timer.period )
             if(isStarted){
                 // timeToNextAlarm = (Date() - beginDate) - period*(fail_count + success_count)
-                let difference = timer.beginDate.timeIntervalSince(current_date)
+                let difference = current_date.timeIntervalSince(timer.beginDate)
                 let alarms_time = timer.period * Double(timer.failCount + timer.succesCount)
                 return difference - alarms_time
             } else {

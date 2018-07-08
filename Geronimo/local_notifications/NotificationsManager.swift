@@ -13,14 +13,13 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
     
     static let sharedInstance = NotificationsManager()
     
-    var permissionResult: Bool = false
+    let updateLocalDBNotificationID = "updateActiveTimersAtLocalDB"
     
     func requestUserPermission(){
         configureNotificationCenter()
         // MARK: Request permission for notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             if(granted == true){
-                self.permissionResult = true
             } else{
                 let alert = UIAlertController(title: "Notification Access", message: "In order to use this application, turn on notification permission in Settings app.", preferredStyle: .alert)
                 let alertAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -28,6 +27,18 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
                 UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
             }
         }
+    }
+    
+    static func check_notification_permission() -> Bool {
+        var result = false
+       UNUserNotificationCenter.current().getNotificationSettings{ (settings) in
+        if settings.authorizationStatus == .authorized{
+            result = true
+        } else {
+            result = false
+        }
+        }
+        return result
     }
     
     func configureNotificationCenter(){
@@ -42,7 +53,7 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
     }
     
     func sendNotification(timerTitle: String, timerDescription: String, timerNotificationID: String) {
-        if(permissionResult){
+        if(NotificationsManager.check_notification_permission()){
             //creating the notification content
             let content = UNMutableNotificationContent()
             
@@ -86,18 +97,6 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound, .badge])
         //required to show notification when in foreground
-    }
-    
-    func removeNotification(timerLastNotificationID: String){
-        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
-            var identifiers: [String] = []
-            for notification:UNNotificationRequest in notificationRequests {
-                if notification.identifier == timerLastNotificationID {
-                    identifiers.append(notification.identifier)
-                }
-            }
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
-        }
     }
     
     // MARK: generate random string for usage like notification ID

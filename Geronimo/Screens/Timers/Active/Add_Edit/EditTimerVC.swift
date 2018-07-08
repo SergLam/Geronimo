@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import SCLAlertView
+import UserNotifications
 
 class EditTimerVC: UIViewController, UITextFieldDelegate {
     
@@ -94,14 +95,11 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveBarButton(_ sender: UIBarButtonItem) {
-        
-        // TODO: logic for new and not new timers
-        // TODO: send notification from here (or cancel old notification and send new one)
-        
         if (validateTextFields()){
             let validation_result = validateTimer()
             if(validation_result.0){
-                // TODO: Save timer to Realm
+                // TODO: logic for new and not new timers
+                // TODO: send notification from here (or cancel old notification and send new one)
                 guard let timer = settingsTable?.timer! else {
                     return
                 }
@@ -110,12 +108,20 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
                 timer.name = self.timerTitle.text!
                 timer.timerDescription = self.timerNotes.text!
                 timer.timeToNextAlarm = timer.calculate_timeToNextAlarm(timer: timer)
-                // TODO: set last_alarm_time + lastNotificationID
-                
                 timer.last_alarm_time = timer.calculateLastAlarmTime(timer: timer)
-                
-                timer.lastNotificationID = NotificationsManager.sharedInstance.randomString()
-                
+                switch timer.isNew{
+                case true:
+                    timer.lastNotificationID = NotificationsManager.sharedInstance.randomString()
+                    NotificationsManager.sharedInstance.sendNotification(timerTitle: timer.name, timerDescription: timer.timerDescription, timerNotificationID: timer.lastNotificationID!)
+                case false:
+                    if let notificationID = timer.lastNotificationID{
+                        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [notificationID])
+                        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationID])
+                        timer.lastNotificationID = NotificationsManager.sharedInstance.randomString()
+                        NotificationsManager.sharedInstance.sendNotification(timerTitle: timer.name, timerDescription: timer.timerDescription, timerNotificationID: notificationID)
+                    }
+                    break
+                }
                 let timer_realm = TimerRealm.init(timer: timer)
                 DBManager.sharedInstance.addTimer(object: timer_realm)
                 self.dismiss(animated: true, completion: nil)
