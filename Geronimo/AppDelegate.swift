@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = navVC
         self.window?.makeKeyAndVisible()
+        // Register notification delegate + request permission
+        UNUserNotificationCenter.current().delegate = NotificationsManager.sharedInstance
+        NotificationsManager.sharedInstance.requestUserPermission()
         return true
     }
 

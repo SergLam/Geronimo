@@ -52,24 +52,24 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
         UNUserNotificationCenter.current().setNotificationCategories([tutorialCategory])
     }
     
-    func sendNotification(timerTitle: String, timerDescription: String, timerNotificationID: String) {
+    func sendNotification(timer: Timer) {
         if(NotificationsManager.check_notification_permission()){
             //creating the notification content
             let content = UNMutableNotificationContent()
             
             //adding title, subtitle, body and badge
-            content.title = timerTitle
-            content.body = timerDescription
+            content.title = timer.name
+            content.body = timer.timerDescription
             content.badge = 1
             content.sound = UNNotificationSound.default()
             // Set Category Identifier
             content.categoryIdentifier = NotificationCategory.name.rawValue
             //getting the notification trigger
-            //it will be called after 2 seconds
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
+            //it will be called after time interval
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timer.period, repeats: true)
             
             //getting the notification request
-            let request = UNNotificationRequest(identifier: timerNotificationID, content: content, trigger: trigger)
+            let request = UNNotificationRequest(identifier: timer.lastNotificationID!, content: content, trigger: trigger)
             
             //adding the notification to notification center
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
