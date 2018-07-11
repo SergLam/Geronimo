@@ -111,7 +111,7 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
         case 0:
             switch row{
             case 0:
-                table?.typePicker.showTypePicker(fromController: self.vc!){ completion in
+                table?.typePicker.showTypePicker(){ completion in
                     if(completion){
                         if let type = self.table!.typePicker.timer?.type {
                             self.table?.timer?.type = type
@@ -128,7 +128,7 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
         case 1:
             switch row{
             case 1:
-                table?.picker.showDatePicker(fromController: self.vc!) { completion in
+                table?.picker.showDatePicker() { completion in
                     if(completion){
                         if let date = self.table!.picker.date{
                             self.table?.timer?.beginDate = date
@@ -139,7 +139,7 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                     }
                 }
             case 2:
-                table?.picker.showTimePicker(fromController: self.vc!) { completion in
+                table?.picker.showTimePicker() { completion in
                     if(completion){
                         if let time = self.table!.picker.time{
                             self.table?.timer?.beginTime = time

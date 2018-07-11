@@ -18,7 +18,7 @@ class TypePeriodPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         self.timer = timer
     }
     
-    func showTypePicker(fromController controller: UIViewController, completion: @escaping (Bool)->Void ){
+    func showTypePicker(completion: @escaping (Bool)->Void ){
         let alert = UIAlertController(title: "TimerType", message: "\n\n\n\n\n\n", preferredStyle: .alert)
         alert.isModalInPopover = true
         
@@ -40,10 +40,18 @@ class TypePeriodPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
                 completion(true)
             }
         }))
-        controller.present(alert,animated: true, completion: nil )
+        
+        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        if let navigationController = rootViewController as? UINavigationController {
+            rootViewController = navigationController.viewControllers.first
+        }
+        if let tabBarController = rootViewController as? UITabBarController {
+            rootViewController = tabBarController.selectedViewController
+        }
+        rootViewController?.present(alert, animated: true, completion: nil)
     }
     
-    func showPeriodPicker(fromController controller: UIViewController, completion: @escaping (Bool)->Void){
+    func showPeriodPicker(completion: @escaping (Bool)->Void){
         let alert = UIAlertController(title: "Select time", message: "\n\n\n\n\n\n", preferredStyle: .alert)
         alert.isModalInPopover = true
         
@@ -64,7 +72,15 @@ class TypePeriodPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
                 completion(true)
             }
         }))
-        controller.present(alert,animated: true, completion: nil )
+        
+        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        if let navigationController = rootViewController as? UINavigationController {
+            rootViewController = navigationController.viewControllers.first
+        }
+        if let tabBarController = rootViewController as? UITabBarController {
+            rootViewController = tabBarController.selectedViewController
+        }
+        rootViewController?.present(alert, animated: true, completion: nil)
     }
     
     // MARK: UIPickerViewMethods

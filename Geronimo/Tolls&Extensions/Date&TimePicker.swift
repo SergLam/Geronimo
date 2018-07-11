@@ -16,7 +16,7 @@ class DateTimePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var choices: [Int] = Array(0...100)
     
-    func showDatePicker(fromController controller: UIViewController, completion: @escaping (Bool)->Void){
+    func showDatePicker(completion: @escaping (Bool)->Void){
         self.date = nil
         let alert = UIAlertController(title: "Select date", message: "\n\n\n\n\n\n", preferredStyle: .alert)
         alert.isModalInPopover = true
@@ -37,10 +37,18 @@ class DateTimePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
                 completion(true)
             }
         }))
-        controller.present(alert,animated: true, completion: nil )
+        
+        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        if let navigationController = rootViewController as? UINavigationController {
+            rootViewController = navigationController.viewControllers.first
+        }
+        if let tabBarController = rootViewController as? UITabBarController {
+            rootViewController = tabBarController.selectedViewController
+        }
+        rootViewController?.present(alert, animated: true, completion: nil)
     }
     
-    func showTimePicker(fromController controller: UIViewController, completion: @escaping (Bool)->Void){
+    func showTimePicker(completion: @escaping (Bool)->Void){
         self.time = nil
         let alert = UIAlertController(title: "Select time", message: "\n\n\n\n\n\n", preferredStyle: .alert)
         alert.isModalInPopover = true
@@ -60,10 +68,17 @@ class DateTimePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
                 completion(true)
             }
         }))
-        controller.present(alert,animated: true, completion: nil )
+        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        if let navigationController = rootViewController as? UINavigationController {
+            rootViewController = navigationController.viewControllers.first
+        }
+        if let tabBarController = rootViewController as? UITabBarController {
+            rootViewController = tabBarController.selectedViewController
+        }
+        rootViewController?.present(alert, animated: true, completion: nil)
     }
     
-    func showCountPicker(fromController controller: UIViewController, completion: @escaping (Bool)->Void ){
+    func showCountPicker(completion: @escaping (Bool)->Void ){
         let alert = UIAlertController(title: "Repeat Times", message: "\n\n\n\n\n\n", preferredStyle: .alert)
         alert.isModalInPopover = true
         
@@ -84,7 +99,14 @@ class DateTimePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
                 completion(true)
             }
         }))
-        controller.present(alert,animated: true, completion: nil )
+        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        if let navigationController = rootViewController as? UINavigationController {
+            rootViewController = navigationController.viewControllers.first
+        }
+        if let tabBarController = rootViewController as? UITabBarController {
+            rootViewController = tabBarController.selectedViewController
+        }
+        rootViewController?.present(alert, animated: true, completion: nil)
     }
     
     // MARK: Picker View methods

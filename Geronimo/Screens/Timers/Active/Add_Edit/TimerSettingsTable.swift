@@ -191,7 +191,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         case 0:
             switch row{
             case 0:
-                typePicker.showTypePicker(fromController: self.vc!){ completion in
+                typePicker.showTypePicker(){ completion in
                     if(completion){
                         if let type = self.typePicker.timer?.type {
                             self.cellValues![section][row] = type
@@ -202,7 +202,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                     }
                 }
             case 1:
-                typePicker.showPeriodPicker(fromController: self.vc!){ completion in
+                typePicker.showPeriodPicker(){ completion in
                     if(completion){
                         self.cellValues![section][row] = self.typePicker.period!
                         self.timer?.period = self.typePicker.period!
@@ -215,7 +215,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         case 1:
             switch row{
             case 1:
-                picker.showCountPicker(fromController: self.vc!) { completion in
+                picker.showCountPicker() { completion in
                     if (completion) {
                         if let count = self.picker.count {
                             self.cellValues![section][row] = count
@@ -230,7 +230,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         case 2:
             switch row{
             case 1:
-                picker.showDatePicker(fromController: self.vc!) { completion in
+                picker.showDatePicker() { completion in
                     if(completion){
                         if let date = self.picker.date{
                             self.cellValues![section][row] = date
@@ -240,7 +240,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                     }
                 }
             case 2:
-                picker.showTimePicker(fromController: self.vc!) { completion in
+                picker.showTimePicker() { completion in
                     if(completion){
                         if let time = self.picker.time{
                             self.timer?.beginTime = time
@@ -255,7 +255,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         case 3:
             switch row{
             case 1:
-                picker.showDatePicker(fromController: self.vc!) { completion in
+                picker.showDatePicker() { completion in
                     if(completion){
                         if let date = self.picker.date{
                             self.cellValues![section][row] = date
@@ -265,7 +265,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                     }
                 }
             case 2:
-                picker.showTimePicker(fromController: self.vc!){ completion in
+                picker.showTimePicker(){ completion in
                     if(completion){
                         if let time = self.picker.time{
                             self.timer?.endTime = time
@@ -280,7 +280,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         case 4:
             switch row{
             case 1:
-                picker.showTimePicker(fromController: self.vc!){ completion in
+                picker.showTimePicker(){ completion in
                 if let time = self.picker.time {
                     self.timer?.beginWorkTime = time
                     self.cellValues![section][row] = self.timer!.beginWorkTime
@@ -288,7 +288,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                 }
                 }
             case 2:
-                picker.showTimePicker(fromController: self.vc!){ completion in
+                picker.showTimePicker(){ completion in
                 if let time = self.picker.time {
                     self.timer?.endWorkTime = time
                     self.cellValues![section][row] = self.timer!.endWorkTime
