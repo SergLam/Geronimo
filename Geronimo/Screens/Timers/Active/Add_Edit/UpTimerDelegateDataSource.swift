@@ -15,19 +15,17 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
     var cellValues: [[Any]]?
     
     var table: TimerSettingsTable?
-    var vc: UIViewController?
     
     let cellSwitchName = "LabelSwitchCell"
     let cellLabelsName = "LabelLabelCell"
     let cellArrowName = "LabelArrowCell"
     
-    func setData(timer: Timer, table: TimerSettingsTable, vc: UIViewController){
+    func setData(timer: Timer, table: TimerSettingsTable){
         self.sectionHeaders = ["", "Begin"]
         self.cellTitles = [["Type"],["Now", "Date", "Time"]]
         self.cellValues = [ [timer.type],
                             [timer.isNow, timer.beginDate, timer.beginTime] ]
         self.table = table
-        self.vc = vc
     }
     
     // MARK: Table View sections
@@ -162,38 +160,40 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
         let row = indexPath.row
         
         let values = cellValues![section]
+        let cellHeight: CGFloat = 44.0
+        
         switch section {
         case 0:
-            return UITableViewAutomaticDimension
+            return cellHeight
         case 1:
             switch row {
             case 0:
-                return UITableViewAutomaticDimension
+                return cellHeight
             case 1:
                 if let isVisible = values[row-1] as? Bool{
                     if(isVisible){
                         return 0.0
                     } else {
-                        return UITableViewAutomaticDimension
+                        return cellHeight
                     }
                 } else {
-                    return UITableViewAutomaticDimension
+                    return cellHeight
                 }
             case 2:
                 if let isVisible = values[row-2] as? Bool{
                     if(isVisible){
                         return 0.0
                     } else {
-                        return UITableViewAutomaticDimension
+                        return cellHeight
                     }
                 } else {
-                    return UITableViewAutomaticDimension
+                    return cellHeight
                 }
             default:
-                return UITableViewAutomaticDimension
+                return cellHeight
             }
         default:
-            return UITableViewAutomaticDimension
+            return cellHeight
         }
     }
     

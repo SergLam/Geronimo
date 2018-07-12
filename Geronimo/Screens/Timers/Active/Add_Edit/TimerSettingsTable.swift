@@ -11,7 +11,6 @@ import UIKit
 class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     var timer: Timer?
-    var vc: UIViewController?
     var picker: DateTimePicker = DateTimePicker()
     
     let typePicker = TypePeriodPicker()
@@ -41,14 +40,13 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func setData(cellTitles: [[String]], cellValues: [[Any]], sectionHeaders: [String], timer: Timer, vc: UIViewController){
+    public func setData(cellTitles: [[String]], cellValues: [[Any]], sectionHeaders: [String], timer: Timer){
         self.cellTitles = cellTitles
         self.cellValues = cellValues
         self.sectionHeaders = sectionHeaders
         self.rowHeight = self.cellHeight
         self.timer = timer
         self.typePicker.timer = timer
-        self.vc = vc
     }
     
     func updateTableCellValues(){
@@ -67,7 +65,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
             self.dataSource = self
             self.delegate = self
         case TimerData.TimerType.up.rawValue:
-            self.upTimerDataSource.setData(timer: timer, table: self, vc: self.vc!)
+            self.upTimerDataSource.setData(timer: timer, table: self)
             self.dataSource = upTimerDataSource
             self.delegate = upTimerDataSource
         default:
@@ -308,63 +306,64 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         let row = indexPath.row
         
         let values = cellValues![section]
+        let cellHeight: CGFloat = 44.0
         
         switch section {
         case 0:
-           return UITableViewAutomaticDimension
+           return cellHeight
         case 4:
             switch row {
             case 0:
-                return UITableViewAutomaticDimension
+                return cellHeight
             case 1:
                 if let isVisible = values[row-1] as? Bool{
                     if(!isVisible){
                         return 0.0
                     } else {
-                        return UITableViewAutomaticDimension
+                        return cellHeight
                     }
                 } else {
-                    return UITableViewAutomaticDimension
+                    return cellHeight
                 }
             case 2:
                 if let isVisible = values[row-2] as? Bool{
                     if(!isVisible){
                         return 0.0
                     } else {
-                        return UITableViewAutomaticDimension
+                        return cellHeight
                     }
                 } else {
-                    return UITableViewAutomaticDimension
+                    return cellHeight
                 }
             default:
-                return UITableViewAutomaticDimension
+                return cellHeight
             }
         default:
             switch row {
             case 0:
-                return UITableViewAutomaticDimension
+                return 44.0
             case 1:
                 if let isVisible = values[row-1] as? Bool{
                     if(isVisible){
                         return 0.0
                     } else {
-                        return UITableViewAutomaticDimension
+                        return cellHeight
                     }
                 } else {
-                    return UITableViewAutomaticDimension
+                    return cellHeight
                 }
             case 2:
                 if let isVisible = values[row-2] as? Bool{
                     if(isVisible){
                         return 0.0
                     } else {
-                        return UITableViewAutomaticDimension
+                        return cellHeight
                     }
                 } else {
-                    return UITableViewAutomaticDimension
+                    return cellHeight
                 }
             default:
-                return UITableViewAutomaticDimension
+                return cellHeight
             }
         }
     }

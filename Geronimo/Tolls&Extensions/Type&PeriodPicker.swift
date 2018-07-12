@@ -18,9 +18,8 @@ class TypePeriodPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         self.timer = timer
     }
     
-    func showTypePicker(completion: @escaping (Bool)->Void ){
+    func showTypePicker(completion: @escaping (Bool)->Void){
         let alert = UIAlertController(title: "TimerType", message: "\n\n\n\n\n\n", preferredStyle: .alert)
-        alert.isModalInPopover = true
         
         let pickerFrame = UIPickerView(frame: CGRect(x: 80, y: 30, width: 100, height: 140))
         
@@ -40,20 +39,11 @@ class TypePeriodPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
                 completion(true)
             }
         }))
-        
-        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
-        if let navigationController = rootViewController as? UINavigationController {
-            rootViewController = navigationController.viewControllers.first
-        }
-        if let tabBarController = rootViewController as? UITabBarController {
-            rootViewController = tabBarController.selectedViewController
-        }
-        rootViewController?.present(alert, animated: true, completion: nil)
+        UIApplication.topViewController()?.present(alert, animated: true, completion: nil)
     }
     
     func showPeriodPicker(completion: @escaping (Bool)->Void){
         let alert = UIAlertController(title: "Select time", message: "\n\n\n\n\n\n", preferredStyle: .alert)
-        alert.isModalInPopover = true
         
         let timePicker = UIDatePicker(frame: CGRect(x: 40, y: 30, width: 200, height: 140))
         timePicker.datePickerMode = .countDownTimer
@@ -72,15 +62,7 @@ class TypePeriodPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
                 completion(true)
             }
         }))
-        
-        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
-        if let navigationController = rootViewController as? UINavigationController {
-            rootViewController = navigationController.viewControllers.first
-        }
-        if let tabBarController = rootViewController as? UITabBarController {
-            rootViewController = tabBarController.selectedViewController
-        }
-        rootViewController?.present(alert, animated: true, completion: nil)
+        UIApplication.topViewController()?.present(alert, animated: true, completion: nil)
     }
     
     // MARK: UIPickerViewMethods

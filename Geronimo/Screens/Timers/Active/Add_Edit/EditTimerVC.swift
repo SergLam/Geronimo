@@ -87,7 +87,7 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
             return
         }
         let cellValues = [ [timer.type, timer.period], [timer.isInfinetily, timer.repeats], [timer.isNow, timer.beginDate, timer.beginTime], [timer.isNever, timer.endDate, timer.endTime], [timer.isOnlyWorked, timer.beginWorkTime, timer.endWorkTime] ]
-        settingsTable!.setData(cellTitles: cellTitles, cellValues: cellValues, sectionHeaders: sectionHeaders, timer: timer, vc: self)
+        settingsTable!.setData(cellTitles: cellTitles, cellValues: cellValues, sectionHeaders: sectionHeaders, timer: timer)
     }
     
     @IBAction func cancelBarButton(_ sender: UIBarButtonItem) {
