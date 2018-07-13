@@ -8,9 +8,8 @@
 
 import UIKit
 
-class TimerData {
+struct TimerData {
     
-    var currentTime: DateComponents = Calendar.current.dateComponents([ .hour, .minute], from: Date())
     var currentDate: Date = Date()
     
     enum TimerType: String {

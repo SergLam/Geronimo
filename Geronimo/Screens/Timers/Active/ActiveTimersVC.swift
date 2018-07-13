@@ -60,7 +60,7 @@ class ActiveTimersVC: UIViewController {
     
     func updateActiveTimers(){
         for (index, timer) in activeTimersTable.activeTimers.enumerated(){
-            if(!check_timer_end(timer: timer)){
+            if(timer.check_timer_end()){
                 timer.timeToNextAlarm = timer.calculate_timeToNextAlarm(timer: timer)
             } else {
                 DBManager.sharedInstance.deleteTimer(object: TimerRealm.init(timer: timer))
@@ -109,7 +109,7 @@ class ActiveTimersVC: UIViewController {
             cell?.updateCell(timer: activeTimersTable.activeTimers[index])
         } else {
             // TODO: update active timer somehow if time ends
-            if(!check_timer_end(timer: activeTimersTable.activeTimers[index])){
+            if(activeTimersTable.activeTimers[index].check_timer_end()){
                 activeTimersTable.activeTimers[index].timeToNextAlarm = activeTimersTable.activeTimers[index].period
                 cell?.updateCell(timer: activeTimersTable.activeTimers[index])
             } else{
@@ -127,22 +127,6 @@ class ActiveTimersVC: UIViewController {
         }
     }
     
-    func check_timer_end(timer: Timer) -> Bool{
-        switch timer.type {
-        case TimerData.TimerType.down.rawValue:
-            if(timer.isNever){
-                return false
-            }
-            if(timer.endDate > Date()){
-                return true
-            } else{
-                return false
-            }
-        case TimerData.TimerType.up.rawValue:
-            return false
-        default:
-            return false
-        }
-    }
+
     
 }
