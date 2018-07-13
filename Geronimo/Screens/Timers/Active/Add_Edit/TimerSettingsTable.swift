@@ -53,7 +53,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         guard let timer = self.timer else {
             return
         }
-        self.cellValues = [ [timer.type, timer.period], [timer.isInfinetily, timer.repeats], [timer.isNow, timer.beginDate, timer.beginTime], [timer.isNever, timer.endDate, timer.endTime], [timer.isOnlyWorked, timer.beginWorkTime, timer.endWorkTime] ]
+        self.cellValues = [ [timer.type, timer.period], [timer.isInfinetily, timer.repeats], [timer.isNow, timer.beginDate, timer.beginDate], [timer.isNever, timer.endDate, timer.endDate], [timer.isOnlyWorked, timer.beginWorkTime, timer.endWorkTime] ]
     }
     
     func updateDataSource(){
@@ -231,8 +231,24 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                 picker.showDatePicker() { completion in
                     if(completion){
                         if let date = self.picker.date{
-                            self.cellValues![section][row] = date
-                            self.timer?.beginDate = date
+                            guard let begin = self.timer?.beginDate else{
+                                 return
+                            }
+                            let calendar = Calendar.current
+                            let new = calendar.dateComponents([.year, .month, .day], from: date)
+                            let old = calendar.dateComponents([.hour, .minute, .second], from: begin)
+                            var new_components = DateComponents()
+                            new_components.year = new.year
+                            new_components.month = new.month
+                            new_components.day = new.day
+                            new_components.hour = old.hour
+                            new_components.minute = old.minute
+                            new_components.second = old.second
+                            
+                            let new_date = calendar.date(from: new_components)!
+                            
+                            self.cellValues![section][row] = new_date
+                            self.timer?.beginDate = new_date
                             self.reloadRows(at: [indexPath], with: .automatic)
                         }
                     }
@@ -241,8 +257,24 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                 picker.showTimePicker() { completion in
                     if(completion){
                         if let time = self.picker.time{
-                            self.timer?.beginTime = time
-                            self.cellValues![section][row] = self.timer!.beginTime
+                            guard let begin = self.timer?.beginDate else{
+                                return
+                            }
+                            let calendar = Calendar.current
+                            let new = calendar.dateComponents([.hour, .minute, .second], from: time)
+                            let old = calendar.dateComponents([.year, .month, .day], from: begin)
+                            var new_components = DateComponents()
+                            new_components.second = new.second
+                            new_components.minute = new.minute
+                            new_components.hour = new.hour
+                            new_components.day = old.day
+                            new_components.month = old.month
+                            new_components.year = old.year
+                            
+                            let new_time = calendar.date(from: new_components)!
+                            
+                            self.timer?.beginDate = new_time
+                            self.cellValues![section][row] = new_time
                             self.reloadRows(at: [indexPath], with: .automatic)
                         }
                     }
@@ -256,8 +288,24 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                 picker.showDatePicker() { completion in
                     if(completion){
                         if let date = self.picker.date{
-                            self.cellValues![section][row] = date
-                            self.timer?.endDate = date
+                            guard let end = self.timer?.endDate else{
+                                return
+                            }
+                            let calendar = Calendar.current
+                            let new = calendar.dateComponents([.year, .month, .day], from: date)
+                            let old = calendar.dateComponents([.hour, .minute, .second], from: end)
+                            var new_components = DateComponents()
+                            new_components.year = new.year
+                            new_components.month = new.month
+                            new_components.day = new.day
+                            new_components.hour = old.hour
+                            new_components.minute = old.minute
+                            new_components.second = old.second
+                            
+                            let new_date = Calendar.current.date(from: new_components)!
+                            
+                            self.timer?.endDate = new_date
+                            self.cellValues![section][row] = new_date
                             self.reloadRows(at: [indexPath], with: .automatic)
                         }
                     }
@@ -266,8 +314,24 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                 picker.showTimePicker(){ completion in
                     if(completion){
                         if let time = self.picker.time{
-                            self.timer?.endTime = time
-                            self.cellValues![section][row] = self.timer!.endTime
+                            guard let end = self.timer?.endDate else{
+                                return
+                            }
+                            let calendar = Calendar.current
+                            let new = calendar.dateComponents([.hour, .minute, .second], from: time)
+                            let old = calendar.dateComponents([.year, .month, .day], from: end)
+                            var new_components = DateComponents()
+                            new_components.second = new.second
+                            new_components.minute = new.minute
+                            new_components.hour = new.hour
+                            new_components.day = old.day
+                            new_components.month = old.month
+                            new_components.year = old.year
+                            
+                            let new_time = calendar.date(from: new_components)!
+                            
+                            self.timer?.endDate = new_time
+                            self.cellValues![section][row] = new_time
                             self.reloadRows(at: [indexPath], with: .automatic)
                         }
                     }

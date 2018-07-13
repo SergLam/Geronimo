@@ -28,6 +28,11 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
     // Settings Tables
     var settingsTable: TimerSettingsTable?
     
+    convenience init(timer: Timer) {
+        self.init()
+        self.timer = timer
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardOnTap()
@@ -45,9 +50,8 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
         guard let timer = self.timer else {
             return
         }
-        if (timer.isNew) {
+        if (timer.isNew == true) {
             self.navBarTitle.title = "Add timer"
-            self.saveBarButton.isEnabled = true
         } else {
             self.navBarTitle.title = "Edit timer"
         }
@@ -60,10 +64,6 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
         timerNotes.text = timer?.timerDescription
         timerTitle.tag = 1
         timerNotes.tag = 2
-    }
-    
-    func setTimer(timer: Timer){
-        self.timer = timer
     }
     
     func initSettingsTables(){
@@ -86,7 +86,7 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
         guard let timer = self.timer else {
             return
         }
-        let cellValues = [ [timer.type, timer.period], [timer.isInfinetily, timer.repeats], [timer.isNow, timer.beginDate, timer.beginTime], [timer.isNever, timer.endDate, timer.endTime], [timer.isOnlyWorked, timer.beginWorkTime, timer.endWorkTime] ]
+        let cellValues = [ [timer.type, timer.period], [timer.isInfinetily, timer.repeats], [timer.isNow, timer.beginDate, timer.beginDate], [timer.isNever, timer.endDate, timer.endDate], [timer.isOnlyWorked, timer.beginWorkTime, timer.endWorkTime] ]
         settingsTable!.setData(cellTitles: cellTitles, cellValues: cellValues, sectionHeaders: sectionHeaders, timer: timer)
     }
     
@@ -104,7 +104,7 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
                     return
                 }
                 // Timer succesfully created
-                if(timer.id != -1){
+                if(timer.id == -1){
                     timer.isNew = false
                 }
                 timer.name = self.timerTitle.text!

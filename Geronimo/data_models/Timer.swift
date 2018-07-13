@@ -20,15 +20,15 @@ class Timer: NSObject {
     
     // Up Timer proporties (Down - Begin block)
     var isNow: Bool = true
+    // Date & time inside one field
     var beginDate: Date = TimerData().currentDate
-    var beginTime: Date = TimerData().currentDate
     // Down Timer proporties
     var isInfinetily: Bool = true
     var repeats: Int = 1
     // End block
     var isNever: Bool = true
+    // Date & time inside one field
     var endDate: Date = Calendar.current.date(byAdding: .hour, value: 1, to: TimerData().currentDate)!
-    var endTime: Date = Calendar.current.date(byAdding: .hour, value: 1, to: TimerData().currentDate)!
     // Worked time
     var isOnlyWorked = false
     var beginWorkTime: Date = TimerData().currentDate
@@ -51,12 +51,12 @@ class Timer: NSObject {
         self.timeToNextAlarm = calculate_timeToNextAlarmFromDB(timer: timer_realm)
         self.isNow = timer_realm.isNow
         self.beginDate = timer_realm.beginDate
-        self.beginTime = timer_realm.beginTime
+        
         self.isInfinetily = timer_realm.isInfinetily
         self.repeats = timer_realm.repeats
         self.isNever = timer_realm.isNever
         self.endDate = timer_realm.endDate
-        self.endTime = timer_realm.endTime
+        
         self.isOnlyWorked = timer_realm.isOnlyWorked
         self.beginWorkTime = timer_realm.beginWorkTime
         self.endWorkTime = timer_realm.endWorkTime
@@ -112,10 +112,10 @@ class Timer: NSObject {
             let isStarted = current_date > timer.beginDate
             let isPaused = isStarted && !timer.isNow
             if(isStarted){
-              return current_date.timeIntervalSince(timer.beginDate)
+                return current_date.timeIntervalSince(timer.beginDate)
             }
             if(isPaused){
-              return timer.timeToNextAlarm
+                return timer.timeToNextAlarm
             }
         default:
             break
@@ -124,20 +124,13 @@ class Timer: NSObject {
     }
     
     func calculateLastAlarmTime(timer: Timer) -> Date?{
-        var date: Date = Date()
         switch timer.type {
         case TimerData.TimerType.up.rawValue:
             return nil
         case TimerData.TimerType.down.rawValue:
-            switch timer.isNow{
-            case true:
-                date = date.addingTimeInterval(timer.timeToNextAlarm)
-                return date
-            case false:
-                var begin = timer.beginDate
-                begin = begin.addingTimeInterval(timer.timeToNextAlarm)
-                return begin
-            }
+            var lastAlarmTime = Date()
+            lastAlarmTime = lastAlarmTime.addingTimeInterval(-calculate_timeToNextAlarm(timer: timer))
+            return lastAlarmTime
         default:
             return nil
         }

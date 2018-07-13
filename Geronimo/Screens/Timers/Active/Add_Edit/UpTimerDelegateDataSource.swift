@@ -24,7 +24,7 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
         self.sectionHeaders = ["", "Begin"]
         self.cellTitles = [["Type"],["Now", "Date", "Time"]]
         self.cellValues = [ [timer.type],
-                            [timer.isNow, timer.beginDate, timer.beginTime] ]
+                            [timer.isNow, timer.beginDate, Calendar.current.dateComponents([.hour, .minute], from: timer.beginDate)] ]
         self.table = table
     }
     
@@ -129,22 +129,50 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                 table?.picker.showDatePicker() { completion in
                     if(completion){
                         if let date = self.table!.picker.date{
-                            self.table?.timer?.beginDate = date
-                            self.cellValues![section][row] = date
-                            self.table?.updateTableCellValues()
+                            guard let begin = self.table?.timer?.beginDate else{
+                                return
+                            }
+                            let calendar = Calendar.current
+                            let new = calendar.dateComponents([.year, .month, .day], from: date)
+                            let old = calendar.dateComponents([.hour, .minute, .second], from: begin)
+                            var new_components = DateComponents()
+                            new_components.year = new.year
+                            new_components.month = new.month
+                            new_components.day = new.day
+                            new_components.hour = old.hour
+                            new_components.minute = old.minute
+                            new_components.second = old.second
+                            
+                            let new_date = calendar.date(from: new_components)!
+                            
+                            self.table?.timer?.beginDate = new_date
+                            self.cellValues![section][row] = new_date
                             self.table?.reloadRows(at: [indexPath], with: .automatic)
                         }
                     }
                 }
             case 2:
                 table?.picker.showTimePicker() { completion in
-                    if(completion){
-                        if let time = self.table!.picker.time{
-                            self.table?.timer?.beginTime = time
-                            self.table?.updateTableCellValues()
-                            self.cellValues![section][row] = time
-                            self.table?.reloadRows(at: [indexPath], with: .automatic)
+                    if let time = self.table!.picker.time{
+                        guard let begin = self.table?.timer?.beginDate else{
+                            return
                         }
+                        let calendar = Calendar.current
+                        let new = calendar.dateComponents([.hour, .minute, .second], from: time)
+                        let old = calendar.dateComponents([.year, .month, .day], from: begin)
+                        var new_components = DateComponents()
+                        new_components.second = new.second
+                        new_components.minute = new.minute
+                        new_components.hour = new.hour
+                        new_components.day = old.day
+                        new_components.month = old.month
+                        new_components.year = old.year
+                        
+                        let new_time = calendar.date(from: new_components)!
+                        
+                        self.table?.timer?.beginDate = new_time
+                        self.cellValues![section][row] = new_time
+                        self.table?.reloadRows(at: [indexPath], with: .automatic)
                     }
                 }
             default:

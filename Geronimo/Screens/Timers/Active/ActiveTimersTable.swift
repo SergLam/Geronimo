@@ -47,10 +47,8 @@ class ActiveTimersTable: UITableView, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let editVC = EditTimerVC()
-        editVC.setTimer(timer: activeTimers[indexPath.row])
-        UIApplication.shared.keyWindow?.rootViewController?.present(editVC, animated: true, completion: nil)
-//        self.present(editVC, animated: true, completion: nil)
+        let editVC = EditTimerVC.init(timer: activeTimers[indexPath.row])
+        UIApplication.topViewController()?.present(editVC, animated: true, completion: nil)
     }
     
     // MARK: Add actions to table

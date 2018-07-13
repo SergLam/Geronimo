@@ -23,6 +23,7 @@ class DateTimePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         let datePicker = UIDatePicker(frame: CGRect(x: 10, y: 30, width: 250, height: 140))
         datePicker.datePickerMode = .date
         datePicker.minimumDate = Date()
+        datePicker.maximumDate = Date().addingTimeInterval(8760 * 3600 * 100) // 100 years
         
         alert.view.addSubview(datePicker)
         

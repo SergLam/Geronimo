@@ -21,15 +21,15 @@ class TimerRealm: Object {
     
     // Up Timer proporties (Down - Begin block)
     @objc dynamic var isNow: Bool = true
+    // Date & time inside one field
     @objc dynamic var beginDate: Date = TimerData().currentDate
-    @objc dynamic var beginTime: Date = TimerData().currentDate
     // Down Timer proporties
     @objc dynamic var isInfinetily: Bool = true
     @objc dynamic var repeats: Int = 1
     // End block
     @objc dynamic var isNever: Bool = true
+    // Date & time inside one field
     @objc dynamic var endDate: Date = TimerData().currentDate
-    @objc dynamic var endTime: Date = Calendar.current.date(byAdding: .hour, value: 1, to: TimerData().currentDate)!
     // Worked time
     @objc dynamic var isOnlyWorked = true
     @objc dynamic var beginWorkTime: Date = TimerData().currentDate
@@ -60,12 +60,10 @@ class TimerRealm: Object {
         self.timeToNextAlarm = timer.timeToNextAlarm
         self.isNow = timer.isNow
         self.beginDate = timer.beginDate
-        self.beginTime = timer.beginTime
         self.isInfinetily = timer.isInfinetily
         self.repeats = timer.repeats
         self.isNever = timer.isNever
         self.endDate = timer.endDate
-        self.endTime = timer.endTime
         self.isOnlyWorked = timer.isOnlyWorked
         self.beginWorkTime = timer.beginWorkTime
         self.endWorkTime = timer.endWorkTime
