@@ -18,6 +18,8 @@ class TimerRealm: Object {
     @objc dynamic var type: String = TimerData.TimerType.down.rawValue
     @objc dynamic var period: TimeInterval = 3600 // 1 hour
     @objc dynamic var timeToNextAlarm: TimeInterval = 3600
+    // is Timer enabled by user
+    @objc dynamic var isEnabled = true
     
     // Up Timer proporties (Down - Begin block)
     @objc dynamic var isNow: Bool = true
@@ -58,6 +60,7 @@ class TimerRealm: Object {
         self.type = timer.type
         self.period = timer.period
         self.timeToNextAlarm = timer.timeToNextAlarm
+        self.isEnabled = timer.isEnabled
         self.isNow = timer.isNow
         self.beginDate = timer.beginDate
         self.isInfinetily = timer.isInfinetily

@@ -17,11 +17,13 @@ class Timer: NSObject {
     var type: String = TimerData.TimerType.down.rawValue
     var period: TimeInterval = 3600 // 1 hour
     var timeToNextAlarm: TimeInterval = 3600
+    // is Timer enabled by user
+    var isEnabled = true
     
     // Up Timer proporties (Down - Begin block)
     var isNow: Bool = true
     // Date & time inside one field
-    var beginDate: Date = TimerData().currentDate
+    var beginDate: Date = Calendar.current.date(byAdding: .minute, value: 5, to: TimerData().currentDate)!
     // Down Timer proporties
     var isInfinetily: Bool = true
     var repeats: Int = 1
@@ -49,6 +51,9 @@ class Timer: NSObject {
         self.type = timer_realm.type
         self.period = timer_realm.period
         self.timeToNextAlarm = calculate_timeToNextAlarmFromDB(timer: timer_realm)
+        
+        self.isEnabled = timer_realm.isEnabled
+        
         self.isNow = timer_realm.isNow
         self.beginDate = timer_realm.beginDate
         
@@ -80,7 +85,6 @@ class Timer: NSObject {
                     let difference = timer.beginDate.timeIntervalSince(current_date)
                     let alarms_time = timer.period * Double(timer.failCount + timer.succesCount)
                     return difference - alarms_time
-                    
                 case false:
                     // timeToNextAlarm = (Date() - beginDate) - period*(fail_count + success_count)
                     let difference = timer.beginDate.timeIntervalSince(current_date)
@@ -191,7 +195,7 @@ class Timer: NSObject {
             if(self.isNever){
                 return false
             }
-            if(self.endDate > Date()){
+            if(self.endDate < Date()){
                 return true
             } else{
                 return false

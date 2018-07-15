@@ -54,7 +54,7 @@ class ActiveTimersTable: UITableView, UITableViewDelegate, UITableViewDataSource
     // MARK: Add actions to table
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title:  "", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            DBManager.sharedInstance.deleteTimerById(timer: self.activeTimers[indexPath.row])
+            DBManager.sharedInstance.deleteTimerById(timer_id: self.activeTimers[indexPath.row].id)
             self.activeTimers.remove(at: indexPath.row)
             self.deleteRows(at: [indexPath], with: .fade)
             success(true)

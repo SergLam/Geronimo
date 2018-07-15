@@ -35,17 +35,17 @@ class ActiveTimerTableCell: UITableViewCell {
         // TODO: update timer icon depending on it status
         self.timer = timer
         timerIcon.image = updateTimerImage()
-        self.backgroundColor = updateBackground(isEnabled: isTimerActive(timer: timer))
+        self.backgroundColor = updateBackground(isEnabled: timer.isEnabled)
         timerNextAlarm.text = self.formatIntervalWithSeconds(duration: timer.timeToNextAlarm)
         timerTitle.text = timer.name
         timerStatus.text = timer.timerDescription
-        isTimerEnabled.isOn = isTimerActive(timer: timer)
+        isTimerEnabled.isOn = timer.isEnabled
     }
     
     @IBAction func timerStateChanged(_ sender: UISwitch) {
         self.backgroundColor = updateBackground(isEnabled: sender.isOn)
         isSwitchEnabled?(sender.isOn)
-        self.timer?.isNow = sender.isOn
+        self.timer?.isEnabled = sender.isOn
         didChangeTimer?(self.timer)
         timerIcon.image = updateTimerImage()
     }
@@ -62,22 +62,22 @@ class ActiveTimerTableCell: UITableViewCell {
         if let timer = self.timer{
             switch(timer.type){
             case TimerData.TimerType.down.rawValue:
-                switch (timer.isNow){
+                switch (timer.isEnabled){
                 case true:
-                    if(timer.beginDate < Date()){
+                    if(timer.beginDate < Date() || timer.isNow){
                         return UIImage(named: "timer_active")!
                     }else{
                         return UIImage(named: "timer_not_started")!
                     }
                 case false:
-                    if(timer.beginDate < Date()){
+                    if(timer.beginDate < Date() || timer.isNow){
                         return UIImage(named: "timer_paused")!
                     }else{
                         return UIImage(named: "timer_not_started")!
                     }
                 }
             case TimerData.TimerType.up.rawValue:
-                if(timer.isNow){
+                if(timer.isEnabled){
                     return UIImage(named: "timer_up_active")!
                 } else{
                     return UIImage(named: "timer_up_not_active")!
@@ -87,14 +87,6 @@ class ActiveTimerTableCell: UITableViewCell {
             }
         }
         return UIImage(named: "placeholder")!
-    }
-    
-    func isTimerActive(timer: Timer) -> Bool{
-        if(timer.isNow || timer.beginDate > Date()){
-            return true
-        } else {
-            return false
-        }
     }
     
 }

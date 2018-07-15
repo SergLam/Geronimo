@@ -41,14 +41,8 @@ class DBManager {
             }
     }
     
-    func deleteTimer(object: TimerRealm)   {
-        try! database.write {
-            database.delete(object)
-        }
-    }
-    
-    func deleteTimerById(timer: Timer){
-        let timer: TimerRealm? = database.object(ofType: TimerRealm.self, forPrimaryKey: timer.id)
+    func deleteTimerById(timer_id: Int){
+        let timer: TimerRealm? = database.object(ofType: TimerRealm.self, forPrimaryKey: timer_id)
         if let object = timer{
             try! database.write {
                 database.delete(object)
@@ -75,9 +69,13 @@ class DBManager {
             }
     }
     
-    func deleteEndedTimer(object: EndedTimerRealm)   {
-        try! database.write {
-            database.delete(object)
+    func deleteEndedTimerById(timer_id: Int)   {
+        let timer: EndedTimerRealm? = database.object(ofType: EndedTimerRealm.self, forPrimaryKey: timer_id)
+        if let object = timer{
+            try! database.write {
+                database.delete(object)
+                print("Delete timer by ID")
+            }
         }
     }
     

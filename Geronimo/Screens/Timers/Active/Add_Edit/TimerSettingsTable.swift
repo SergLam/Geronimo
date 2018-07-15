@@ -122,7 +122,13 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellSwitchName, for: indexPath) as! LabelSwitchCell
                 cell.updateCell(name: titles[row], isEnabled: values[row] as! Bool)
                 cell.isSwitchEnabled = { [unowned self] isSelected in
+                    self.timer?.isOnlyWorked = isSelected
                     self.cellValues?[section][row] = isSelected
+                    let second_cell = self.cellForRow(at: IndexPath(row: row+1, section: section))
+                    let third_cell = self.cellForRow(at: IndexPath(row: row+2, section: section))
+                    self.showHideCell(cell: second_cell, isSwitch: !isSelected)
+                    self.showHideCell(cell: third_cell, isSwitch: !isSelected)
+                    self.reloadData()
                 }
                 return cell
             case 1:
@@ -152,7 +158,22 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellSwitchName, for: indexPath) as! LabelSwitchCell
                 cell.updateCell(name: titles[row], isEnabled: values[row] as! Bool)
                 cell.isSwitchEnabled = { [unowned self] isSelected in
+                    switch section{
+                    case 1:
+                        self.timer?.isInfinetily = isSelected
+                    case 2:
+                        self.timer?.isNow = isSelected
+                    case 3:
+                        self.timer?.isNever = isSelected
+                    default:
+                        break
+                    }
                     self.cellValues?[section][row] = isSelected
+                    let second_cell = self.cellForRow(at: IndexPath(row: row+1, section: section))
+                    let third_cell = self.cellForRow(at: IndexPath(row: row+2, section: section))
+                    self.showHideCell(cell: second_cell, isSwitch: isSelected)
+                    self.showHideCell(cell: third_cell, isSwitch: isSelected)
+                    self.reloadData()
                 }
                 return cell
             case 1:

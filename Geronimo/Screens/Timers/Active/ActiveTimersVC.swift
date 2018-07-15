@@ -14,7 +14,7 @@ class ActiveTimersVC: UIViewController {
     
     var activeTimersTable = ActiveTimersTable()
     
-    var timerForUIUpdate = Foundation.Timer()
+    var timerForUIUpdate: Foundation.Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,21 +28,17 @@ class ActiveTimersVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let db_result = DBManager.sharedInstance.getTimers()
-        if(activeTimersTable.activeTimers.count != db_result.count){
-            activeTimersTable.activeTimers.removeAll()
-            setActiveTimers(db_result: db_result)
-            activeTimersTable.reloadData()
-        } else{
-            updateActiveTimers()
-        }
-        timerForUIUpdate.invalidate()
+        activeTimersTable.activeTimers.removeAll()
+        setActiveTimers(db_result: db_result)
+        activeTimersTable.reloadData()
+        updateActiveTimers()
         // Configure timer for table update
         timerForUIUpdate = Foundation.Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.incrementTimersNextAlarmTime)), userInfo: nil, repeats: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        timerForUIUpdate.invalidate()
+        timerForUIUpdate?.invalidate()
         updateActiveTimers()
         // Write active timers to Realm
         updateLocalDBTimers()
@@ -60,11 +56,12 @@ class ActiveTimersVC: UIViewController {
     
     func updateActiveTimers(){
         for (index, timer) in activeTimersTable.activeTimers.enumerated(){
-            if(timer.check_timer_end()){
+            if(!timer.check_timer_end()){
                 timer.timeToNextAlarm = timer.calculate_timeToNextAlarm(timer: timer)
             } else {
-                DBManager.sharedInstance.deleteTimer(object: TimerRealm.init(timer: timer))
+                DBManager.sharedInstance.deleteTimerById(timer_id: timer.id)
                 activeTimersTable.activeTimers.remove(at: index)
+                activeTimersTable.deleteRows(at: [IndexPath.init(row: index, section: 0)], with: .automatic)
             }
         }
     }
@@ -87,7 +84,7 @@ class ActiveTimersVC: UIViewController {
     
     @objc func incrementTimersNextAlarmTime(){
         for index in activeTimersTable.activeTimers.indices {
-            if(activeTimersTable.activeTimers[index].isNow){
+            if(activeTimersTable.activeTimers[index].isEnabled){
                 switch activeTimersTable.activeTimers[index].type{
                 case TimerData.TimerType.up.rawValue:
                     activeTimersTable.activeTimers[index].timeToNextAlarm = activeTimersTable.activeTimers[index].timeToNextAlarm + 1
@@ -113,20 +110,19 @@ class ActiveTimersVC: UIViewController {
                 activeTimersTable.activeTimers[index].timeToNextAlarm = activeTimersTable.activeTimers[index].period
                 cell?.updateCell(timer: activeTimersTable.activeTimers[index])
             } else{
-                DBManager.sharedInstance.deleteTimerById(timer: activeTimersTable.activeTimers[index])
+                DBManager.sharedInstance.deleteTimerById(timer_id: activeTimersTable.activeTimers[index].id)
                 activeTimersTable.activeTimers.remove(at: index)
             }
         }
     }
     
     @objc func updateLocalDBTimers(){
-        updateActiveTimers()
         for timer in activeTimersTable.activeTimers{
             let realm_timer = TimerRealm.init(timer: timer)
             DBManager.sharedInstance.addTimer(object: realm_timer)
         }
     }
     
-
+    
     
 }

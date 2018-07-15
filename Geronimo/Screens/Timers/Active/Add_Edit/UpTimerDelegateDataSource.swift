@@ -71,6 +71,11 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                 cell.updateCell(name: titles[row], isEnabled: values[row] as! Bool)
                 cell.isSwitchEnabled = { [unowned self] isSelected in
                     self.cellValues?[section][row] = isSelected
+                    let second_cell = self.table?.cellForRow(at: IndexPath(row: row+1, section: section))
+                    let third_cell = self.table?.cellForRow(at: IndexPath(row: row+2, section: section))
+                    self.table?.showHideCell(cell: second_cell, isSwitch: isSelected)
+                    self.table?.showHideCell(cell: third_cell, isSwitch: isSelected)
+                    self.table?.reloadData()
                 }
                 return cell
             case 1:

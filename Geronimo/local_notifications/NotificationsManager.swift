@@ -116,7 +116,7 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
            active_timer.succesCount = active_timer.succesCount + 1
             DBManager.sharedInstance.addTimer(object: active_timer)
             if let ended_timer = DBManager.sharedInstance.getEndedTimerByID(timerID: active_timer.id){
-                DBManager.sharedInstance.deleteEndedTimer(object: ended_timer)
+                DBManager.sharedInstance.deleteEndedTimerById(timer_id: ended_timer.id)
             }
         }
     }

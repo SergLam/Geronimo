@@ -29,3 +29,18 @@ extension UITableViewRowAction {
         self.backgroundColor = UIColor.init(patternImage: actionImage!)
     }
 }
+
+extension UITableView{
+    
+    func showHideCell(cell: UITableViewCell?, isSwitch: Bool){
+        if let cell = cell{
+            if(isSwitch){
+                cell.isUserInteractionEnabled = false
+                cell.isHidden = true
+            } else {
+                cell.isUserInteractionEnabled = true
+                cell.isHidden = false
+            }
+        }
+    }
+}

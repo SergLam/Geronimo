@@ -41,7 +41,7 @@
 		7CA4C123206527C800E7E905 /* TimerSettingsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4C122206527C800E7E905 /* TimerSettingsTable.swift */; };
 		7CAEB68C20891C270021A36A /* EndedTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAEB68B20891C270021A36A /* EndedTimer.swift */; };
 		7CAEB68F20891E9D0021A36A /* TimerRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAEB68E20891E9D0021A36A /* TimerRealm.swift */; };
-		7CCFB5BC20624E7000D25EDB /* TableViewRowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5BB20624E7000D25EDB /* TableViewRowAction.swift */; };
+		7CCFB5BC20624E7000D25EDB /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5BB20624E7000D25EDB /* TableView.swift */; };
 		7CCFB5C0206260BF00D25EDB /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5BE206260BF00D25EDB /* SettingsVC.swift */; };
 		7CCFB5C1206260BF00D25EDB /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCFB5BF206260BF00D25EDB /* SettingsVC.xib */; };
 		7CCFB5C42062624000D25EDB /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCFB5C22062624000D25EDB /* SettingsTableCell.swift */; };
@@ -96,7 +96,7 @@
 		7CA4C122206527C800E7E905 /* TimerSettingsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettingsTable.swift; sourceTree = "<group>"; };
 		7CAEB68B20891C270021A36A /* EndedTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndedTimer.swift; sourceTree = "<group>"; };
 		7CAEB68E20891E9D0021A36A /* TimerRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRealm.swift; sourceTree = "<group>"; };
-		7CCFB5BB20624E7000D25EDB /* TableViewRowAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewRowAction.swift; sourceTree = "<group>"; };
+		7CCFB5BB20624E7000D25EDB /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		7CCFB5BE206260BF00D25EDB /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		7CCFB5BF206260BF00D25EDB /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
 		7CCFB5C22062624000D25EDB /* SettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableCell.swift; sourceTree = "<group>"; };
@@ -255,7 +255,7 @@
 		7CCFB5BA20624E4C00D25EDB /* Tolls&Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				7CCFB5BB20624E7000D25EDB /* TableViewRowAction.swift */,
+				7CCFB5BB20624E7000D25EDB /* TableView.swift */,
 				7CCFB5C6206279F500D25EDB /* StatusBar.swift */,
 				7C3C06EF2066653700E777D3 /* DateFormatter.swift */,
 				7C3C06F120669B9100E777D3 /* Date&TimePicker.swift */,
@@ -496,7 +496,7 @@
 				7CA4C11820650A1200E7E905 /* LabelArrowCell.swift in Sources */,
 				7CE9A93F2082B226004C0C72 /* SCLAlertView.swift in Sources */,
 				7C97254820691F43008B7757 /* Type&PeriodPicker.swift in Sources */,
-				7CCFB5BC20624E7000D25EDB /* TableViewRowAction.swift in Sources */,
+				7CCFB5BC20624E7000D25EDB /* TableView.swift in Sources */,
 				7CCFB5C7206279F500D25EDB /* StatusBar.swift in Sources */,
 				7C38D41F20D916640037AC1E /* ActiveTimersTable.swift in Sources */,
 				7CF48D95206A7E0000E09A02 /* UpTimerDelegateDataSource.swift in Sources */,
