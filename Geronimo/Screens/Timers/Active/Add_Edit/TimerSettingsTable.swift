@@ -10,7 +10,7 @@ import UIKit
 
 class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSource {
     
-    var timer: Timer?
+    var timer: GeronimoTimer?
     var picker: DateTimePicker = DateTimePicker()
     
     let typePicker = TypePeriodPicker()
@@ -40,7 +40,7 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func setData(cellTitles: [[String]], cellValues: [[Any]], sectionHeaders: [String], timer: Timer){
+    public func setData(cellTitles: [[String]], cellValues: [[Any]], sectionHeaders: [String], timer: GeronimoTimer){
         self.cellTitles = cellTitles
         self.cellValues = cellValues
         self.sectionHeaders = sectionHeaders
@@ -401,25 +401,9 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
             case 0:
                 return cellHeight
             case 1:
-                if let isVisible = values[row-1] as? Bool{
-                    if(!isVisible){
-                        return 0.0
-                    } else {
-                        return cellHeight
-                    }
-                } else {
-                    return cellHeight
-                }
+                return self.getCellHeight(isVisible: values[row-1])
             case 2:
-                if let isVisible = values[row-2] as? Bool{
-                    if(!isVisible){
-                        return 0.0
-                    } else {
-                        return cellHeight
-                    }
-                } else {
-                    return cellHeight
-                }
+                return self.getCellHeight(isVisible: values[row-2])
             default:
                 return cellHeight
             }
@@ -428,25 +412,9 @@ class TimerSettingsTable: UITableView, UITableViewDelegate, UITableViewDataSourc
             case 0:
                 return 44.0
             case 1:
-                if let isVisible = values[row-1] as? Bool{
-                    if(isVisible){
-                        return 0.0
-                    } else {
-                        return cellHeight
-                    }
-                } else {
-                    return cellHeight
-                }
+                return self.getCellHeight(isVisible: values[row-1])
             case 2:
-                if let isVisible = values[row-2] as? Bool{
-                    if(isVisible){
-                        return 0.0
-                    } else {
-                        return cellHeight
-                    }
-                } else {
-                    return cellHeight
-                }
+                return self.getCellHeight(isVisible: values[row-2])
             default:
                 return cellHeight
             }

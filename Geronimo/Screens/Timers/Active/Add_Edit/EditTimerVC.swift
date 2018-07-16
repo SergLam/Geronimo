@@ -23,12 +23,12 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var timerNotes: UITextField!
     
-    var timer: Timer?
+    var timer: GeronimoTimer?
     
     // Settings Tables
     var settingsTable: TimerSettingsTable?
     
-    convenience init(timer: Timer) {
+    convenience init(timer: GeronimoTimer) {
         self.init()
         self.timer = timer
     }

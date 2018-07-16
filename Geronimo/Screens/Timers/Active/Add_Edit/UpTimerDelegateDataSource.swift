@@ -20,7 +20,7 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
     let cellLabelsName = "LabelLabelCell"
     let cellArrowName = "LabelArrowCell"
     
-    func setData(timer: Timer, table: TimerSettingsTable){
+    func setData(timer: GeronimoTimer, table: TimerSettingsTable){
         self.sectionHeaders = ["", "Begin"]
         self.cellTitles = [["Type"],["Now", "Date", "Time"]]
         self.cellValues = [ [timer.type],
@@ -203,25 +203,9 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
             case 0:
                 return cellHeight
             case 1:
-                if let isVisible = values[row-1] as? Bool{
-                    if(isVisible){
-                        return 0.0
-                    } else {
-                        return cellHeight
-                    }
-                } else {
-                    return cellHeight
-                }
+                return self.getCellHeight(isVisible: values[row-1])
             case 2:
-                if let isVisible = values[row-2] as? Bool{
-                    if(isVisible){
-                        return 0.0
-                    } else {
-                        return cellHeight
-                    }
-                } else {
-                    return cellHeight
-                }
+                return self.getCellHeight(isVisible: values[row-1])
             default:
                 return cellHeight
             }

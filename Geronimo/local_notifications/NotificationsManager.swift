@@ -52,7 +52,7 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
         UNUserNotificationCenter.current().setNotificationCategories([tutorialCategory])
     }
     
-    func sendNotification(timer: Timer) {
+    func sendNotification(timer: GeronimoTimer) {
         if(NotificationsManager.check_notification_permission()){
             //creating the notification content
             let content = UNMutableNotificationContent()

@@ -22,16 +22,16 @@ class ActiveTimerTableCell: UITableViewCell {
     
     var isSwitchEnabled: ((_ isSelected: Bool) -> Void)?
     
-    var didChangeTimer: ((Timer?) -> Void)?
+    var didChangeTimer: ((GeronimoTimer?) -> Void)?
     
-    var timer: Timer?
+    var timer: GeronimoTimer?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func updateCell(timer: Timer){
+    func updateCell(timer: GeronimoTimer){
         // TODO: update timer icon depending on it status
         self.timer = timer
         timerIcon.image = updateTimerImage()

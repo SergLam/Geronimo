@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		78C5E5118880B8E7C8793164 /* Pods_Geronimo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AB05600F692B130E40375A /* Pods_Geronimo.framework */; };
-		7C2AF274206447860028B2C4 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2AF273206447860028B2C4 /* Timer.swift */; };
+		7C2AF274206447860028B2C4 /* GeronimoTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2AF273206447860028B2C4 /* GeronimoTimer.swift */; };
 		7C2AF276206454950028B2C4 /* TimerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2AF275206454950028B2C4 /* TimerData.swift */; };
 		7C302BA420610AAC00B60560 /* ActiveTimersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C302BA220610AAC00B60560 /* ActiveTimersVC.swift */; };
 		7C302BA520610AAC00B60560 /* ActiveTimersVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C302BA320610AAC00B60560 /* ActiveTimersVC.xib */; };
@@ -23,6 +23,7 @@
 		7C43B7BF2062960300D57614 /* EditTimerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C43B7BD2062960300D57614 /* EditTimerVC.xib */; };
 		7C48B8DB20600CF4001605A6 /* ActiveTimerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C48B8D920600CF4001605A6 /* ActiveTimerTableCell.swift */; };
 		7C48B8DC20600CF4001605A6 /* ActiveTimerTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C48B8DA20600CF4001605A6 /* ActiveTimerTableCell.xib */; };
+		7C7403A420FCF3C60004C59E /* GeronimoTimerFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7403A320FCF3C60004C59E /* GeronimoTimerFunctions.swift */; };
 		7C7FBD6B20EE364B001455D6 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7FBD6A20EE364B001455D6 /* TopViewController.swift */; };
 		7C804EDF20B03AE4009E2183 /* EndedTimerRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C804EDE20B03AE4009E2183 /* EndedTimerRealm.swift */; };
 		7C97254820691F43008B7757 /* Type&PeriodPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C97254720691F43008B7757 /* Type&PeriodPicker.swift */; };
@@ -63,7 +64,7 @@
 /* Begin PBXFileReference section */
 		280F448869ADB64AF5014B1E /* Pods-Geronimo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Geronimo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Geronimo/Pods-Geronimo.debug.xcconfig"; sourceTree = "<group>"; };
 		64AB05600F692B130E40375A /* Pods_Geronimo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Geronimo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C2AF273206447860028B2C4 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		7C2AF273206447860028B2C4 /* GeronimoTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeronimoTimer.swift; sourceTree = "<group>"; };
 		7C2AF275206454950028B2C4 /* TimerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerData.swift; sourceTree = "<group>"; };
 		7C302BA220610AAC00B60560 /* ActiveTimersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTimersVC.swift; sourceTree = "<group>"; };
 		7C302BA320610AAC00B60560 /* ActiveTimersVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActiveTimersVC.xib; sourceTree = "<group>"; };
@@ -78,6 +79,7 @@
 		7C43B7BD2062960300D57614 /* EditTimerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTimerVC.xib; sourceTree = "<group>"; };
 		7C48B8D920600CF4001605A6 /* ActiveTimerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTimerTableCell.swift; sourceTree = "<group>"; };
 		7C48B8DA20600CF4001605A6 /* ActiveTimerTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActiveTimerTableCell.xib; sourceTree = "<group>"; };
+		7C7403A320FCF3C60004C59E /* GeronimoTimerFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeronimoTimerFunctions.swift; sourceTree = "<group>"; };
 		7C7FBD6A20EE364B001455D6 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		7C804EDE20B03AE4009E2183 /* EndedTimerRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndedTimerRealm.swift; sourceTree = "<group>"; };
 		7C97254720691F43008B7757 /* Type&PeriodPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Type&PeriodPicker.swift"; sourceTree = "<group>"; };
@@ -196,7 +198,7 @@
 		7C48B8DD20600EBE001605A6 /* data_models */ = {
 			isa = PBXGroup;
 			children = (
-				7C2AF273206447860028B2C4 /* Timer.swift */,
+				7C2AF273206447860028B2C4 /* GeronimoTimer.swift */,
 				7C2AF275206454950028B2C4 /* TimerData.swift */,
 				7CAEB68B20891C270021A36A /* EndedTimer.swift */,
 			);
@@ -263,6 +265,7 @@
 				7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */,
 				7CE9A93E2082B226004C0C72 /* SCLAlertView.swift */,
 				7C7FBD6A20EE364B001455D6 /* TopViewController.swift */,
+				7C7403A320FCF3C60004C59E /* GeronimoTimerFunctions.swift */,
 			);
 			path = "Tolls&Extensions";
 			sourceTree = "<group>";
@@ -482,7 +485,7 @@
 				7CAEB68F20891E9D0021A36A /* TimerRealm.swift in Sources */,
 				7C302BAE20611AE100B60560 /* EndedTimerTableCell.swift in Sources */,
 				7C3C06F220669B9100E777D3 /* Date&TimePicker.swift in Sources */,
-				7C2AF274206447860028B2C4 /* Timer.swift in Sources */,
+				7C2AF274206447860028B2C4 /* GeronimoTimer.swift in Sources */,
 				7CA4C123206527C800E7E905 /* TimerSettingsTable.swift in Sources */,
 				7C302BA920611AA700B60560 /* EndedTimersVC.swift in Sources */,
 				7C3C06F02066653700E777D3 /* DateFormatter.swift in Sources */,
@@ -496,6 +499,7 @@
 				7CA4C11820650A1200E7E905 /* LabelArrowCell.swift in Sources */,
 				7CE9A93F2082B226004C0C72 /* SCLAlertView.swift in Sources */,
 				7C97254820691F43008B7757 /* Type&PeriodPicker.swift in Sources */,
+				7C7403A420FCF3C60004C59E /* GeronimoTimerFunctions.swift in Sources */,
 				7CCFB5BC20624E7000D25EDB /* TableView.swift in Sources */,
 				7CCFB5C7206279F500D25EDB /* StatusBar.swift in Sources */,
 				7C38D41F20D916640037AC1E /* ActiveTimersTable.swift in Sources */,

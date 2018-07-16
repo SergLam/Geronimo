@@ -11,10 +11,10 @@ import UIKit
 class TypePeriodPicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
     let types: [String] = [TimerData.TimerType.down.rawValue, TimerData.TimerType.up.rawValue]
-    var timer: Timer?
+    var timer: GeronimoTimer?
     var period: TimeInterval?
     
-    func setTimer(timer: Timer){
+    func setTimer(timer: GeronimoTimer){
         self.timer = timer
     }
     

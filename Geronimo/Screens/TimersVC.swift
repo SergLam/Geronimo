@@ -25,6 +25,7 @@ class TimersVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +73,7 @@ class TimersVC: UIViewController {
     }
     
     @IBAction func addTimer(_ sender: UIBarButtonItem) {
-        let editVC = EditTimerVC.init(timer: Timer())
+        let editVC = EditTimerVC.init(timer: GeronimoTimer())
         self.present(editVC, animated: true, completion: nil)        
     }
     

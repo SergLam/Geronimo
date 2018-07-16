@@ -20,7 +20,7 @@ class TimerStatisticVC: UIViewController {
     
     @IBOutlet weak var failedLabel: UILabel!
     
-    var activeTimer: Timer?
+    var activeTimer: GeronimoTimer?
     
     var succesPercent: Double = 0.0
     var succesCount: Int = 0
@@ -35,7 +35,7 @@ class TimerStatisticVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    convenience init(timer: Timer) {
+    convenience init(timer: GeronimoTimer) {
         self.init()
         self.activeTimer = timer
         self.succesCount = timer.succesCount

@@ -43,12 +43,12 @@ class TimerRealm: Object {
     @objc dynamic var last_alarm_time: Date?
     @objc dynamic var lastNotificationID: String?
     
-    convenience init(timer: Timer) {
+    convenience init(timer: GeronimoTimer) {
         self.init()
         updateTimer(timer: timer)
     }
     
-    func updateTimer(timer: Timer){
+    func updateTimer(timer: GeronimoTimer){
         if(timer.id == -1){
             self.id = incrementID()
         } else {

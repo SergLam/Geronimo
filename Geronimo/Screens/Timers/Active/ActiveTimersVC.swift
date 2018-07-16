@@ -14,7 +14,7 @@ class ActiveTimersVC: UIViewController {
     
     var activeTimersTable = ActiveTimersTable()
     
-    var timerForUIUpdate: Foundation.Timer?
+    var timerForUIUpdate: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +30,10 @@ class ActiveTimersVC: UIViewController {
         let db_result = DBManager.sharedInstance.getTimers()
         activeTimersTable.activeTimers.removeAll()
         setActiveTimers(db_result: db_result)
-        activeTimersTable.reloadData()
         updateActiveTimers()
+        activeTimersTable.reloadData()
         // Configure timer for table update
-        timerForUIUpdate = Foundation.Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.incrementTimersNextAlarmTime)), userInfo: nil, repeats: true)
+        timerForUIUpdate = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.incrementTimersNextAlarmTime)), userInfo: nil, repeats: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -70,7 +70,7 @@ class ActiveTimersVC: UIViewController {
     
     func setActiveTimers(db_result: Results<TimerRealm>){
         for timer_realm in db_result{
-            let timer = Timer.init(timer_realm: timer_realm)
+            let timer = GeronimoTimer.init(timer_realm: timer_realm)
             if let _ = timer.lastNotificationID, let time = timer.last_alarm_time{
                 if(time > Date()){
                     timer.failCount = timer.failCount + 1
@@ -83,13 +83,15 @@ class ActiveTimersVC: UIViewController {
     }
     
     @objc func incrementTimersNextAlarmTime(){
-        for index in activeTimersTable.activeTimers.indices {
-            if(activeTimersTable.activeTimers[index].isEnabled){
-                switch activeTimersTable.activeTimers[index].type{
+        for (index, timer) in activeTimersTable.activeTimers.enumerated() {
+            if(timer.isEnabled){
+                switch timer.type{
                 case TimerData.TimerType.up.rawValue:
-                    activeTimersTable.activeTimers[index].timeToNextAlarm = activeTimersTable.activeTimers[index].timeToNextAlarm + 1
-                    let cell = activeTimersTable.cellForRow(at: IndexPath.init(row: index, section: 0)) as? ActiveTimerTableCell
-                    cell?.updateCell(timer: activeTimersTable.activeTimers[index])
+                    if(timer.isNow || timer.beginDate < Date()){
+                        timer.timeToNextAlarm = timer.timeToNextAlarm + 1
+                        let cell = activeTimersTable.cellForRow(at: IndexPath.init(row: index, section: 0)) as? ActiveTimerTableCell
+                        cell?.updateCell(timer: timer)
+                    }
                 case TimerData.TimerType.down.rawValue:
                     updateDownTimerAndDB(index: index)
                 default:
@@ -101,16 +103,17 @@ class ActiveTimersVC: UIViewController {
     
     func updateDownTimerAndDB(index: Int){
         let cell = activeTimersTable.cellForRow(at: IndexPath.init(row: index, section: 0)) as? ActiveTimerTableCell
-        if(activeTimersTable.activeTimers[index].timeToNextAlarm > 0){
-            activeTimersTable.activeTimers[index].timeToNextAlarm = activeTimersTable.activeTimers[index].timeToNextAlarm - 1
-            cell?.updateCell(timer: activeTimersTable.activeTimers[index])
+        let timer = activeTimersTable.activeTimers[index]
+        if(timer.timeToNextAlarm > 0){
+            timer.timeToNextAlarm = timer.timeToNextAlarm - 1
+            cell?.updateCell(timer: timer)
         } else {
             // TODO: update active timer somehow if time ends
-            if(activeTimersTable.activeTimers[index].check_timer_end()){
-                activeTimersTable.activeTimers[index].timeToNextAlarm = activeTimersTable.activeTimers[index].period
-                cell?.updateCell(timer: activeTimersTable.activeTimers[index])
+            if(timer.check_timer_end()){
+                timer.timeToNextAlarm = timer.period
+                cell?.updateCell(timer: timer)
             } else{
-                DBManager.sharedInstance.deleteTimerById(timer_id: activeTimersTable.activeTimers[index].id)
+                DBManager.sharedInstance.deleteTimerById(timer_id: timer.id)
                 activeTimersTable.activeTimers.remove(at: index)
             }
         }

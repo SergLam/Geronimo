@@ -10,7 +10,7 @@ import UIKit
 
 class ActiveTimersTable: UITableView, UITableViewDelegate, UITableViewDataSource{
     
-    var activeTimers: [Timer] = []
+    var activeTimers: [GeronimoTimer] = []
     
     let cellName = "ActiveTimerTableCell"
     

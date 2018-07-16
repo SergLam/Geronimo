@@ -43,4 +43,22 @@ extension UITableView{
             }
         }
     }
+    
+}
+
+extension UITableViewDelegate{
+    
+    func getCellHeight(isVisible: Any) -> CGFloat{
+        let cellHeight: CGFloat = 44.0
+        if let visible = isVisible as? Bool{
+            if(visible){
+                return 0.0
+            } else {
+                return cellHeight
+            }
+        } else {
+            return cellHeight
+        }
+    }
+    
 }

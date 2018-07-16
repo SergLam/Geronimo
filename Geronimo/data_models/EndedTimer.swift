@@ -16,7 +16,7 @@ class EndedTimer: NSObject {
     var succesCount = 0
     var failCount = 0
     
-    convenience init(timer: Timer) {
+    convenience init(timer: GeronimoTimer) {
         self.init()
         self.id = timer.id
         self.title = timer.name
