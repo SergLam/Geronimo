@@ -18,14 +18,15 @@ class TimersVC: UIViewController {
     
     @IBOutlet weak var contentView: UIView!
     
-    var activeVC: ActiveTimersVC?
+    var activeVC: ActiveTimersVC = ActiveTimersVC()
     
-    var endedVC: EndedTimersVC?
+    var endedVC: EndedTimersVC = EndedTimersVC()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        self.addChildViewControllerAsView(vc: activeVC)
+        self.addChildViewControllerAsView(vc: endedVC)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,32 +37,24 @@ class TimersVC: UIViewController {
 
     @IBAction func switchViewController(_ sender: UISegmentedControl) {
         let tab = sender.selectedSegmentIndex
+        let vc_array = self.childViewControllers
         
-        for v in contentView.subviews{
-            v.removeFromSuperview()
+        for vc in vc_array{
+            vc.view.removeFromSuperview()
+            vc.removeFromParentViewController()
         }
         
         switch tab {
         case 0:
-            if let active = activeVC {
-                self.changeVC(vc: active)
-            } else {
-                self.activeVC = ActiveTimersVC()
-                self.changeVC(vc: self.activeVC!)
-            }
+            self.addChildViewControllerAsView(vc: activeVC)
         case 1:
-            if let ended = endedVC {
-                 self.changeVC(vc: ended)
-            } else{
-                 self.endedVC = EndedTimersVC()
-                 self.changeVC(vc: self.endedVC!)
-            }
+            self.addChildViewControllerAsView(vc: endedVC)
         default:
            break
         }
     }
     
-    func changeVC(vc: UIViewController) {
+    func addChildViewControllerAsView(vc: UIViewController) {
         self.addChildViewController(vc)
         vc.didMove(toParentViewController: self)
         vc.view.frame = self.contentView.bounds
