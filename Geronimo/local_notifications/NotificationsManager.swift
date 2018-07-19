@@ -69,22 +69,30 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timer.period, repeats: true)
             
             //getting the notification request
-            let request = UNNotificationRequest(identifier: timer.lastNotificationID!, content: content, trigger: trigger)
-            
-            //adding the notification to notification center
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            if let id = timer.lastNotificationID{
+                let request = UNNotificationRequest(identifier: id , content: content, trigger: trigger)
+                //adding the notification to notification center
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                print("Notification request added succesfully")
+            }
         }
     }
     
     // MARK: UNUserNotificationCenterDelegate methods
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
+        let notification_ID = response.notification.request.identifier
+        if let timer: TimerRealm = DBManager.sharedInstance.getTimerByNotificationID(id: notification_ID){
+            timer.last_alarm_time = Date()
+            DBManager.sharedInstance.addTimer(object: timer)
+        }
+        
         switch response.actionIdentifier {
         case NotificationActionsID.later.rawValue:
             print("Later button pressed")
         case NotificationActionsID.confirm.rawValue:
             print("Timer confirmed")
-            let notification_ID = response.notification.request.identifier // equal to timerID
+            let notification_ID = response.notification.request.identifier
             // TODO: update active timer success count + delete ended timer
             confirmTimer(timerNotificationID: notification_ID)
             UIApplication.shared.applicationIconBadgeNumber = 0
@@ -97,6 +105,11 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound, .badge])
         //required to show notification when in foreground
+        let notification_ID = notification.request.identifier
+        if let timer: TimerRealm = DBManager.sharedInstance.getTimerByNotificationID(id: notification_ID){
+            timer.last_alarm_time = Date()
+            DBManager.sharedInstance.addTimer(object: timer)
+        }
     }
     
     // MARK: generate random string for usage like notification ID

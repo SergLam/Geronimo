@@ -76,12 +76,18 @@ extension GeronimoTimer{
                     let difference = timer.beginDate.timeIntervalSince(current_date)
                     let alarms_time = timer.period * Double(timer.failCount + timer.succesCount)
                     return difference - alarms_time
-                    
                 case false:
                     // timeToNextAlarm = (Date() - beginDate) - period*(fail_count + success_count)
+                    let alarm_count = Double(timer.failCount + timer.succesCount)
                     let difference = timer.beginDate.timeIntervalSince(current_date)
-                    let alarms_time = timer.period * Double(timer.failCount + timer.succesCount)
-                    return difference - alarms_time
+                    let alarms_time = timer.period * alarm_count
+                    // Case when timer is old
+                    if(alarm_count != 0){
+                        return difference - alarms_time
+                    } else {
+                        // Case when timer just begins
+                        return timer.period - difference
+                    }
                 }
             case false:
                 switch isPaused{
@@ -112,19 +118,6 @@ extension GeronimoTimer{
             }
         default:
             return 0
-        }
-    }
-    
-    func calculateLastAlarmTime(timer: GeronimoTimer) -> Date?{
-        switch timer.type {
-        case TimerData.TimerType.up.rawValue:
-            return nil
-        case TimerData.TimerType.down.rawValue:
-            var lastAlarmTime = Date()
-            lastAlarmTime = lastAlarmTime.addingTimeInterval(-calculate_timeToNextAlarm(timer: timer))
-            return lastAlarmTime
-        default:
-            return nil
         }
     }
     

@@ -107,10 +107,12 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
                 if(timer.id == -1){
                     timer.isNew = false
                 }
+                if(timer.isNow){
+                    timer.beginDate = Date()
+                }
                 timer.name = self.timerTitle.text!
                 timer.timerDescription = self.timerNotes.text!
                 timer.timeToNextAlarm = timer.calculate_timeToNextAlarm(timer: timer)
-                timer.last_alarm_time = timer.calculateLastAlarmTime(timer: timer)
                 switch timer.isNew{
                 case true:
                     timer.lastNotificationID = NotificationsManager.sharedInstance.randomString()
@@ -122,7 +124,6 @@ class EditTimerVC: UIViewController, UITextFieldDelegate {
                         timer.lastNotificationID = NotificationsManager.sharedInstance.randomString()
                         NotificationsManager.sharedInstance.sendNotification(timer: timer)
                     }
-                    break
                 }
                 let timer_realm = TimerRealm.init(timer: timer)
                 DBManager.sharedInstance.addTimer(object: timer_realm)

@@ -18,9 +18,6 @@ class ActiveTimersVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activeTimersTable.activeTimers.removeAll()
-        let db_result = DBManager.sharedInstance.getTimers()
-        setActiveTimers(db_result: db_result)
         setTableLayout()
         NotificationCenter.default.addObserver(self, selector: #selector(updateLocalDBTimers), name: NSNotification.Name(rawValue: NotificationsManager.sharedInstance.updateLocalDBNotificationID), object: nil)
     }
@@ -31,7 +28,6 @@ class ActiveTimersVC: UIViewController {
         activeTimersTable.activeTimers.removeAll()
         setActiveTimers(db_result: db_result)
         updateActiveTimers()
-        activeTimersTable.reloadData()
         // Configure timer for table update
         timerForUIUpdate = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.incrementTimersNextAlarmTime)), userInfo: nil, repeats: true)
     }
@@ -64,6 +60,7 @@ class ActiveTimersVC: UIViewController {
                 activeTimersTable.deleteRows(at: [IndexPath.init(row: index, section: 0)], with: .automatic)
             }
         }
+        activeTimersTable.reloadData()
     }
     
     // MARK: methods for timers
@@ -93,7 +90,7 @@ class ActiveTimersVC: UIViewController {
                         cell?.updateCell(timer: timer)
                     }
                 case TimerData.TimerType.down.rawValue:
-                    updateDownTimerAndDB(index: index)
+                    updateDownTimer(index: index)
                 default:
                     break
                 }
@@ -101,7 +98,7 @@ class ActiveTimersVC: UIViewController {
         }
     }
     
-    func updateDownTimerAndDB(index: Int){
+    func updateDownTimer(index: Int){
         let cell = activeTimersTable.cellForRow(at: IndexPath.init(row: index, section: 0)) as? ActiveTimerTableCell
         let timer = activeTimersTable.activeTimers[index]
         if(timer.timeToNextAlarm > 0){
@@ -113,8 +110,8 @@ class ActiveTimersVC: UIViewController {
                 timer.timeToNextAlarm = timer.period
                 cell?.updateCell(timer: timer)
             } else{
-                DBManager.sharedInstance.deleteTimerById(timer_id: timer.id)
                 activeTimersTable.activeTimers.remove(at: index)
+                activeTimersTable.deleteRows(at: [IndexPath.init(row: index, section: 0)], with: .automatic)
             }
         }
     }
