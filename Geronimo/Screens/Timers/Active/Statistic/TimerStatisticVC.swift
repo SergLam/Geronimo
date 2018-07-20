@@ -11,7 +11,7 @@ import SnapKit
 import RKPieChart
 
 class TimerStatisticVC: UIViewController {
-
+    
     @IBOutlet weak var timerTitle: UILabel!
     
     @IBOutlet weak var timerDescription: UILabel!
@@ -37,11 +37,16 @@ class TimerStatisticVC: UIViewController {
     
     convenience init(timer: GeronimoTimer) {
         self.init()
-        self.activeTimer = timer
-        self.succesCount = timer.succesCount
-        self.failCount = timer.failCount
-        self.succesPercent = Double(succesCount / (succesCount + failCount) * 100)
-        self.failPercent = Double(failCount / (succesCount + failCount) * 100)
+        activeTimer = timer
+        succesCount = timer.succesCount
+        failCount = timer.failCount
+        let count = timer.succesCount + timer.failCount
+        if(count != 0){
+            succesPercent = Double(succesCount / (succesCount + failCount) * 100)
+            failPercent = Double(failCount / (succesCount + failCount) * 100)
+        }
+        
+        
     }
     
     func addCircleView() {
@@ -50,14 +55,16 @@ class TimerStatisticVC: UIViewController {
         let chartView = RKPieChartView(items: [succesItem, failItem], centerTitle: "")
         
         chartView.arcWidth = 120
+        chartView.circleColor = .gray
+        chartView.isTitleViewHidden = true
+        chartView.isAnimationActivated = true
         // Bug: if one percent equal to 0 or 100 - displaying not correctly
         if(succesPercent == 100){
             chartView.circleColor = .green
-        } else if(failPercent == 100){
+        }
+        if(failPercent == 100){
             chartView.circleColor = .orange
         }
-        chartView.isTitleViewHidden = true
-        chartView.isAnimationActivated = true
         self.view.addSubview(chartView)
         
         chartView.snp.makeConstraints{(make) -> Void in
@@ -65,7 +72,7 @@ class TimerStatisticVC: UIViewController {
             make.left.equalTo(self.view).offset(20)
             make.top.equalTo(self.timerDescription.snp.bottom).offset(22)
             make.bottom.equalTo(self.succesLabel.snp.top).offset(-23)
-            }
+        }
     }
     
     func updateTextLabels(){

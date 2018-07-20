@@ -73,9 +73,16 @@ extension GeronimoTimer{
                 switch isPaused{
                 case true:
                     // timeToNextAlarm = (Date() - beginDate) - period*(fail_count + success_count)
+                    let alarm_count = Double(timer.failCount + timer.succesCount)
                     let difference = timer.beginDate.timeIntervalSince(current_date)
-                    let alarms_time = timer.period * Double(timer.failCount + timer.succesCount)
-                    return difference - alarms_time
+                    let alarms_time = timer.period * alarm_count
+                    // Case when timer is old
+                    if(alarm_count != 0){
+                        return difference - alarms_time
+                    } else {
+                        // Case when timer just begins
+                        return timer.period - difference
+                    }
                 case false:
                     // timeToNextAlarm = (Date() - beginDate) - period*(fail_count + success_count)
                     let alarm_count = Double(timer.failCount + timer.succesCount)
@@ -86,7 +93,7 @@ extension GeronimoTimer{
                         return difference - alarms_time
                     } else {
                         // Case when timer just begins
-                        return timer.period - difference
+                        return timer.period + difference
                     }
                 }
             case false:
