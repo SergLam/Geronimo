@@ -51,14 +51,55 @@ extension UITableViewDelegate{
     func getCellHeight(isVisible: Any) -> CGFloat{
         let cellHeight: CGFloat = 44.0
         if let visible = isVisible as? Bool{
-            if(visible){
-                return 0.0
-            } else {
-                return cellHeight
-            }
+            return visible ? cellHeight : 0.0
         } else {
             return cellHeight
         }
+    }
+    
+    func showHideCell(cell: UITableViewCell?, isSwitch: Bool){
+        if let cell = cell{
+            if(isSwitch){
+                cell.isUserInteractionEnabled = false
+                cell.isHidden = true
+            } else {
+                cell.isUserInteractionEnabled = true
+                cell.isHidden = false
+            }
+        }
+    }
+    
+    
+    func changeOnlyDateInDate(old_date: Date, new_date: Date) -> Date{
+        let calendar = Calendar.current
+        let new = calendar.dateComponents([.year, .month, .day], from: new_date)
+        let old = calendar.dateComponents([.hour, .minute, .second], from: old_date)
+        var new_components = DateComponents()
+        new_components.year = new.year
+        new_components.month = new.month
+        new_components.day = new.day
+        new_components.hour = old.hour
+        new_components.minute = old.minute
+        new_components.second = old.second
+        
+        let new_date = calendar.date(from: new_components)!
+        return new_date
+    }
+    
+    func changeOnlyTimeInDate(old_date: Date, new_date: Date) -> Date{
+        let calendar = Calendar.current
+        let new = calendar.dateComponents([.hour, .minute, .second], from: new_date)
+        let old = calendar.dateComponents([.year, .month, .day], from: old_date)
+        var new_components = DateComponents()
+        new_components.second = new.second
+        new_components.minute = new.minute
+        new_components.hour = new.hour
+        new_components.day = old.day
+        new_components.month = old.month
+        new_components.year = old.year
+        
+        let new_time = calendar.date(from: new_components)!
+        return new_time
     }
     
 }

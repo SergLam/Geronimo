@@ -80,7 +80,7 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
-                changeCellState(cell: cell, isEnabled: values[row-1] as! Bool)
+                self.showHideCell(cell: cell, isSwitch: values[row-1] as! Bool)
                 if let date = values[row] as? Date{
                     cell.updateCell(name: titles[row], info: cell.formatDate(date: date, type: UITableViewCell.dateType.date.rawValue ))
                 } else {
@@ -89,7 +89,7 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellLabelsName, for: indexPath) as! LabelLabelCell
-                changeCellState(cell: cell, isEnabled: values[row-2] as! Bool)
+                self.showHideCell(cell: cell, isSwitch: values[row-2] as! Bool)
                 if let date = values[row] as? Date{
                     cell.updateCell(name: titles[row], info: cell.formatDate(date: date, type: UITableViewCell.dateType.time.rawValue ))
                 } else {
@@ -137,18 +137,7 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                             guard let begin = self.table?.timer?.beginDate else{
                                 return
                             }
-                            let calendar = Calendar.current
-                            let new = calendar.dateComponents([.year, .month, .day], from: date)
-                            let old = calendar.dateComponents([.hour, .minute, .second], from: begin)
-                            var new_components = DateComponents()
-                            new_components.year = new.year
-                            new_components.month = new.month
-                            new_components.day = new.day
-                            new_components.hour = old.hour
-                            new_components.minute = old.minute
-                            new_components.second = old.second
-                            
-                            let new_date = calendar.date(from: new_components)!
+                            let new_date = self.changeOnlyDateInDate(old_date: begin, new_date: date)
                             
                             self.table?.timer?.beginDate = new_date
                             self.cellValues![section][row] = new_date
@@ -162,18 +151,7 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
                         guard let begin = self.table?.timer?.beginDate else{
                             return
                         }
-                        let calendar = Calendar.current
-                        let new = calendar.dateComponents([.hour, .minute, .second], from: time)
-                        let old = calendar.dateComponents([.year, .month, .day], from: begin)
-                        var new_components = DateComponents()
-                        new_components.second = new.second
-                        new_components.minute = new.minute
-                        new_components.hour = new.hour
-                        new_components.day = old.day
-                        new_components.month = old.month
-                        new_components.year = old.year
-                        
-                        let new_time = calendar.date(from: new_components)!
+                        let new_time = self.changeOnlyTimeInDate(old_date: begin, new_date: time)
                         
                         self.table?.timer?.beginDate = new_time
                         self.cellValues![section][row] = new_time
@@ -213,17 +191,5 @@ class UpTimerDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataS
             return cellHeight
         }
     }
-    
-    // MARK: Cell State
-    func changeCellState(cell: UITableViewCell, isEnabled: Bool){
-        if(isEnabled){
-            cell.isUserInteractionEnabled = false
-            cell.isHidden = true
-        } else {
-            cell.isUserInteractionEnabled = true
-            cell.isHidden = false
-        }
-    }
-    
     
 }
