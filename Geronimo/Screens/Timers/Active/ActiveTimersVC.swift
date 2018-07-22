@@ -52,7 +52,7 @@ class ActiveTimersVC: UIViewController {
     
     func updateActiveTimers(){
         for (index, timer) in activeTimersTable.activeTimers.enumerated(){
-            if(!timer.check_timer_end()){
+            if(!timer.check_timer_end(timer: timer)){
                 timer.timeToNextAlarm = timer.calculate_timeToNextAlarm(timer: timer)
             } else {
                 DBManager.sharedInstance.deleteTimerById(timer_id: timer.id)
@@ -75,7 +75,11 @@ class ActiveTimersVC: UIViewController {
                     timer.last_alarm_time = nil
                 }
             }
-            activeTimersTable.activeTimers.append(timer)
+            if(!timer.check_timer_end(timer: timer)){
+                activeTimersTable.activeTimers.append(timer)
+            } else{
+                print("Timer finished, not added to active")
+            }
         }
     }
     
@@ -106,10 +110,11 @@ class ActiveTimersVC: UIViewController {
             cell?.updateCell(timer: timer)
         } else {
             // TODO: update active timer somehow if time ends
-            if(timer.check_timer_end()){
+            if(timer.check_timer_end(timer: timer)){
                 timer.timeToNextAlarm = timer.period
                 cell?.updateCell(timer: timer)
             } else{
+                DBManager.sharedInstance.deleteTimerById(timer_id: activeTimersTable.activeTimers[index].id)
                 activeTimersTable.activeTimers.remove(at: index)
                 activeTimersTable.deleteRows(at: [IndexPath.init(row: index, section: 0)], with: .automatic)
             }
