@@ -1,0 +1,42 @@
+PODS:
+  - Realm (3.7.4):
+    - Realm/Headers (= 3.7.4)
+  - Realm/Headers (3.7.4)
+  - RealmSwift (3.7.4):
+    - Realm (= 3.7.4)
+  - RKPieChart (0.0.1)
+  - SCLAlertView (0.8)
+  - SnapKit (4.0.0)
+
+DEPENDENCIES:
+  - RealmSwift
+  - RKPieChart
+  - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift.git`)
+  - SnapKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Realm
+    - RealmSwift
+    - RKPieChart
+    - SnapKit
+
+EXTERNAL SOURCES:
+  SCLAlertView:
+    :git: https://github.com/vikmeup/SCLAlertView-Swift.git
+
+CHECKOUT OPTIONS:
+  SCLAlertView:
+    :commit: de579dc3d0b1217074796dcb5015bef01aaf8a1b
+    :git: https://github.com/vikmeup/SCLAlertView-Swift.git
+
+SPEC CHECKSUMS:
+  Realm: a469bb59e33f9926102ccaea4349822c53b9117e
+  RealmSwift: a45861b21c180f5cf0f122144b9759fa8dde3e9e
+  RKPieChart: 8e643c505d24e61574f3a2fd6bd807403840b24b
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+
+PODFILE CHECKSUM: c1bfe4162e384244db20923fc9bd98342cc48ef0
+
+COCOAPODS: 1.5.2
