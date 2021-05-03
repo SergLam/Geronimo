@@ -6,10 +6,10 @@
 //  Copyright © 2018 Serg Liamthev. All rights reserved.
 //
 
-import UIKit
 import RealmSwift
+import UIKit
 
-class TimerRealm: Object {
+final class TimerRealm: Object {
     @objc dynamic var id: Int = 0
     @objc dynamic var isNew: Bool = true
     
@@ -35,7 +35,7 @@ class TimerRealm: Object {
     // Worked time
     @objc dynamic var isOnlyWorked = true
     @objc dynamic var beginWorkTime: Date = TimerData().currentDate
-    @objc dynamic var endWorkTime: Date = Calendar.current.date(byAdding: .hour, value: 1, to: TimerData().currentDate)!
+    @objc dynamic var endWorkTime: Date = TimerData().currentDate.addingTimeInterval(TimeInterval.hour)
     // Statistic data
     @objc dynamic var succesCount = 0
     @objc dynamic var failCount = 0
@@ -49,7 +49,7 @@ class TimerRealm: Object {
     }
     
     func updateTimer(timer: GeronimoTimer){
-        if(timer.id == -1){
+        if timer.id == -1 {
             self.id = incrementID()
         } else {
             self.id = timer.id
@@ -82,8 +82,8 @@ class TimerRealm: Object {
     
     func incrementID() -> Int {
         let timers = Array(DBManager.sharedInstance.getTimers())
-        if timers.count > 0{
-            let max_id = timers.map{$0.id}.max()!
+        if !timers.isEmpty {
+            let max_id = timers.map{ $0.id }.max() ?? 0
             return max_id + 1
         } else {
            return 0

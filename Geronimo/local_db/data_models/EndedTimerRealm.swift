@@ -6,10 +6,10 @@
 //  Copyright © 2018 Serg Liamthev. All rights reserved.
 //
 
-import UIKit
 import RealmSwift
+import UIKit
 
-class EndedTimerRealm: Object {
+final class EndedTimerRealm: Object {
     @objc dynamic var id: Int = 0
     @objc dynamic var title: String = ""
     @objc dynamic var last_alarm_time: Date = TimerData().currentDate
@@ -31,11 +31,12 @@ class EndedTimerRealm: Object {
     
     func incrementID() -> Int {
         let timers = Array(DBManager.sharedInstance.getEndedTimers())
-        if timers.count > 0{
-            let max_id = timers.map{$0.id}.max()!
+        if !timers.isEmpty {
+            let max_id = timers.map{ $0.id }.max() ?? 0
             return max_id + 1
         } else {
             return 0
         }
     }
+    
 }

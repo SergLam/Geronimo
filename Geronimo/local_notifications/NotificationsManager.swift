@@ -9,7 +9,7 @@
 import UIKit
 import UserNotifications
 
-class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
+final class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
     
     static let sharedInstance = NotificationsManager()
     
@@ -18,20 +18,21 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
     func requestUserPermission(){
         configureNotificationCenter()
         // MARK: Request permission for notifications
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-            if(granted == true){
-            } else{
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, _ in
+            guard granted else {
                 let alert = UIAlertController(title: "Notification Access", message: "In order to use this application, turn on notification permission in Settings app.", preferredStyle: .alert)
                 let alertAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
                 alert.addAction(alertAction)
                 UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+                return
             }
+            
         }
     }
     
     static func check_notification_permission() -> Bool {
         var result = false
-       UNUserNotificationCenter.current().getNotificationSettings{ (settings) in
+       UNUserNotificationCenter.current().getNotificationSettings{ settings in
         if settings.authorizationStatus == .authorized{
             result = true
         } else {
@@ -53,25 +54,25 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
     }
     
     func sendNotification(timer: GeronimoTimer) {
-        if(NotificationsManager.check_notification_permission()){
-            //creating the notification content
+        if NotificationsManager.check_notification_permission(){
+            // creating the notification content
             let content = UNMutableNotificationContent()
             
-            //adding title, subtitle, body and badge
+            // adding title, subtitle, body and badge
             content.title = timer.name
             content.body = timer.timerDescription
             content.badge = 1
-            content.sound = UNNotificationSound.default()
+            content.sound = UNNotificationSound.default
             // Set Category Identifier
             content.categoryIdentifier = NotificationCategory.name.rawValue
-            //getting the notification trigger
-            //it will be called after time interval
+            // getting the notification trigger
+            // it will be called after time interval
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timer.period, repeats: true)
             
-            //getting the notification request
+            // getting the notification request
             if let id = timer.lastNotificationID{
-                let request = UNNotificationRequest(identifier: id , content: content, trigger: trigger)
-                //adding the notification to notification center
+                let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+                // adding the notification to notification center
                 UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
                 print("Notification request added succesfully")
             }
@@ -104,7 +105,7 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound, .badge])
-        //required to show notification when in foreground
+        // required to show notification when in foreground
         let notification_ID = notification.request.identifier
         if let timer: TimerRealm = DBManager.sharedInstance.getTimerByNotificationID(id: notification_ID){
             timer.last_alarm_time = Date()
@@ -126,7 +127,7 @@ class NotificationsManager: NSObject, UNUserNotificationCenterDelegate{
     func confirmTimer(timerNotificationID: String){
         // TODO: write method for DB to get active timer by lastnotificationID field
         if let active_timer = DBManager.sharedInstance.getTimerByNotificationID(id: timerNotificationID){
-           active_timer.succesCount = active_timer.succesCount + 1
+           active_timer.succesCount += 1
             DBManager.sharedInstance.addTimer(object: active_timer)
             if let ended_timer = DBManager.sharedInstance.getEndedTimerByID(timerID: active_timer.id){
                 DBManager.sharedInstance.deleteEndedTimerById(timer_id: ended_timer.id)

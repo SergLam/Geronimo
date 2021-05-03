@@ -6,15 +6,20 @@
 //  Copyright © 2018 Serg Liamthev. All rights reserved.
 //
 
-import UIKit
 import RealmSwift
+import UIKit
 
-class DBManager {
-    private var database:Realm
+final class DBManager {
+    
+    private var database: Realm
     static let sharedInstance = DBManager()
     
     private init() {
-        database = try! Realm()
+        do {
+            database = try Realm()
+        } catch {
+            preconditionFailure("Unable to create Realm instance - \(error.localizedDescription)")
+        }
     }
     
     // Methods for active timers
@@ -30,25 +35,38 @@ class DBManager {
     }
     
     func getTimerByNotificationID(id: String) -> TimerRealm? {
-        let timers: Results<TimerRealm> = database.objects(TimerRealm.self).filter("lastNotificationID = "+id)
+        
+        let predicate: NSPredicate = NSPredicate(format: "lastNotificationID == %@", [id])
+        let timers: Results<TimerRealm> = database.objects(TimerRealm.self).filter(predicate)
         return timers.first
     }
     
-    func addTimer(object: TimerRealm)   {
-            try! self.database.write {
-                self.database.add(object, update: true)
+    func addTimer(object: TimerRealm) {
+        do {
+            try self.database.write {
+                self.database.add(object, update: .modified)
                 print("Add / update active timer")
             }
+        } catch {
+            LoggerService.logErrorWithTrace(error.localizedDescription)
+        }
     }
     
-    func deleteTimerById(timer_id: Int){
-        let timer: TimerRealm? = database.object(ofType: TimerRealm.self, forPrimaryKey: timer_id)
-        if let object = timer{
-            try! database.write {
-                database.delete(object)
+    func deleteTimerById(timer_id: Int) {
+        
+        do {
+            guard let timer = database.object(ofType: TimerRealm.self, forPrimaryKey: timer_id) else {
+                return
+            }
+            try database.write {
+                database.delete(timer)
                 print("Delete timer by ID")
             }
+            
+        } catch {
+            LoggerService.logErrorWithTrace(error.localizedDescription)
         }
+        
     }
     
     // Methods for archived timers
@@ -62,29 +80,46 @@ class DBManager {
         return timer
     }
     
-    func addEndedTimer(object: EndedTimerRealm)   {
-            try! self.database.write {
-                self.database.add(object, update: true)
+    func addEndedTimer(object: EndedTimerRealm) {
+        
+        do {
+            try self.database.write {
+                self.database.add(object, update: .modified)
                 print("Add / update ended timer")
             }
+        } catch {
+            LoggerService.logErrorWithTrace(error.localizedDescription)
+        }
+        
     }
     
     func deleteEndedTimerById(timer_id: Int)   {
-        let timer: EndedTimerRealm? = database.object(ofType: EndedTimerRealm.self, forPrimaryKey: timer_id)
-        if let object = timer{
-            try! database.write {
-                database.delete(object)
+        
+        do {
+            guard let timer = database.object(ofType: EndedTimerRealm.self, forPrimaryKey: timer_id) else {
+                return
+            }
+            try database.write {
+                database.delete(timer)
                 print("Delete timer by ID")
             }
+            
+        } catch {
+            LoggerService.logErrorWithTrace(error.localizedDescription)
         }
+        
     }
     
-    // ALARM! Drop DB method
     func deleteAllDataFromDatabase()  {
-        try! database.write {
-            database.deleteAll()
+        
+        do {
+            try database.write {
+                database.deleteAll()
+            }
+        } catch {
+            LoggerService.logErrorWithTrace(error.localizedDescription)
         }
+        
     }
-    
     
 }

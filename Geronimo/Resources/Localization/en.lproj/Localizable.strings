@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  Geronimo
+
+  Created by Serhii Liamtsev on 5/3/21.
+  Copyright © 2021 Serg Liamthev. All rights reserved.
+*/
+
+// MARK: - General
+"ok" = "OK";
+"cancel" = "Cancel";
+"error" = "Error";
+"success" = "Success";
+"close" = "Close";
+"cancel-uppercased" = "CANCEL";
+"message" = "Message";
+"default" = "Default";
+"correct" = "Correct";
+"settings" = "Settings";
+"back" = "Back";
+"save" = "Save";
+"select" = "Select";
+"sign-in" = "Sign In";
+"problem" = "Problem";
+"send" = "Send";
+"continue" = "Continue";
+"email" = "Email";
+"email-field.placeholder" = "address@email.com";
+"meditation" = "Meditation";
+"skip" = "Skip";
+"later" = "Later";
+"update" = "Update";
+"no-internet-connection" = "No Internet connection";
+"confirm" = "Confirm";
+"log-out.title" = "Log out";
+"log-out.message" = "Are you sure you want to log out?";
+"app-name" = "Aire Fresco";
+"thank-you.exclamation" = "Thank you!";
+"unknown-error" = "Something went wrong";
+"loading" = "Loading";
+"loading.three-dots" = "Loading...";
+"delete" = "Delete";
+"session" = "Session";
+"app-version" = "Version %@ (%@)";
+"apply-arrow" = "Apply >";
+"search.view.progress" = "Searching for \"%@\"";

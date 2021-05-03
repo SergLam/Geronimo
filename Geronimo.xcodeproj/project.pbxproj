@@ -7,7 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		78C5E5118880B8E7C8793164 /* Pods_Geronimo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AB05600F692B130E40375A /* Pods_Geronimo.framework */; };
+		049CFAF6264059290021C7CA /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFAF5264059290021C7CA /* AlertPresenter.swift */; };
+		049CFAFB264059E10021C7CA /* NSObject+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFAFA264059E10021C7CA /* NSObject+Ext.swift */; };
+		049CFAFF26405A1C0021C7CA /* SharedTypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFAFE26405A1C0021C7CA /* SharedTypeAliases.swift */; };
+		049CFB0626405B270021C7CA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 049CFB0826405B270021C7CA /* Localizable.strings */; };
+		049CFB0E26405C4B0021C7CA /* R.prod.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFB0D26405C4B0021C7CA /* R.prod.generated.swift */; };
+		049CFB1126405DD80021C7CA /* OSLog+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFB1026405DD80021C7CA /* OSLog+Ext.swift */; };
+		049CFB1426405E380021C7CA /* AppInternalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFB1326405E380021C7CA /* AppInternalError.swift */; };
+		049CFB1626405E570021C7CA /* LoggerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFB1526405E570021C7CA /* LoggerService.swift */; };
+		049CFB1A26405E990021C7CA /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFB1926405E990021C7CA /* Environment.swift */; };
+		049CFB1C264060680021C7CA /* TimeInterval+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFB1B264060680021C7CA /* TimeInterval+Ext.swift */; };
+		049CFB202640727F0021C7CA /* LocalStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFB1F2640727F0021C7CA /* LocalStorageKeys.swift */; };
+		049CFB25264072B70021C7CA /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFB24264072B70021C7CA /* UserDefaults+Codable.swift */; };
+		049CFB27264072D40021C7CA /* UserDefaults+AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFB26264072D40021C7CA /* UserDefaults+AppSettings.swift */; };
+		049CFB29264072FD0021C7CA /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFB28264072FD0021C7CA /* UserDefaults+Ext.swift */; };
+		049CFB2B264073290021C7CA /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFB2A264073290021C7CA /* AppConstants.swift */; };
+		049CFB2D264073400021C7CA /* DateFormatter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFB2C264073400021C7CA /* DateFormatter+Ext.swift */; };
+		7AD329772B5344F8303DD0B3 /* Pods_App_Geronimo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF6727294124828A85FDE8D /* Pods_App_Geronimo.framework */; };
 		7C2AF274206447860028B2C4 /* GeronimoTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2AF273206447860028B2C4 /* GeronimoTimer.swift */; };
 		7C2AF276206454950028B2C4 /* TimerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2AF275206454950028B2C4 /* TimerData.swift */; };
 		7C302BA420610AAC00B60560 /* ActiveTimersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C302BA220610AAC00B60560 /* ActiveTimersVC.swift */; };
@@ -62,8 +78,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		049CFAF5264059290021C7CA /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
+		049CFAFA264059E10021C7CA /* NSObject+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Ext.swift"; sourceTree = "<group>"; };
+		049CFAFE26405A1C0021C7CA /* SharedTypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTypeAliases.swift; sourceTree = "<group>"; };
+		049CFB0726405B270021C7CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		049CFB0B26405C340021C7CA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		049CFB0D26405C4B0021C7CA /* R.prod.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.prod.generated.swift; sourceTree = "<group>"; };
+		049CFB1026405DD80021C7CA /* OSLog+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Ext.swift"; sourceTree = "<group>"; };
+		049CFB1326405E380021C7CA /* AppInternalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInternalError.swift; sourceTree = "<group>"; };
+		049CFB1526405E570021C7CA /* LoggerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerService.swift; sourceTree = "<group>"; };
+		049CFB1926405E990021C7CA /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		049CFB1B264060680021C7CA /* TimeInterval+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Ext.swift"; sourceTree = "<group>"; };
+		049CFB1F2640727F0021C7CA /* LocalStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageKeys.swift; sourceTree = "<group>"; };
+		049CFB24264072B70021C7CA /* UserDefaults+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Codable.swift"; sourceTree = "<group>"; };
+		049CFB26264072D40021C7CA /* UserDefaults+AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+AppSettings.swift"; sourceTree = "<group>"; };
+		049CFB28264072FD0021C7CA /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
+		049CFB2A264073290021C7CA /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		049CFB2C264073400021C7CA /* DateFormatter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Ext.swift"; sourceTree = "<group>"; };
+		23E96E4F5BE9765E9E1A37CE /* Pods-App-Geronimo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Geronimo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App-Geronimo/Pods-App-Geronimo.debug.xcconfig"; sourceTree = "<group>"; };
 		280F448869ADB64AF5014B1E /* Pods-Geronimo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Geronimo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Geronimo/Pods-Geronimo.debug.xcconfig"; sourceTree = "<group>"; };
-		64AB05600F692B130E40375A /* Pods_Geronimo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Geronimo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2AF273206447860028B2C4 /* GeronimoTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeronimoTimer.swift; sourceTree = "<group>"; };
 		7C2AF275206454950028B2C4 /* TimerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerData.swift; sourceTree = "<group>"; };
 		7C302BA220610AAC00B60560 /* ActiveTimersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTimersVC.swift; sourceTree = "<group>"; };
@@ -114,10 +147,11 @@
 		7CFD3988205FFDBA00A3B800 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CFD3992205FFDBA00A3B800 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CFD3995205FFDBA00A3B800 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7CFD3997205FFDBA00A3B800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CFD399E205FFF9E00A3B800 /* TimersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersVC.swift; sourceTree = "<group>"; };
 		7CFD399F205FFF9E00A3B800 /* TimersVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimersVC.xib; sourceTree = "<group>"; };
+		99556421D292EFC408DB1963 /* Pods-App-Geronimo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Geronimo.release.xcconfig"; path = "Pods/Target Support Files/Pods-App-Geronimo/Pods-App-Geronimo.release.xcconfig"; sourceTree = "<group>"; };
 		BC0403E73D543530D53B6E6E /* Pods-Geronimo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Geronimo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Geronimo/Pods-Geronimo.release.xcconfig"; sourceTree = "<group>"; };
+		CAF6727294124828A85FDE8D /* Pods_App_Geronimo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_Geronimo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,17 +159,171 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78C5E5118880B8E7C8793164 /* Pods_Geronimo.framework in Frameworks */,
+				7AD329772B5344F8303DD0B3 /* Pods_App_Geronimo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		049CFAF3264058FE0021C7CA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				049CFB1E2640725A0021C7CA /* LocalStorage */,
+				049CFB1226405E2F0021C7CA /* Logger */,
+				049CFAF4264059050021C7CA /* UI */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		049CFAF4264059050021C7CA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				049CFAF5264059290021C7CA /* AlertPresenter.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		049CFAF7264059530021C7CA /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */,
+				7CCFB5BB20624E7000D25EDB /* TableView.swift */,
+				7CCFB5C6206279F500D25EDB /* StatusBar.swift */,
+				7C3C06EF2066653700E777D3 /* DateFormatter.swift */,
+				7C7FBD6A20EE364B001455D6 /* TopViewController.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		049CFAF82640598F0021C7CA /* ReusableViews */ = {
+			isa = PBXGroup;
+			children = (
+				7C3C06F120669B9100E777D3 /* DateTimePicker.swift */,
+				7C97254720691F43008B7757 /* TypePeriodPicker.swift */,
+			);
+			path = ReusableViews;
+			sourceTree = "<group>";
+		};
+		049CFAF9264059CA0021C7CA /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				049CFAFA264059E10021C7CA /* NSObject+Ext.swift */,
+				049CFB1B264060680021C7CA /* TimeInterval+Ext.swift */,
+				049CFB2C264073400021C7CA /* DateFormatter+Ext.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		049CFAFC264059FD0021C7CA /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				7CFD3988205FFDBA00A3B800 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		049CFAFD26405A060021C7CA /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				049CFB1726405E6F0021C7CA /* Configuration */,
+				049CFAFE26405A1C0021C7CA /* SharedTypeAliases.swift */,
+				049CFB2A264073290021C7CA /* AppConstants.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		049CFB0026405A4C0021C7CA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				049CFB0A26405BED0021C7CA /* RSwift */,
+				7CFD3994205FFDBA00A3B800 /* LaunchScreen.storyboard */,
+				049CFB0326405AFD0021C7CA /* Localization */,
+				049CFB0126405A570021C7CA /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		049CFB0126405A570021C7CA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				7CFD3992205FFDBA00A3B800 /* Assets.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		049CFB0226405A650021C7CA /* BundleFiles */ = {
+			isa = PBXGroup;
+			children = (
+				049CFB0B26405C340021C7CA /* Info.plist */,
+			);
+			path = BundleFiles;
+			sourceTree = "<group>";
+		};
+		049CFB0326405AFD0021C7CA /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				049CFB0826405B270021C7CA /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		049CFB0A26405BED0021C7CA /* RSwift */ = {
+			isa = PBXGroup;
+			children = (
+				049CFB0D26405C4B0021C7CA /* R.prod.generated.swift */,
+			);
+			path = RSwift;
+			sourceTree = "<group>";
+		};
+		049CFB1226405E2F0021C7CA /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				049CFB1526405E570021C7CA /* LoggerService.swift */,
+				049CFB1326405E380021C7CA /* AppInternalError.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		049CFB1726405E6F0021C7CA /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				049CFB1826405E7F0021C7CA /* Environment */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		049CFB1826405E7F0021C7CA /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				049CFB1926405E990021C7CA /* Environment.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
+		049CFB1E2640725A0021C7CA /* LocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				049CFB23264072A30021C7CA /* UserDefaults */,
+				049CFB1F2640727F0021C7CA /* LocalStorageKeys.swift */,
+			);
+			path = LocalStorage;
+			sourceTree = "<group>";
+		};
+		049CFB23264072A30021C7CA /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				049CFB24264072B70021C7CA /* UserDefaults+Codable.swift */,
+				049CFB26264072D40021C7CA /* UserDefaults+AppSettings.swift */,
+				049CFB28264072FD0021C7CA /* UserDefaults+Ext.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
 		0F1517EA91BE303CA8C63200 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				64AB05600F692B130E40375A /* Pods_Geronimo.framework */,
+				CAF6727294124828A85FDE8D /* Pods_App_Geronimo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -145,6 +333,8 @@
 			children = (
 				280F448869ADB64AF5014B1E /* Pods-Geronimo.debug.xcconfig */,
 				BC0403E73D543530D53B6E6E /* Pods-Geronimo.release.xcconfig */,
+				23E96E4F5BE9765E9E1A37CE /* Pods-App-Geronimo.debug.xcconfig */,
+				99556421D292EFC408DB1963 /* Pods-App-Geronimo.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -199,6 +389,7 @@
 			isa = PBXGroup;
 			children = (
 				7C2AF273206447860028B2C4 /* GeronimoTimer.swift */,
+				7C7403A320FCF3C60004C59E /* GeronimoTimerFunctions.swift */,
 				7C2AF275206454950028B2C4 /* TimerData.swift */,
 				7CAEB68B20891C270021A36A /* EndedTimer.swift */,
 			);
@@ -254,20 +445,15 @@
 			path = TableCells;
 			sourceTree = "<group>";
 		};
-		7CCFB5BA20624E4C00D25EDB /* Tolls&Extensions */ = {
+		7CCFB5BA20624E4C00D25EDB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				7CCFB5BB20624E7000D25EDB /* TableView.swift */,
-				7CCFB5C6206279F500D25EDB /* StatusBar.swift */,
-				7C3C06EF2066653700E777D3 /* DateFormatter.swift */,
-				7C3C06F120669B9100E777D3 /* DateTimePicker.swift */,
-				7C97254720691F43008B7757 /* TypePeriodPicker.swift */,
-				7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */,
+				049CFAF9264059CA0021C7CA /* Foundation */,
+				049CFAF7264059530021C7CA /* UIKit */,
 				7CE9A93E2082B226004C0C72 /* SCLAlertView.swift */,
-				7C7FBD6A20EE364B001455D6 /* TopViewController.swift */,
-				7C7403A320FCF3C60004C59E /* GeronimoTimerFunctions.swift */,
+				049CFB1026405DD80021C7CA /* OSLog+Ext.swift */,
 			);
-			path = "Tolls&Extensions";
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		7CCFB5BD2062608D00D25EDB /* Settings */ = {
@@ -322,20 +508,22 @@
 		7CFD3987205FFDBA00A3B800 /* Geronimo */ = {
 			isa = PBXGroup;
 			children = (
+				049CFB0226405A650021C7CA /* BundleFiles */,
+				049CFB0026405A4C0021C7CA /* Resources */,
+				049CFAFD26405A060021C7CA /* Application */,
+				049CFAFC264059FD0021C7CA /* AppDelegate */,
+				049CFAF82640598F0021C7CA /* ReusableViews */,
+				049CFAF3264058FE0021C7CA /* Services */,
 				7CDED21E20D6D67100A13435 /* local_notifications */,
 				7CE9A94020834FF4004C0C72 /* local_db */,
-				7CCFB5BA20624E4C00D25EDB /* Tolls&Extensions */,
+				7CCFB5BA20624E4C00D25EDB /* Extensions */,
 				7C48B8DD20600EBE001605A6 /* data_models */,
-				7CFD399D205FFF7D00A3B800 /* Screens */,
-				7CFD3988205FFDBA00A3B800 /* AppDelegate.swift */,
-				7CFD3992205FFDBA00A3B800 /* Assets.xcassets */,
-				7CFD3994205FFDBA00A3B800 /* LaunchScreen.storyboard */,
-				7CFD3997205FFDBA00A3B800 /* Info.plist */,
+				7CFD399D205FFF7D00A3B800 /* UserStory */,
 			);
 			path = Geronimo;
 			sourceTree = "<group>";
 		};
-		7CFD399D205FFF7D00A3B800 /* Screens */ = {
+		7CFD399D205FFF7D00A3B800 /* UserStory */ = {
 			isa = PBXGroup;
 			children = (
 				7CCFB5BD2062608D00D25EDB /* Settings */,
@@ -343,7 +531,7 @@
 				7CFD399E205FFF9E00A3B800 /* TimersVC.swift */,
 				7CFD399F205FFF9E00A3B800 /* TimersVC.xib */,
 			);
-			path = Screens;
+			path = UserStory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +542,8 @@
 			buildConfigurationList = 7CFD399A205FFDBA00A3B800 /* Build configuration list for PBXNativeTarget "Geronimo" */;
 			buildPhases = (
 				68B7077C73C05B17E4D4E9E2 /* [CP] Check Pods Manifest.lock */,
+				049CFB0F26405C6A0021C7CA /* Swift Lint */,
+				049CFB0926405BC10021C7CA /* R.swift */,
 				7CFD3981205FFDBA00A3B800 /* Sources */,
 				7CFD3982205FFDBA00A3B800 /* Frameworks */,
 				7CFD3983205FFDBA00A3B800 /* Resources */,
@@ -407,6 +597,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049CFB0626405B270021C7CA /* Localizable.strings in Resources */,
 				7CA4C11920650A1200E7E905 /* LabelArrowCell.xib in Resources */,
 				7C43B7BF2062960300D57614 /* EditTimerVC.xib in Resources */,
 				7C302BAF20611AE100B60560 /* EndedTimerTableCell.xib in Resources */,
@@ -429,30 +620,57 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		049CFB0926405BC10021C7CA /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/Geronimo/Resources/RSwift/R.prod.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Geronimo/Resources/RSwift/R.prod.generated.swift\"\n";
+		};
+		049CFB0F26405C6A0021C7CA /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "  \"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		6674C34B68ACE1013663A91F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Geronimo/Pods-Geronimo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RKPieChart/RKPieChart.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RKPieChart.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Geronimo/Pods-Geronimo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-App-Geronimo/Pods-App-Geronimo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		68B7077C73C05B17E4D4E9E2 /* [CP] Check Pods Manifest.lock */ = {
@@ -466,7 +684,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Geronimo-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-App-Geronimo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -493,34 +711,57 @@
 				7CDED22020D6D68B00A13435 /* NotificationsManager.swift in Sources */,
 				7CD31C40207363A600D73545 /* HideKeyboardOnTouch.swift in Sources */,
 				7C2AF276206454950028B2C4 /* TimerData.swift in Sources */,
+				049CFB25264072B70021C7CA /* UserDefaults+Codable.swift in Sources */,
+				049CFB202640727F0021C7CA /* LocalStorageKeys.swift in Sources */,
 				7CCFB5C42062624000D25EDB /* SettingsTableCell.swift in Sources */,
 				7C7FBD6B20EE364B001455D6 /* TopViewController.swift in Sources */,
 				7CDED22220D6E0DD00A13435 /* NotificationsConstants.swift in Sources */,
 				7CA4C11820650A1200E7E905 /* LabelArrowCell.swift in Sources */,
 				7CE9A93F2082B226004C0C72 /* SCLAlertView.swift in Sources */,
+				049CFB29264072FD0021C7CA /* UserDefaults+Ext.swift in Sources */,
 				7C97254820691F43008B7757 /* TypePeriodPicker.swift in Sources */,
 				7C7403A420FCF3C60004C59E /* GeronimoTimerFunctions.swift in Sources */,
+				049CFB0E26405C4B0021C7CA /* R.prod.generated.swift in Sources */,
 				7CCFB5BC20624E7000D25EDB /* TableView.swift in Sources */,
 				7CCFB5C7206279F500D25EDB /* StatusBar.swift in Sources */,
 				7C38D41F20D916640037AC1E /* ActiveTimersTable.swift in Sources */,
+				049CFAF6264059290021C7CA /* AlertPresenter.swift in Sources */,
 				7CF48D95206A7E0000E09A02 /* UpTimerDelegateDataSource.swift in Sources */,
+				049CFB1126405DD80021C7CA /* OSLog+Ext.swift in Sources */,
+				049CFAFF26405A1C0021C7CA /* SharedTypeAliases.swift in Sources */,
 				7CA4C11C20650CCF00E7E905 /* LabelSwitchCell.swift in Sources */,
+				049CFB2B264073290021C7CA /* AppConstants.swift in Sources */,
 				7C48B8DB20600CF4001605A6 /* ActiveTimerTableCell.swift in Sources */,
+				049CFB1426405E380021C7CA /* AppInternalError.swift in Sources */,
 				7CA4C12020650DDF00E7E905 /* LabelLabelCell.swift in Sources */,
+				049CFB2D264073400021C7CA /* DateFormatter+Ext.swift in Sources */,
 				7CCFB5C0206260BF00D25EDB /* SettingsVC.swift in Sources */,
+				049CFB1C264060680021C7CA /* TimeInterval+Ext.swift in Sources */,
+				049CFB27264072D40021C7CA /* UserDefaults+AppSettings.swift in Sources */,
+				049CFB1A26405E990021C7CA /* Environment.swift in Sources */,
 				7CA0A4472063C4CC000B10C6 /* AboutVC.swift in Sources */,
 				7CE9A94220835010004C0C72 /* DBManager.swift in Sources */,
+				049CFAFB264059E10021C7CA /* NSObject+Ext.swift in Sources */,
 				7CFD3989205FFDBA00A3B800 /* AppDelegate.swift in Sources */,
 				7C804EDF20B03AE4009E2183 /* EndedTimerRealm.swift in Sources */,
 				7C43B7BE2062960300D57614 /* EditTimerVC.swift in Sources */,
 				7CFD39A0205FFF9E00A3B800 /* TimersVC.swift in Sources */,
 				7CA0A4522063E8BA000B10C6 /* TimerStatisticVC.swift in Sources */,
+				049CFB1626405E570021C7CA /* LoggerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		049CFB0826405B270021C7CA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				049CFB0726405B270021C7CA /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		7CFD3994205FFDBA00A3B800 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -580,13 +821,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -632,45 +873,47 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		7CFD399B205FFDBA00A3B800 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 280F448869ADB64AF5014B1E /* Pods-Geronimo.debug.xcconfig */;
+			baseConfigurationReference = 23E96E4F5BE9765E9E1A37CE /* Pods-App-Geronimo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = Geronimo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Geronimo/BundleFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samurai.Geronimo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		7CFD399C205FFDBA00A3B800 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC0403E73D543530D53B6E6E /* Pods-Geronimo.release.xcconfig */;
+			baseConfigurationReference = 99556421D292EFC408DB1963 /* Pods-App-Geronimo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = Geronimo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Geronimo/BundleFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samurai.Geronimo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

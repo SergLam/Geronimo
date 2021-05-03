@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GeronimoTimer{
+final class GeronimoTimer{
     var id: Int = -1
     var isNew: Bool = true
     
@@ -23,18 +23,18 @@ class GeronimoTimer{
     // Up Timer proporties (Down - Begin block)
     var isNow: Bool = true
     // Date & time inside one field
-    var beginDate: Date = Calendar.current.date(byAdding: .minute, value: 5, to: TimerData().currentDate)!
+    var beginDate: Date = TimerData().currentDate.addingTimeInterval(60 * 5)
     // Down Timer proporties
     var isInfinetily: Bool = true
     var repeats: Int = 1
     // End block
     var isNever: Bool = true
     // Date & time inside one field
-    var endDate: Date = Calendar.current.date(byAdding: .hour, value: 1, to: TimerData().currentDate)!
+    var endDate: Date = TimerData().currentDate.addingTimeInterval(TimeInterval.hour)
     // Worked time
     var isOnlyWorked = false
     var beginWorkTime: Date = TimerData().currentDate
-    var endWorkTime: Date = Calendar.current.date(byAdding: .hour, value: 1, to: TimerData().currentDate)!
+    var endWorkTime: Date = TimerData().currentDate.addingTimeInterval(TimeInterval.hour)
     // Statistic data
     var succesCount = 0
     var failCount = 0

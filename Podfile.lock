@@ -1,25 +1,36 @@
 PODS:
-  - Realm (3.7.4):
-    - Realm/Headers (= 3.7.4)
-  - Realm/Headers (3.7.4)
-  - RealmSwift (3.7.4):
-    - Realm (= 3.7.4)
-  - RKPieChart (0.0.1)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
+  - R.swift (5.4.0):
+    - R.swift.Library (~> 5.3.0)
+  - R.swift.Library (5.3.0)
+  - Realm (10.7.4):
+    - Realm/Headers (= 10.7.4)
+  - Realm/Headers (10.7.4)
+  - RealmSwift (10.7.4):
+    - Realm (= 10.7.4)
   - SCLAlertView (0.8)
-  - SnapKit (4.0.0)
+  - SnapKit (5.0.1)
+  - SwiftLint (0.43.1)
 
 DEPENDENCIES:
-  - RealmSwift
-  - RKPieChart
+  - Charts (~> 3.6.0)
+  - R.swift (~> 5.4.0)
+  - RealmSwift (~> 10.7.4)
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift.git`)
-  - SnapKit
+  - SnapKit (~> 5.0.1)
+  - SwiftLint (~> 0.43.1)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
+    - Charts
+    - R.swift
+    - R.swift.Library
     - Realm
     - RealmSwift
-    - RKPieChart
     - SnapKit
+    - SwiftLint
 
 EXTERNAL SOURCES:
   SCLAlertView:
@@ -31,12 +42,15 @@ CHECKOUT OPTIONS:
     :git: https://github.com/vikmeup/SCLAlertView-Swift.git
 
 SPEC CHECKSUMS:
-  Realm: a469bb59e33f9926102ccaea4349822c53b9117e
-  RealmSwift: a45861b21c180f5cf0f122144b9759fa8dde3e9e
-  RKPieChart: 8e643c505d24e61574f3a2fd6bd807403840b24b
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
+  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  Realm: f08ce1a85649a41303ecfe1cbd914c62e9e6d710
+  RealmSwift: 60ec49d165f23d040ab48811d8dd177e09baf4d3
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: c1bfe4162e384244db20923fc9bd98342cc48ef0
+PODFILE CHECKSUM: 6151c7c34f6e49911249e3186983eed21ee0a0da
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.10.1

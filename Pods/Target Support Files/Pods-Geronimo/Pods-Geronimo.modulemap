@@ -1,6 +1,0 @@
-framework module Pods_Geronimo {
-  umbrella header "Pods-Geronimo-umbrella.h"
-
-  export *
-  module * { export * }
-}

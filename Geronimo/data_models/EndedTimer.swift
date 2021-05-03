@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EndedTimer: NSObject {
+final class EndedTimer: NSObject {
     var id: Int = 0
     var title: String = ""
     var last_alarm_time: Date = TimerData().currentDate
