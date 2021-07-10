@@ -45,16 +45,26 @@ final class AlertPresenter: NSObject {
     static func showErrorAlert(at vc: UIViewController, error: Error) {
         
         executeOnMain {
-            AlertPresenter.showErrorAlertWithHandler(at: vc, errorMessgage: error.localizedDescription, handler: nil)
+            AlertPresenter.showErrorAlert(at: vc, errorMessgage: error.localizedDescription, handler: nil)
+        }
+    }
+    
+    // MARK: - Error alert for error message
+    static func showErrorAlert(at vc: UIViewController, error: String) {
+        
+        executeOnMain {
+            AlertPresenter.showErrorAlert(at: vc, errorMessgage: error, handler: nil)
         }
     }
     
     // MARK: - Error alert with closure
-    static func showErrorAlertWithHandler(at vc: UIViewController, errorMessgage: String, handler: TypeClosure<UIAlertAction>?) {
+    static func showErrorAlert(at vc: UIViewController, errorMessgage: String, handler: VoidClosure?) {
         
         executeOnMain {
             let alert = UIAlertController(title: Localizable.error(preferredLanguages: [UserDefaults.shared.selectedLocaleCode]), message: errorMessgage, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: Localizable.ok(preferredLanguages: [UserDefaults.shared.selectedLocaleCode]), style: .default, handler: handler)
+            let okAction = UIAlertAction(title: Localizable.ok(preferredLanguages: [UserDefaults.shared.selectedLocaleCode]), style: .default, handler: { _ in
+                handler?()
+            })
             alert.addAction(okAction)
             vc.present(alert, animated: true, completion: nil)
         }

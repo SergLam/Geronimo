@@ -23,6 +23,7 @@
 		049CFB29264072FD0021C7CA /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFB28264072FD0021C7CA /* UserDefaults+Ext.swift */; };
 		049CFB2B264073290021C7CA /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFB2A264073290021C7CA /* AppConstants.swift */; };
 		049CFB2D264073400021C7CA /* DateFormatter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CFB2C264073400021C7CA /* DateFormatter+Ext.swift */; };
+		04CC1BA12699A1CD00DD87BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CC1BA02699A1CD00DD87BE /* Images.xcassets */; };
 		7AD329772B5344F8303DD0B3 /* Pods_App_Geronimo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF6727294124828A85FDE8D /* Pods_App_Geronimo.framework */; };
 		7C2AF274206447860028B2C4 /* GeronimoTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2AF273206447860028B2C4 /* GeronimoTimer.swift */; };
 		7C2AF276206454950028B2C4 /* TimerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2AF275206454950028B2C4 /* TimerData.swift */; };
@@ -67,7 +68,6 @@
 		7CD31C40207363A600D73545 /* HideKeyboardOnTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */; };
 		7CDED22020D6D68B00A13435 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDED21F20D6D68B00A13435 /* NotificationsManager.swift */; };
 		7CDED22220D6E0DD00A13435 /* NotificationsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDED22120D6E0DD00A13435 /* NotificationsConstants.swift */; };
-		7CE9A93F2082B226004C0C72 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE9A93E2082B226004C0C72 /* SCLAlertView.swift */; };
 		7CE9A94220835010004C0C72 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE9A94120835010004C0C72 /* DBManager.swift */; };
 		7CF48D95206A7E0000E09A02 /* UpTimerDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF48D94206A7E0000E09A02 /* UpTimerDelegateDataSource.swift */; };
 		7CFD3989205FFDBA00A3B800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFD3988205FFDBA00A3B800 /* AppDelegate.swift */; };
@@ -95,6 +95,7 @@
 		049CFB28264072FD0021C7CA /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
 		049CFB2A264073290021C7CA /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		049CFB2C264073400021C7CA /* DateFormatter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Ext.swift"; sourceTree = "<group>"; };
+		04CC1BA02699A1CD00DD87BE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		23E96E4F5BE9765E9E1A37CE /* Pods-App-Geronimo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Geronimo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App-Geronimo/Pods-App-Geronimo.debug.xcconfig"; sourceTree = "<group>"; };
 		280F448869ADB64AF5014B1E /* Pods-Geronimo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Geronimo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Geronimo/Pods-Geronimo.debug.xcconfig"; sourceTree = "<group>"; };
 		7C2AF273206447860028B2C4 /* GeronimoTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeronimoTimer.swift; sourceTree = "<group>"; };
@@ -140,7 +141,6 @@
 		7CD31C3F207363A600D73545 /* HideKeyboardOnTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardOnTouch.swift; sourceTree = "<group>"; };
 		7CDED21F20D6D68B00A13435 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		7CDED22120D6E0DD00A13435 /* NotificationsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsConstants.swift; sourceTree = "<group>"; };
-		7CE9A93E2082B226004C0C72 /* SCLAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		7CE9A94120835010004C0C72 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		7CF48D94206A7E0000E09A02 /* UpTimerDelegateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpTimerDelegateDataSource.swift; sourceTree = "<group>"; };
 		7CFD3985205FFDBA00A3B800 /* Geronimo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geronimo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +169,8 @@
 		049CFAF3264058FE0021C7CA /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				7CE9A94020834FF4004C0C72 /* Database */,
+				7CDED21E20D6D67100A13435 /* Notifications */,
 				049CFB1E2640725A0021C7CA /* LocalStorage */,
 				049CFB1226405E2F0021C7CA /* Logger */,
 				049CFAF4264059050021C7CA /* UI */,
@@ -248,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				7CFD3992205FFDBA00A3B800 /* Assets.xcassets */,
+				04CC1BA02699A1CD00DD87BE /* Images.xcassets */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -320,6 +323,26 @@
 			path = UserDefaults;
 			sourceTree = "<group>";
 		};
+		04CC1BA22699A63100DD87BE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7C2AF273206447860028B2C4 /* GeronimoTimer.swift */,
+				7C7403A320FCF3C60004C59E /* GeronimoTimerFunctions.swift */,
+				7C2AF275206454950028B2C4 /* TimerData.swift */,
+				7CAEB68B20891C270021A36A /* EndedTimer.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		04CC1BA32699A63D00DD87BE /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				7CAEB68E20891E9D0021A36A /* TimerRealm.swift */,
+				7C804EDE20B03AE4009E2183 /* EndedTimerRealm.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		0F1517EA91BE303CA8C63200 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,24 +408,13 @@
 			path = Add_Edit;
 			sourceTree = "<group>";
 		};
-		7C48B8DD20600EBE001605A6 /* data_models */ = {
+		7C48B8DD20600EBE001605A6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7C2AF273206447860028B2C4 /* GeronimoTimer.swift */,
-				7C7403A320FCF3C60004C59E /* GeronimoTimerFunctions.swift */,
-				7C2AF275206454950028B2C4 /* TimerData.swift */,
-				7CAEB68B20891C270021A36A /* EndedTimer.swift */,
+				04CC1BA32699A63D00DD87BE /* Database */,
+				04CC1BA22699A63100DD87BE /* UI */,
 			);
-			path = data_models;
-			sourceTree = "<group>";
-		};
-		7C804EDD20B033AD009E2183 /* data_models */ = {
-			isa = PBXGroup;
-			children = (
-				7CAEB68E20891E9D0021A36A /* TimerRealm.swift */,
-				7C804EDE20B03AE4009E2183 /* EndedTimerRealm.swift */,
-			);
-			path = data_models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7CA0A4492063C4D1000B10C6 /* About */ = {
@@ -450,7 +462,6 @@
 			children = (
 				049CFAF9264059CA0021C7CA /* Foundation */,
 				049CFAF7264059530021C7CA /* UIKit */,
-				7CE9A93E2082B226004C0C72 /* SCLAlertView.swift */,
 				049CFB1026405DD80021C7CA /* OSLog+Ext.swift */,
 			);
 			path = Extensions;
@@ -469,22 +480,21 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		7CDED21E20D6D67100A13435 /* local_notifications */ = {
+		7CDED21E20D6D67100A13435 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
 				7CDED21F20D6D68B00A13435 /* NotificationsManager.swift */,
 				7CDED22120D6E0DD00A13435 /* NotificationsConstants.swift */,
 			);
-			path = local_notifications;
+			path = Notifications;
 			sourceTree = "<group>";
 		};
-		7CE9A94020834FF4004C0C72 /* local_db */ = {
+		7CE9A94020834FF4004C0C72 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				7C804EDD20B033AD009E2183 /* data_models */,
 				7CE9A94120835010004C0C72 /* DBManager.swift */,
 			);
-			path = local_db;
+			path = Database;
 			sourceTree = "<group>";
 		};
 		7CFD397C205FFDBA00A3B800 = {
@@ -514,10 +524,8 @@
 				049CFAFC264059FD0021C7CA /* AppDelegate */,
 				049CFAF82640598F0021C7CA /* ReusableViews */,
 				049CFAF3264058FE0021C7CA /* Services */,
-				7CDED21E20D6D67100A13435 /* local_notifications */,
-				7CE9A94020834FF4004C0C72 /* local_db */,
 				7CCFB5BA20624E4C00D25EDB /* Extensions */,
-				7C48B8DD20600EBE001605A6 /* data_models */,
+				7C48B8DD20600EBE001605A6 /* Models */,
 				7CFD399D205FFF7D00A3B800 /* UserStory */,
 			);
 			path = Geronimo;
@@ -606,6 +614,7 @@
 				7CA0A4532063E8BA000B10C6 /* TimerStatisticVC.xib in Resources */,
 				7CCFB5C1206260BF00D25EDB /* SettingsVC.xib in Resources */,
 				7C48B8DC20600CF4001605A6 /* ActiveTimerTableCell.xib in Resources */,
+				04CC1BA12699A1CD00DD87BE /* Images.xcassets in Resources */,
 				7CFD39A1205FFF9E00A3B800 /* TimersVC.xib in Resources */,
 				7CA0A4482063C4CC000B10C6 /* AboutVC.xib in Resources */,
 				7CCFB5C52062624000D25EDB /* SettingsTableCell.xib in Resources */,
@@ -717,7 +726,6 @@
 				7C7FBD6B20EE364B001455D6 /* TopViewController.swift in Sources */,
 				7CDED22220D6E0DD00A13435 /* NotificationsConstants.swift in Sources */,
 				7CA4C11820650A1200E7E905 /* LabelArrowCell.swift in Sources */,
-				7CE9A93F2082B226004C0C72 /* SCLAlertView.swift in Sources */,
 				049CFB29264072FD0021C7CA /* UserDefaults+Ext.swift in Sources */,
 				7C97254820691F43008B7757 /* TypePeriodPicker.swift in Sources */,
 				7C7403A420FCF3C60004C59E /* GeronimoTimerFunctions.swift in Sources */,

@@ -12,7 +12,6 @@ def all_pods
   # UI
   pod 'SnapKit', '~> 5.0.1'
   pod 'Charts', '~> 3.6.0'
-  pod 'SCLAlertView', :git => 'https://github.com/vikmeup/SCLAlertView-Swift.git'
   
   # Database
   pod 'RealmSwift', '~> 10.7.4'

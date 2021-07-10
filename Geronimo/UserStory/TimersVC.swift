@@ -32,7 +32,6 @@ final class TimersVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.switchViewController(tabSwitch)
-        UIApplication.statusBarBackgroundColor = UIColor(red: 16 / 255, green: 209 / 255, blue: 255 / 255, alpha: 1)
     }
 
     @IBAction func switchViewController(_ sender: UISegmentedControl) {

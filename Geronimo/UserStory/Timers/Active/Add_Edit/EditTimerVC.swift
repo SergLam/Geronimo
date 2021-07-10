@@ -6,7 +6,6 @@
 //  Copyright © 2018 Serg Liamthev. All rights reserved.
 //
 
-import SCLAlertView
 import SnapKit
 import UIKit
 import UserNotifications
@@ -130,11 +129,11 @@ final class EditTimerVC: UIViewController, UITextFieldDelegate {
                 self.dismiss(animated: true, completion: nil)
                 return
             } else {
-                SCLAlertView().showErrorAlert(title: "Error", message: validation_result.1)
+                AlertPresenter.showErrorAlert(at: self, error: validation_result.1)
                 return
             }
         } else {
-            SCLAlertView().showErrorAlert(title: "Error", message: "Please, enter timer title.")
+            AlertPresenter.showErrorAlert(at: self, error: "Please, enter timer title.")
             return
         }
         
